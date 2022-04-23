@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_study_day7/tmdb_api_service.dart';
 
 void main() async {
   await dotenv.load(fileName: "assets/.env");
@@ -8,7 +9,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
+    TmdbApiService().getPopularTvShows();
     setState(() {
       _counter++;
     });
