@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_study_day7/model/tv_list_result_object.dart';
+import 'package:flutter_study_day7/tmdb_api_service.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -11,7 +13,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +37,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  List<TvListResultObject> _list = [];
 
-  void _incrementCounter() {
+  void _incrementCounter() async {
+    List<TvListResultObject> list = await TmdbApiService().getDiscoverTv(2022);
     setState(() {
+      _list = list;
       _counter++;
     });
   }
@@ -51,18 +55,17 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+        child: ListView.builder(
+          itemCount: _list.length,
+          itemBuilder: (context, index) {
+            final item = _list[index];
+
+            return ListTile(
+              leading: Image.network('https://image.tmdb.org/t/p/w500/${item.posterPath}', width: 56.0),
+              title: Text(item.originalName),
+            );
+          },
+        )
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
