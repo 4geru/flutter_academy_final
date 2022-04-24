@@ -39,7 +39,12 @@ class _TopHomePageState extends State<TopHomePage> {
         initialIndex: _tabs.length - 1,
         child: Scaffold(
           appBar: AppBar(
-            title: Text('ANYA in ${_selectedYear.toString()}'),
+            title: Text(
+              'ANYA in ${_selectedYear.toString()}',
+              style: TextStyle(
+                color: Color(0xFF0F1021)
+              ),
+            ),
             bottom: TabBar(
               isScrollable: true,
               tabs: _tabs.map((TabInfo tab) {
@@ -51,7 +56,8 @@ class _TopHomePageState extends State<TopHomePage> {
                 setState(() {
                   _selectedYear = _tabs[index].year;
                 });
-              }
+              },
+              labelColor: Color(0xFF0F1021),
             )
           ),
           body: TabBarView(
