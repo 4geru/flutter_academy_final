@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study_day7/model/tv_list_result_object.dart';
-import 'package:flutter_study_day7/page/detail_page_argument.dart';
+import 'package:flutter_study_day7/page/details/detail_page_argument.dart';
 import 'package:flutter_study_day7/service/tmdb_api_service.dart';
 
 class YearTabPage extends StatefulWidget {

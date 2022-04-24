@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_study_day7/page/detail_page.dart';
-import 'package:flutter_study_day7/page/top_page.dart';
+import 'package:flutter_study_day7/page/details/detail_page.dart';
+import 'package:flutter_study_day7/page/root/top_page.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
