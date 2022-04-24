@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_study_day7/package/bubble_tab_indicator.dart';
 import 'package:flutter_study_day7/page/root/year_tab_page.dart';
 
 class TabInfo {
@@ -46,6 +47,7 @@ class _TopHomePageState extends State<TopHomePage> {
               ),
             ),
             bottom: TabBar(
+
               isScrollable: true,
               tabs: _tabs.map((TabInfo tab) {
                 return Tab(
@@ -56,8 +58,14 @@ class _TopHomePageState extends State<TopHomePage> {
                 setState(() {
                   _selectedYear = _tabs[index].year;
                 });
-              },
-              labelColor: Color(0xFF0F1021),
+              }
+              labelColor: const Color(0xFF0F1021),
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicator: const BubbleTabIndicator(
+                indicatorHeight: 30.0,
+                indicatorColor: Colors.white,
+                tabBarIndicatorSize: TabBarIndicatorSize.tab,
+              ),
             )
           ),
           body: TabBarView(
