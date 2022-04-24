@@ -26,12 +26,7 @@ class _DetailPageState extends State<DetailPage> {
             Image.network('https://image.tmdb.org/t/p/w300/${args.tvListResultObject.posterPath}'),
           ],
         )
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      )
     );
   }
 }
