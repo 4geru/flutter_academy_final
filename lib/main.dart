@@ -36,35 +36,42 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int _year = 2022;
   List<TvListResultObject> _list = [];
 
   void _incrementCounter() async {
-    List<TvListResultObject> list = await TmdbApiService().getDiscoverTv(2022);
+    List<TvListResultObject> list = await TmdbApiService().getDiscoverTv(_year);
     setState(() {
       _list = list;
-      _counter++;
+      _year--;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     FlutterNativeSplash.remove();
-    return Scaffold(
+        return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body: Center(
-        child: ListView.builder(
-          itemCount: _list.length,
-          itemBuilder: (context, index) {
-            final item = _list[index];
-
-            return ListTile(
-              leading: Image.network('https://image.tmdb.org/t/p/w500/${item.posterPath}', width: 56.0),
-              title: Text(item.originalName),
-            );
-          },
+        child: CustomScrollView(
+          primary: false,
+          slivers: <Widget>[
+            SliverPadding(
+              padding: const EdgeInsets.all(20),
+              sliver: SliverGrid.count(
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                crossAxisCount: 2,
+                children: _list.map((e) {
+                    return Image.network(
+                      'https://image.tmdb.org/t/p/w300/${e.posterPath}',
+                    );
+                }).toList()
+              ),
+            ),
+          ],
         )
       ),
       floatingActionButton: FloatingActionButton(
