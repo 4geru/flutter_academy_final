@@ -47,7 +47,6 @@ class _TopHomePageState extends State<TopHomePage> {
               ),
             ),
             bottom: TabBar(
-
               isScrollable: true,
               tabs: _tabs.map((TabInfo tab) {
                 return Tab(
@@ -58,7 +57,7 @@ class _TopHomePageState extends State<TopHomePage> {
                 setState(() {
                   _selectedYear = _tabs[index].year;
                 });
-              }
+              },
               labelColor: const Color(0xFF0F1021),
               indicatorSize: TabBarIndicatorSize.tab,
               indicator: const BubbleTabIndicator(
