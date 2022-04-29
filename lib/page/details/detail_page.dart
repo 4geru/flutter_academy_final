@@ -6,7 +6,8 @@ import 'package:flutter_study_day7/theme.dart';
 import 'detail_page_argument.dart';
 
 class DetailPage extends StatefulWidget {
-  const DetailPage({Key? key}) : super(key: key);
+  final DetailPageArgument argument;
+  const DetailPage({Key? key, required this.argument}) : super(key: key);
 
   @override
   State<DetailPage> createState() => _DetailPageState();
@@ -15,17 +16,15 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as DetailPageArgument;
-
     return Scaffold(
       body: SingleChildScrollView(child:
         Column(
           children: <Widget>[
-            BackDropAndRating(tvListResultObject: args.tvListResultObject),
+            BackDropAndRating(tvListResultObject: widget.argument.tvListResultObject),
             SizedBox(height: anyaDefaultPadding / 2),
             // TitleDurationAndFabBtn(tvListResultObject: args.tvListResultObject),
             // Genres(tvListResultObject: args.tvListResultObject),
-            Overview(tvListResultObject: args.tvListResultObject),
+            Overview(tvListResultObject: widget.argument.tvListResultObject),
             // CastAndCrew(tvListResultObject: args.tvListResultObject),
           ],
         )

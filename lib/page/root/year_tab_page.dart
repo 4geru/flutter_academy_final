@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study_day7/model/tv_list_result_object.dart';
+import 'package:flutter_study_day7/page/details/detail_page.dart';
 import 'package:flutter_study_day7/page/details/detail_page_argument.dart';
 import 'package:flutter_study_day7/service/tmdb_api_service.dart';
 
@@ -44,13 +45,19 @@ class _YearTabPageState extends State<YearTabPage> {
                     String tvId = e.id.toString();
                     return GestureDetector(
                         onTap: () => {
-                          Navigator.pushNamed(
-                              context, '/details/:id',
-                              arguments: DetailPageArgument(
-                                  tvId: tvId,
-                                  year: widget.year,
-                                  tvListResultObject: e
-                              )
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute<Null>(
+                              settings: const RouteSettings(name: "/details/:id"),
+                              builder: (BuildContext context) => DetailPage(
+                                  argument: DetailPageArgument(
+                                      tvId: tvId,
+                                      year: widget.year,
+                                      tvListResultObject: e
+                                  )
+                              ),
+                              fullscreenDialog: true,
+                            ),
                           )
                         },
                         child: Image.network(
