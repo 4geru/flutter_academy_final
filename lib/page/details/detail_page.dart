@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study_day7/page/details/components/back_drop_and_rating.dart';
+import 'package:flutter_study_day7/theme.dart';
 
 import 'detail_page_argument.dart';
 
@@ -13,46 +15,13 @@ class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments as DetailPageArgument;
-    // return Scaffold(
-    //   appBar: AppBar(
-    //     title: Text(args.tvListResultObject.originalName),
-    //   ),
-    //   body: Center(
-    //     child: Column(
-    //       children: [
-    //         Text(args.tvId),
-    //         Text(args.year.toString()),
-    //         Text('${args.tvListResultObject.firstAirDate}~'),
-    //         Image.network('https://image.tmdb.org/t/p/w300/${args.tvListResultObject.posterPath}'),
-    //       ],
-    //     )
-    //   )
-    // );
 
-    Size size = MediaQuery.of(context).size;
-    return Column(
+    return Scaffold(
+      body: Column(
       children: <Widget>[
-        Container(
-          height: size.height * 0.4,
-          child: Stack(
-            children: <Widget>[
-              Container(
-                height: size.height * 0.4 - 50,
-                decoration: BoxDecoration(
-                  // image: DecorationImage(
-                  //   fit: BoxFit.cover
-                  //   image: NetworkImage('https://image.tmdb.org/t/p/w300/${args.tvListResultObject.posterPath}')
-                  // )
-                  image: const DecorationImage(
-                    image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              )
-            ],
-          )
-        ),
+        BackDropAndRating(tvListResultObject: args.tvListResultObject)
       ],
+    )
     );
   }
 }
