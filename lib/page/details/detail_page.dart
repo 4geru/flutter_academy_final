@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study_day7/page/details/components/back_drop_and_rating.dart';
+import 'package:flutter_study_day7/page/details/components/overview.dart';
 import 'package:flutter_study_day7/theme.dart';
 
 import 'detail_page_argument.dart';
@@ -17,11 +18,18 @@ class _DetailPageState extends State<DetailPage> {
     final args = ModalRoute.of(context)!.settings.arguments as DetailPageArgument;
 
     return Scaffold(
-      body: Column(
-      children: <Widget>[
-        BackDropAndRating(tvListResultObject: args.tvListResultObject)
-      ],
-    )
+      body: SingleChildScrollView(child:
+        Column(
+          children: <Widget>[
+            BackDropAndRating(tvListResultObject: args.tvListResultObject),
+            SizedBox(height: anyaDefaultPadding / 2),
+            // TitleDurationAndFabBtn(tvListResultObject: args.tvListResultObject),
+            // Genres(tvListResultObject: args.tvListResultObject),
+            Overview(tvListResultObject: args.tvListResultObject),
+            // CastAndCrew(tvListResultObject: args.tvListResultObject),
+          ],
+        )
+      )
     );
   }
 }
