@@ -34,11 +34,12 @@ class _YearTabPageState extends State<YearTabPage> {
           primary: false,
           slivers: <Widget>[
             SliverPadding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(3),
               sliver: SliverGrid.count(
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  crossAxisCount: 2,
+                  childAspectRatio: 2 / 3,
+                  crossAxisSpacing: 1,
+                  mainAxisSpacing: 1,
+                  crossAxisCount: 3,
                   children: _list.map((TvListResultObject e) {
                     String tvId = e.id.toString();
                     return GestureDetector(
