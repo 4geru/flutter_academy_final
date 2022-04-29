@@ -25,7 +25,7 @@ class TmdbApiService {
 
   Future<List<TvListResultObject>> getDiscoverTv(int year) async {
     try {
-      Response response = await _dio.get('$_base_url/discover/tv?&with_genres=$AnimeGenre&air_date.gte=$year-01-01&air_date.lte=$year-12-31&with_original_language=ja&api_key=$_apiKey');
+      Response response = await _dio.get('$_base_url/discover/tv?&with_genres=$AnimeGenre&air_date.gte=$year-01-01&air_date.lte=$year-12-31&with_original_language=ja&language=ja&api_key=$_apiKey');
       List<TvListResultObject> list = List<TvListResultObject>.from(response.data['results'].map((e) => TvListResultObject.fromJson(e)));
       return list;
     } on DioError catch (e) {

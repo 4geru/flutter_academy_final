@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_study_day7/package/bubble_tab_indicator.dart';
 import 'package:flutter_study_day7/page/root/year_tab_page.dart';
+import 'package:flutter_study_day7/theme.dart';
 
 class TabInfo {
   int year;
@@ -42,8 +43,8 @@ class _TopHomePageState extends State<TopHomePage> {
           appBar: AppBar(
             title: Text(
               'ANYA in ${_selectedYear.toString()}',
-              style: TextStyle(
-                color: Color(0xFF0F1021)
+              style: const TextStyle(
+                color: anyaTextColor,
               ),
             ),
             bottom: TabBar(
@@ -62,7 +63,7 @@ class _TopHomePageState extends State<TopHomePage> {
               indicatorSize: TabBarIndicatorSize.tab,
               indicator: const BubbleTabIndicator(
                 indicatorHeight: 30.0,
-                indicatorColor: Colors.white,
+                indicatorColor: anyaWhiteColor,
                 tabBarIndicatorSize: TabBarIndicatorSize.tab,
               ),
             )
