@@ -13,20 +13,46 @@ class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments as DetailPageArgument;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(args.tvListResultObject.originalName),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            Text(args.tvId),
-            Text(args.year.toString()),
-            Text('${args.tvListResultObject.firstAirDate}~'),
-            Image.network('https://image.tmdb.org/t/p/w300/${args.tvListResultObject.posterPath}'),
-          ],
-        )
-      )
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     title: Text(args.tvListResultObject.originalName),
+    //   ),
+    //   body: Center(
+    //     child: Column(
+    //       children: [
+    //         Text(args.tvId),
+    //         Text(args.year.toString()),
+    //         Text('${args.tvListResultObject.firstAirDate}~'),
+    //         Image.network('https://image.tmdb.org/t/p/w300/${args.tvListResultObject.posterPath}'),
+    //       ],
+    //     )
+    //   )
+    // );
+
+    Size size = MediaQuery.of(context).size;
+    return Column(
+      children: <Widget>[
+        Container(
+          height: size.height * 0.4,
+          child: Stack(
+            children: <Widget>[
+              Container(
+                height: size.height * 0.4 - 50,
+                decoration: BoxDecoration(
+                  // image: DecorationImage(
+                  //   fit: BoxFit.cover
+                  //   image: NetworkImage('https://image.tmdb.org/t/p/w300/${args.tvListResultObject.posterPath}')
+                  // )
+                  image: const DecorationImage(
+                    image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )
+            ],
+          )
+        ),
+      ],
     );
   }
 }

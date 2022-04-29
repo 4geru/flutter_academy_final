@@ -20,3 +20,11 @@ const Color anyaSecondaryColor = Color(0xFFFF9BC8);
 const Color anyaTextColor = Color(0xFF0F1021);
 const Color anyaselectedColor = Color(0xFFFF338F);
 const Color anyaWhiteColor = Colors.white;
+const Color anyaFillStarColor = Color(0xfffcc419);
+
+const anyaDefaultPadding = 20.0;
+const anyaDefaultShadow = BoxShadow(
+  offset: Offset(0, 4),
+  blurRadius: 4,
+  color: Colors.black26
+);
