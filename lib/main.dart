@@ -21,9 +21,8 @@ void main() async {
       ),
     ),
   ),
-    routes: <String, WidgetBuilder>{
+  routes: <String, WidgetBuilder>{
       '/': (BuildContext context) => TopHomePage(title: 'Flutter Demo Home Page'),
-      '/details/:id': (BuildContext context) => DetailPage(),
     },
     debugShowCheckedModeBanner: false,
   ));
