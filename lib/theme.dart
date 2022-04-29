@@ -17,7 +17,8 @@ const MaterialColor anyaColor = MaterialColor(
 );
 
 const Color anyaSecondaryColor = Color(0xFFFF9BC8);
-const Color anyaTextColor = Color(0xFF0F1021);
+const Color anyaBlackColor = Color(0xFF0F1021);
+const Color anyaTextColor = anyaBlackColor;
 const Color anyaselectedColor = Color(0xFFFF338F);
 const Color anyaWhiteColor = Colors.white;
 const Color anyaFillStarColor = Color(0xfffcc419);
