@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_study_day7/components/show_more.dart';
 import 'package:flutter_study_day7/model/tv_list_result_object.dart';
 import 'package:flutter_study_day7/theme.dart';
 
@@ -24,7 +25,13 @@ class Overview extends StatelessWidget {
         Padding(
             padding: const EdgeInsets.symmetric(horizontal: anyaDefaultPadding),
             child: Container(
-              child: Text(tvListResultObject.overview),
+              child: ExpandableText(
+                tvListResultObject.overview,
+                maxLines: 5,
+                style: TextStyle(
+                  fontSize: 12
+                ),
+              )
             )
         )
       ],
