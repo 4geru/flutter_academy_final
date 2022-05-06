@@ -29,9 +29,22 @@ class TopHomePage extends StatefulWidget {
   State<TopHomePage> createState() => _TopHomePageState();
 }
 
-class _TopHomePageState extends State<TopHomePage> {
+class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStateMixin{
+  late TabController _controller;
   final List<TabInfo> _tabs = tabsInfo;
   int _selectedYear = tabsInfo.last.year;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TabController(length: _tabs.length, vsync: this);
+
+    _controller.addListener(() {
+      setState(() {
+        _selectedYear = _tabs[_controller.index].year;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,16 +62,12 @@ class _TopHomePageState extends State<TopHomePage> {
             ),
             bottom: TabBar(
               isScrollable: true,
+              controller: _controller,
               tabs: _tabs.map((TabInfo tab) {
                 return Tab(
                   text: tab.year.toString(),
                 );
               }).toList(),
-              onTap: (index) {
-                setState(() {
-                  _selectedYear = _tabs[index].year;
-                });
-              },
               labelColor: const Color(0xFF0F1021),
               indicatorSize: TabBarIndicatorSize.tab,
               indicator: const BubbleTabIndicator(
@@ -69,7 +78,8 @@ class _TopHomePageState extends State<TopHomePage> {
             )
           ),
           body: TabBarView(
-            children: _tabs.map((tab) => tab.widget).toList()
+            children: _tabs.map((tab) => tab.widget).toList(),
+            controller: _controller,
           )
       ),
     );
