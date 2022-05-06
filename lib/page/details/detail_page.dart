@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study_day7/page/details/components/back_drop_and_rating.dart';
 import 'package:flutter_study_day7/page/details/components/overview.dart';
+import 'package:flutter_study_day7/page/details/components/title_duration_and_fav_btn.dart';
 import 'package:flutter_study_day7/theme.dart';
 
 import 'detail_page_argument.dart';
@@ -22,10 +23,10 @@ class _DetailPageState extends State<DetailPage> {
           children: <Widget>[
             BackDropAndRating(tvListResultObject: widget.argument.tvListResultObject),
             SizedBox(height: anyaDefaultPadding / 2),
-            // TitleDurationAndFabBtn(tvListResultObject: args.tvListResultObject),
-            // Genres(tvListResultObject: args.tvListResultObject),
+            TitleDurationAndFabBtn(tvListResultObject: widget.argument.tvListResultObject),
+            // Genres(tvListResultObject: widget.argument.tvListResultObject),
             Overview(tvListResultObject: widget.argument.tvListResultObject),
-            // CastAndCrew(tvListResultObject: args.tvListResultObject),
+            // CastAndCrew(tvListResultObject: widget.argument.tvListResultObject),
           ],
         )
       )
