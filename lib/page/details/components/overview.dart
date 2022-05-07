@@ -13,7 +13,7 @@ class Overview extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             vertical: anyaDefaultPadding / 2,
             horizontal: anyaDefaultPadding,
           ),

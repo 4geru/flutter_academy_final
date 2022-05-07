@@ -14,7 +14,7 @@ class TabInfo {
 List<int> targetYears () {
   const int fromYear = 1996;
   int toYear = DateTime.now().year;
-  return new List<int>.generate(toYear - fromYear + 1, (i) => i + fromYear);
+  return List<int>.generate(toYear - fromYear + 1, (i) => i + fromYear);
 }
 
 final List<TabInfo> tabsInfo = targetYears().map((year) =>

@@ -63,14 +63,12 @@ class BackDropAndRating extends StatelessWidget {
                                 children: [
                                   TextSpan(
                                     text: '${tvListResultObject.voteAverage.toString()}/',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w600
                                     ),
                                   ),
-                                  TextSpan(
-                                      text: '10\n'
-                                  ),
+                                  const TextSpan(text: '10\n'),
                                   TextSpan(
                                     text: '${tvListResultObject.voteCount.toString()}',
                                     style: TextStyle(color: Colors.black26),
@@ -99,7 +97,7 @@ class BackDropAndRating extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(2)
                                 ),
                                 child: Text(tvListResultObject.originCountry.join(', '),
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 16,
                                         color: Colors.white,
                                         fontWeight: FontWeight.w500
@@ -120,7 +118,7 @@ class BackDropAndRating extends StatelessWidget {
             SafeArea(
               child: Container(
                 child: BackButton(),
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   left: 10
                 ),
               )
