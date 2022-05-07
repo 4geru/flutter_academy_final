@@ -4,6 +4,7 @@ import 'package:flutter_study_day7/page/details/components/cast_and_crew.dart';
 import 'package:flutter_study_day7/page/details/components/genres.dart';
 import 'package:flutter_study_day7/page/details/components/overview.dart';
 import 'package:flutter_study_day7/page/details/components/title_duration_and_fav_btn.dart';
+import 'package:flutter_study_day7/page/details/hooks.dart';
 import 'package:flutter_study_day7/theme.dart';
 
 import 'detail_page_argument.dart';
@@ -17,6 +18,18 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  late UseDetailPage useDetailPage;
+  bool isLoading = false;
+  @override
+  void initState() {
+    useDetailPage = UseDetailPage(widget.argument.tvListResultObject);
+    useDetailPage.loading(() {
+      setState(() {
+        isLoading = true;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     const casts = [
@@ -51,6 +64,10 @@ class _DetailPageState extends State<DetailPage> {
         'character': 'Kuroko Shirai',
       }
     ];
+    if (!isLoading) {
+      return const Text('loading');
+    }
+
     return Scaffold(
       body: SingleChildScrollView(child:
         Column(
@@ -58,7 +75,7 @@ class _DetailPageState extends State<DetailPage> {
             BackDropAndRating(tvListResultObject: widget.argument.tvListResultObject),
             const SizedBox(height: anyaDefaultPadding),
             TitleDurationAndFabBtn(tvListResultObject: widget.argument.tvListResultObject),
-            Genres(tvListResultObject: widget.argument.tvListResultObject),
+            Genres(genres: useDetailPage.tvDetailResultObject?.genres ?? []),
             Overview(tvListResultObject: widget.argument.tvListResultObject),
             const CastAndCrew(casts: casts),
           ],

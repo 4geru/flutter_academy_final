@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study_day7/model/tv_detail_result_object.dart';
 import 'package:flutter_study_day7/theme.dart';
 
 class GenreCard extends StatelessWidget {
-  final int genreId;
+  final Genre genre;
 
-  const GenreCard({Key? key, required this.genreId}) : super(key: key);
+  const GenreCard({Key? key, required this.genre}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      margin: EdgeInsets.only(left: anyaDefaultPadding),
+      margin: const EdgeInsets.only(left: anyaDefaultPadding),
       padding: const EdgeInsets.symmetric(
         horizontal: anyaDefaultPadding,
         vertical: anyaDefaultPadding / 4, // 5 padding top and bottom
@@ -19,7 +20,7 @@ class GenreCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
-        genreId.toString(),
+        genre.name.toString(),
         style: TextStyle(color: anyaTextColor.withOpacity(0.8), fontSize: 16),
       ),
     );
