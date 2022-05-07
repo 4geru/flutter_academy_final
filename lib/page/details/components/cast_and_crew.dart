@@ -16,7 +16,7 @@ class CastAndCrew extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            "Cast & Crew",
+            "出演者",
             style: Theme.of(context).textTheme.headline5,
           ),
           const SizedBox(height: anyaDefaultPadding),
