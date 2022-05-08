@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study_day7/data/repo/history_provider.dart';
+import 'package:flutter_study_day7/model/simple_tv_object.dart';
 import 'package:flutter_study_day7/page/details/components/back_drop_and_rating.dart';
 import 'package:flutter_study_day7/page/details/components/cast_and_crew.dart';
 import 'package:flutter_study_day7/page/details/components/genres.dart';
@@ -6,6 +8,7 @@ import 'package:flutter_study_day7/page/details/components/overview.dart';
 import 'package:flutter_study_day7/page/details/components/title_duration_and_fav_btn.dart';
 import 'package:flutter_study_day7/page/details/hooks.dart';
 import 'package:flutter_study_day7/theme.dart';
+import 'package:provider/provider.dart';
 
 import 'detail_page_argument.dart';
 
@@ -64,6 +67,15 @@ class _DetailPageState extends State<DetailPage> {
         'character': 'Kuroko Shirai',
       }
     ];
+    List<SimpleTvObject> histries = Provider.of<HistoryProvider>(context).histories;
+
+    SimpleTvObject simpleTvObject = SimpleTvObject(
+      id: widget.argument.tvListResultObject.id,
+      originalName: widget.argument.tvListResultObject.originalName,
+      posterPath: widget.argument.tvListResultObject.posterPath,
+    );
+    Provider.of<HistoryProvider>(context).insert(simpleTvObject);
+
     if (!isLoading) {
       return const Text('loading');
     }

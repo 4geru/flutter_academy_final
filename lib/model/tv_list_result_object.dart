@@ -1,6 +1,6 @@
 class TvListResultObject {
   TvListResultObject({
-    this.posterPath,
+    required this.posterPath,
     required this.popularity,
     required this.id,
     this.backdropPath,
@@ -15,7 +15,7 @@ class TvListResultObject {
     required this.originalName,
   });
 
-  String? posterPath;
+  String posterPath;
   double popularity;
   int id;
   String? backdropPath;
