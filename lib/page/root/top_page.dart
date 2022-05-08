@@ -33,6 +33,7 @@ class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStat
   late TabController _controller;
   final List<TabInfo> _tabs = tabsInfo;
   int _selectedYear = tabsInfo.last.year;
+  int selectedPage = 0;
 
   @override
   void initState() {
@@ -80,6 +81,20 @@ class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStat
           body: TabBarView(
             children: _tabs.map((tab) => tab.widget).toList(),
             controller: _controller,
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            items: const [
+              BottomNavigationBarItem(icon: Icon(Icons.home_sharp, size: 20), activeIcon: Icon(Icons.home_rounded, size: 30), label: 'ホーム'),
+              BottomNavigationBarItem(icon: Icon(Icons.history_sharp, size: 20), activeIcon: Icon(Icons.history_rounded, size: 30), label: '履歴'),
+              BottomNavigationBarItem(icon: Icon(Icons.favorite_sharp, size: 20), activeIcon: Icon(Icons.favorite_rounded, size: 30), label: 'お気に入り'),
+            ],
+            elevation: 5.0,
+            currentIndex: selectedPage,
+            onTap: (index){
+              setState(() {
+                selectedPage = index;
+              });
+            },
           )
       ),
     );
