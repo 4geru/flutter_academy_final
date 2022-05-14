@@ -74,7 +74,7 @@ class _DetailPageState extends State<DetailPage> {
     }
 
     return Scaffold(
-        body: SingleChildScrollView(child:
+      body: SingleChildScrollView(child:
         Column(
           children: <Widget>[
             BackDropAndRating(tvListResultObject: widget.argument.tvListResultObject),
