@@ -25,6 +25,10 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    // ページ情報を取得する
+    final store = context.watch<UseDetailPage>();
+    store.fetch(widget.argument.tvListResultObject.id);
+
     const casts = [
       {
         'profilePath': '/c79SXutqQ02zaGi07sqWCbO96re.jpg',
@@ -65,13 +69,10 @@ class _DetailPageState extends State<DetailPage> {
       posterPath: widget.argument.tvListResultObject.posterPath,
     );
     Provider.of<HistoryProvider>(context).insert(simpleTvObject);
-    final store = context.watch<UseDetailPage>();
-    store.fetch(widget.argument.tvListResultObject.id);
-    if (store.isLoading()) {
-      return const Text('loading');
+    if(store.isLoading()) {
+      return Text('loading');
     }
-    // bool hasGenre = useDetailPage.tvDetailResultObject?.genres?.isNotEmpty == true;
-    print(store.tvDetailResultObject?.genres);
+
     return Scaffold(
         body: SingleChildScrollView(child:
         Column(
