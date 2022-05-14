@@ -22,15 +22,10 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   late UseDetailPage useDetailPage;
-  bool isLoading = false;
   @override
   void initState() {
     useDetailPage = UseDetailPage(widget.argument.tvListResultObject);
-    useDetailPage.loading(() {
-      setState(() {
-        isLoading = true;
-      });
-    });
+    useDetailPage.loading();
   }
 
   @override
@@ -67,7 +62,6 @@ class _DetailPageState extends State<DetailPage> {
         'character': 'Kuroko Shirai',
       }
     ];
-    List<SimpleTvObject> histries = Provider.of<HistoryProvider>(context).histories;
 
     SimpleTvObject simpleTvObject = SimpleTvObject(
       id: widget.argument.tvListResultObject.id,
@@ -76,7 +70,7 @@ class _DetailPageState extends State<DetailPage> {
     );
     Provider.of<HistoryProvider>(context).insert(simpleTvObject);
 
-    if (!isLoading) {
+    if (!useDetailPage.isLoading()) {
       return const Text('loading');
     }
 
