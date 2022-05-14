@@ -25,7 +25,7 @@ class TvDetailResultObject {
     this.posterPath,
     this.productionCompanies,
     this.productionCountries,
-    this.seasons,
+    required this.seasons,
     this.spokenLanguages,
     this.status,
     this.tagline,
@@ -59,7 +59,7 @@ class TvDetailResultObject {
   String? posterPath;
   List<Network>? productionCompanies;
   List<ProductionCountry>? productionCountries;
-  List<Season>? seasons;
+  List<Season> seasons;
   List<SpokenLanguage>? spokenLanguages;
   String? status;
   String? tagline;
