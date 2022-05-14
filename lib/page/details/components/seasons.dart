@@ -26,7 +26,7 @@ class _SeasonsState extends State<Seasons> {
           ),
         ),
         if(_openSeason)
-          ...(widget.seasons ?? []).map((season) {
+          ...(widget.seasons).map((season) {
             String openDate = "${season.airDate?.year}年${season.airDate?.month}月${season.airDate?.day}日 | ";
             return Card(
               child: ListTile(

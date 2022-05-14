@@ -18,18 +18,36 @@ class YearTabPage extends StatefulWidget {
 
 class _YearTabPageState extends State<YearTabPage> {
   List<TvListResultObject> _list = [];
+  int page = 1;
+  bool loading = false, allLoad = false;
+  final ScrollController _scrollController = ScrollController();
 
-  void setList() async {
-    List<TvListResultObject> list = await TmdbApiService().getDiscoverTv(widget.year);
+  void fetch() async {
+    if(loading)return;
+    setState(() => loading = true);
+    List<TvListResultObject> list = await TmdbApiService().getDiscoverTv(widget.year, page: page);
     setState(() {
-      _list = list;
+      _list = [..._list, ...list];
+      loading = false;
+      page = page + 1;
     });
   }
 
   @override
   void initState() {
-    setList();
+    fetch();
     super.initState();
+    _scrollController.addListener(() {
+      if(_scrollController.position.pixels >= _scrollController.position.maxScrollExtent / 2 && !loading) {
+        fetch();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
   }
 
   @override
@@ -37,6 +55,7 @@ class _YearTabPageState extends State<YearTabPage> {
     final store = context.watch<UseDetailPage>();
     return Center(
         child: CustomScrollView(
+          controller: _scrollController,
           primary: false,
           slivers: <Widget>[
             SliverPadding(

@@ -40,7 +40,7 @@ class _DetailPageState extends State<DetailPage> {
             TitleDurationAndFabBtn(tvDetailResultObject: store.tvDetailResultObject!),
             Genres(genres: store.tvDetailResultObject?.genres ?? []),
             if(store.tvDetailResultObject?.overview != '') Overview(overview: store.tvDetailResultObject?.overview ?? ""),
-            if(store.tvDetailResultObject?.seasons != null) Seasons(seasons: store.tvDetailResultObject!.seasons!, year: widget.argument.year),
+            if(store.tvDetailResultObject?.seasons != null) Seasons(seasons: store.tvDetailResultObject!.seasons, year: widget.argument.year),
             CastAndCrew(casts: store.aggregateCreditObject!.casts ?? []),
           ],
         )
