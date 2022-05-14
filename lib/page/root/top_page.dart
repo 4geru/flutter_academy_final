@@ -35,20 +35,20 @@ class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStat
   int selectedPage = 0;
 
   @override
-    void initState() {
-      super.initState();
-      _controller = TabController(
-          length: _tabs.length,
-          initialIndex: _tabs.length - 1,
-          vsync: this
-      );
+  void initState() {
+    super.initState();
+    _controller = TabController(
+        length: _tabs.length,
+        initialIndex: _tabs.length - 1,
+        vsync: this
+    );
 
-      _controller.addListener(() {
-        setState(() {
-          _selectedYear = _tabs[_controller.index].year;
-        });
+    _controller.addListener(() {
+      setState(() {
+        _selectedYear = _tabs[_controller.index].year;
       });
-    }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
