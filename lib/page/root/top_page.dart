@@ -22,8 +22,7 @@ final List<TabInfo> tabsInfo = targetYears().map((year) =>
 ).toList();
 
 class TopHomePage extends StatefulWidget {
-  const TopHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const TopHomePage({Key? key}) : super(key: key);
 
   @override
   State<TopHomePage> createState() => _TopHomePageState();
