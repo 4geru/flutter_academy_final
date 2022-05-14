@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_study_day7/data/repo/history_provider.dart';
-import 'package:flutter_study_day7/model/simple_tv_object.dart';
 import 'package:flutter_study_day7/page/root/components/base_tab.dart';
 import 'package:flutter_study_day7/page/root/components/history_tab.dart';
 import 'package:flutter_study_day7/page/root/components/year_tab.dart';
-import 'package:provider/provider.dart';
 
 class TopHomePage extends StatefulWidget {
   const TopHomePage({Key? key}) : super(key: key);
@@ -36,12 +33,11 @@ class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStat
   @override
   Widget build(BuildContext context) {
     FlutterNativeSplash.remove();
-    List<SimpleTvObject> histories = Provider.of<HistoryProvider>(context).histories.reversed.toList();
     late BaseTab selectedTab;
     if(_selectedTabIndex == 0 || _selectedTabIndex == 2) {
       selectedTab = YearTab(controller: _controller, selectedYear: _selectedYear);
     } else {
-      selectedTab = HistoryTab(histories: histories);
+      selectedTab = HistoryTab(context: context, selectedYear: _selectedYear);
     }
     return Scaffold(
       appBar: selectedTab.appBar(),

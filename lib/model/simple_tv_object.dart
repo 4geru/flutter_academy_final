@@ -29,7 +29,7 @@ class SimpleTvObject {
       'id': id,
       'originalName': originalName,
       'posterPath': posterPath,
-      'timestamp': timestamp,
+      'timestamp': timestamp.toString(),
     });
   }
 }
