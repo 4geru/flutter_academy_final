@@ -46,10 +46,10 @@ class _DetailPageState extends State<DetailPage> {
           children: <Widget>[
             BackDropAndRating(tvListResultObject: widget.argument.tvListResultObject),
             const SizedBox(height: anyaDefaultPadding),
-            TitleDurationAndFabBtn(tvListResultObject: widget.argument.tvListResultObject),
-            Genres(genres: store.tvDetailResultObject!.genres ?? []),
-            if(widget.argument.tvListResultObject.overview.isNotEmpty) Overview(overview: widget.argument.tvListResultObject.overview),
-            CastAndCrew(casts: store.aggregateCreditObject!.casts ?? []),
+            TitleDurationAndFabBtn(tvDetailResultObject: store.tvDetailResultObject!),
+            Genres(genres: store.tvDetailResultObject?.genres ?? []),
+            if(store.tvDetailResultObject?.overview != null) Overview(overview: store.tvDetailResultObject?.overview ?? ""),
+            CastAndCrew(casts: store.aggregateCreditObject?.casts ?? []),
           ],
         )
       )

@@ -4,7 +4,7 @@ class TvDetailResultObject {
     this.backdropPath,
     this.createdBy,
     this.episodeRunTime,
-    this.firstAirDate,
+    required this.firstAirDate,
     this.genres,
     this.homepage,
     this.id,
@@ -19,7 +19,7 @@ class TvDetailResultObject {
     this.numberOfSeasons,
     this.originCountry,
     this.originalLanguage,
-    this.originalName,
+    required this.originalName,
     this.overview,
     this.popularity,
     this.posterPath,
@@ -38,7 +38,7 @@ class TvDetailResultObject {
   String? backdropPath;
   List<CreatedBy>? createdBy;
   List<int>? episodeRunTime;
-  DateTime? firstAirDate;
+  DateTime firstAirDate;
   List<Genre>? genres;
   String? homepage;
   int? id;
@@ -53,7 +53,7 @@ class TvDetailResultObject {
   int? numberOfSeasons;
   List<String>? originCountry;
   String? originalLanguage;
-  String? originalName;
+  String originalName;
   String? overview;
   double? popularity;
   String? posterPath;
