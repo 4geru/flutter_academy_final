@@ -92,6 +92,11 @@ class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStat
             onTap: (index){
               setState(() {
                 selectedPage = index;
+                if(index == 1) {
+                  Navigator.restorablePushNamed(context, '/history');
+                } else {
+                  selectedPage = index;
+                }
               });
             },
           )
