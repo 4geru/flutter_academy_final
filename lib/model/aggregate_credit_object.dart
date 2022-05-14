@@ -1,21 +1,21 @@
 class AggregateCreditObject {
-  List<Cast>? cast;
-  List<Crew>? crew;
+  List<Cast>? casts;
+  List<Crew>? crews;
   int? id;
 
-  AggregateCreditObject({this.cast, this.crew, this.id});
+  AggregateCreditObject({this.casts, this.crews, this.id});
 
   AggregateCreditObject.fromJson(Map<String, dynamic> json) {
     if (json['cast'] != null) {
-      cast = <Cast>[];
+      casts = <Cast>[];
       json['cast'].forEach((v) {
-        cast!.add(new Cast.fromJson(v));
+        casts!.add(new Cast.fromJson(v));
       });
     }
     if (json['crew'] != null) {
-      crew = <Crew>[];
+      crews = <Crew>[];
       json['crew'].forEach((v) {
-        crew!.add(new Crew.fromJson(v));
+        crews!.add(new Crew.fromJson(v));
       });
     }
     id = json['id'];
