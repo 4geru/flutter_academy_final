@@ -36,15 +36,13 @@ class _SeasonsState extends State<Seasons> {
                   title: Text(e.name),
                   subtitle: Row(
                       children: [
-                        if(
-                        widget.year == e.airDate?.year ||
-                            (e.airDate == null && widget.year != e.airDate?.year)
-                        ) const Icon(
-                          Icons.favorite,
-                          color: anyaSecondaryColor,
-                          size: 24.0,
-                          semanticLabel: 'Text to announce in accessibility modes',
-                        ),
+                        if(widget.year == e.airDate?.year)
+                          const Icon(
+                            Icons.favorite,
+                            color: anyaSecondaryColor,
+                            size: 24.0,
+                            semanticLabel: 'Text to announce in accessibility modes',
+                          ),
                         Text("${e.airDate != null ? openDate : ''}${e.episodeCount}話"),
                       ]
                   )
