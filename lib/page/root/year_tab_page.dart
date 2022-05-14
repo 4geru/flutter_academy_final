@@ -56,6 +56,7 @@ class _YearTabPageState extends State<YearTabPage> {
                             id: tvId,
                             originalName: tvListResultObject.originalName,
                             posterPath: tvListResultObject.posterPath,
+                            timestamp: DateTime.now()
                           );
                           Provider.of<HistoryProvider>(context, listen: false).insert(simpleTvObject);
                           Navigator.push(

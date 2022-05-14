@@ -5,10 +5,12 @@ class SimpleTvObject {
   int id;
   String originalName;
   String posterPath;
+  DateTime timestamp;
   SimpleTvObject({
     required this.id,
     required this.originalName,
     required this.posterPath,
+    required this.timestamp
   });
 
   factory SimpleTvObject.fromString(String str) {
@@ -17,6 +19,7 @@ class SimpleTvObject {
       id: json['id'],
       originalName: json['originalName'],
       posterPath: json['posterPath'],
+      timestamp: json['timestamp']
     );
   }
 
@@ -25,7 +28,8 @@ class SimpleTvObject {
     return jsonEncode({
       'id': id,
       'originalName': originalName,
-      'posterPath': posterPath
+      'posterPath': posterPath,
+      'timestamp': timestamp,
     });
   }
 }
