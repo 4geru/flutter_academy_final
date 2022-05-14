@@ -31,7 +31,7 @@ void main() async {
       ),
     ),
     routes: <String, WidgetBuilder>{
-      '/': (BuildContext context) => TopHomePage(title: 'Flutter Demo Home Page'),
+      '/': (BuildContext context) => const TopHomePage(),
       '/history':  (BuildContext context) => HistoryPage(),
       },
       debugShowCheckedModeBanner: false,
