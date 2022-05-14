@@ -37,6 +37,7 @@ class TmdbApiService {
   Future<TvDetailResultObject?> getTv(int tvId) async {
     try {
       Response response = await _dio.get('$_base_url/tv/$tvId?api_key=$_apiKey&language=ja');
+      print(response);
       return TvDetailResultObject.fromJson(response.data);
     } on DioError catch (e) {
       return null;

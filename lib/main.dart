@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_study_day7/data/repo/history_provider.dart';
+import 'package:flutter_study_day7/page/details/hooks.dart';
 import 'package:flutter_study_day7/page/root/top_page.dart';
 import 'package:flutter_study_day7/theme.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,7 @@ void main() async {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => di.sl<HistoryProvider>()),
+      ChangeNotifierProvider(create: (context) => di.sl<UseDetailPage>()),
     ],
     child: MaterialApp(
       title: 'Flutter Demo',

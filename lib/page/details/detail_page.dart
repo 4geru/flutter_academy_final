@@ -22,11 +22,6 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   late UseDetailPage useDetailPage;
-  @override
-  void initState() {
-    useDetailPage = UseDetailPage(widget.argument.tvListResultObject);
-    useDetailPage.loading();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,25 +58,28 @@ class _DetailPageState extends State<DetailPage> {
       }
     ];
 
+    // 履歴に追加する
     SimpleTvObject simpleTvObject = SimpleTvObject(
       id: widget.argument.tvListResultObject.id,
       originalName: widget.argument.tvListResultObject.originalName,
       posterPath: widget.argument.tvListResultObject.posterPath,
     );
     Provider.of<HistoryProvider>(context).insert(simpleTvObject);
-
-    if (!useDetailPage.isLoading()) {
+    final store = context.watch<UseDetailPage>();
+    store.fetch(widget.argument.tvListResultObject.id);
+    if (store.isLoading()) {
       return const Text('loading');
     }
-
+    // bool hasGenre = useDetailPage.tvDetailResultObject?.genres?.isNotEmpty == true;
+    print(store.tvDetailResultObject?.genres);
     return Scaffold(
-      body: SingleChildScrollView(child:
+        body: SingleChildScrollView(child:
         Column(
           children: <Widget>[
             BackDropAndRating(tvListResultObject: widget.argument.tvListResultObject),
             const SizedBox(height: anyaDefaultPadding),
             TitleDurationAndFabBtn(tvListResultObject: widget.argument.tvListResultObject),
-            Genres(genres: useDetailPage.tvDetailResultObject?.genres ?? []),
+            Genres(genres: store.tvDetailResultObject?.genres ?? []),
             if(widget.argument.tvListResultObject.overview.isNotEmpty) Overview(overview: widget.argument.tvListResultObject.overview),
             const CastAndCrew(casts: casts),
           ],
