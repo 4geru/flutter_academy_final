@@ -35,72 +35,72 @@ class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStat
   int selectedPage = 0;
 
   @override
-  void initState() {
-    super.initState();
-    _controller = TabController(length: _tabs.length, vsync: this);
+    void initState() {
+      super.initState();
+      _controller = TabController(
+          length: _tabs.length,
+          initialIndex: _tabs.length - 1,
+          vsync: this
+      );
 
-    _controller.addListener(() {
-      setState(() {
-        _selectedYear = _tabs[_controller.index].year;
+      _controller.addListener(() {
+        setState(() {
+          _selectedYear = _tabs[_controller.index].year;
+        });
       });
-    });
-  }
+    }
 
   @override
   Widget build(BuildContext context) {
     FlutterNativeSplash.remove();
-    return DefaultTabController(
-        length: _tabs.length,
-        initialIndex: _tabs.length - 1,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text(
-              'ANYA in ${_selectedYear.toString()}',
-              style: const TextStyle(
-                color: anyaTextColor,
-              ),
-            ),
-            bottom: TabBar(
-              isScrollable: true,
-              controller: _controller,
-              tabs: _tabs.map((TabInfo tab) {
-                return Tab(
-                  text: tab.year.toString(),
-                );
-              }).toList(),
-              labelColor: const Color(0xFF0F1021),
-              indicatorSize: TabBarIndicatorSize.tab,
-              indicator: const BubbleTabIndicator(
-                indicatorHeight: 30.0,
-                indicatorColor: anyaWhiteColor,
-                tabBarIndicatorSize: TabBarIndicatorSize.tab,
-              ),
-            )
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'ANYA in ${_selectedYear.toString()}',
+          style: const TextStyle(
+            color: anyaTextColor,
           ),
-          body: TabBarView(
-            children: _tabs.map((tab) => tab.widget).toList(),
-            controller: _controller,
+        ),
+        bottom: TabBar(
+          isScrollable: true,
+          controller: _controller,
+          tabs: _tabs.map((TabInfo tab) {
+            return Tab(
+              text: tab.year.toString(),
+            );
+          }).toList(),
+          labelColor: const Color(0xFF0F1021),
+          indicatorSize: TabBarIndicatorSize.tab,
+          indicator: const BubbleTabIndicator(
+            indicatorHeight: 30.0,
+            indicatorColor: anyaWhiteColor,
+            tabBarIndicatorSize: TabBarIndicatorSize.tab,
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.home_sharp, size: 20), activeIcon: Icon(Icons.home_rounded, size: 30), label: 'ホーム'),
-              BottomNavigationBarItem(icon: Icon(Icons.history_sharp, size: 20), activeIcon: Icon(Icons.history_rounded, size: 30), label: '履歴'),
-              BottomNavigationBarItem(icon: Icon(Icons.favorite_sharp, size: 20), activeIcon: Icon(Icons.favorite_rounded, size: 30), label: 'お気に入り'),
-            ],
-            elevation: 5.0,
-            currentIndex: selectedPage,
-            onTap: (index){
-              setState(() {
-                selectedPage = index;
-                if(index == 1) {
-                  Navigator.restorablePushNamed(context, '/history');
-                } else {
-                  selectedPage = index;
-                }
-              });
-            },
-          )
+        )
       ),
+      body: TabBarView(
+        children: _tabs.map((tab) => tab.widget).toList(),
+        controller: _controller,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home_sharp, size: 20), activeIcon: Icon(Icons.home_rounded, size: 30), label: 'ホーム'),
+          BottomNavigationBarItem(icon: Icon(Icons.history_sharp, size: 20), activeIcon: Icon(Icons.history_rounded, size: 30), label: '履歴'),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite_sharp, size: 20), activeIcon: Icon(Icons.favorite_rounded, size: 30), label: 'お気に入り'),
+        ],
+        elevation: 5.0,
+        currentIndex: selectedPage,
+        onTap: (index){
+          setState(() {
+            selectedPage = index;
+            if(index == 1) {
+              Navigator.restorablePushNamed(context, '/history');
+            } else {
+              selectedPage = index;
+            }
+          });
+        },
+      )
     );
   }
 }
