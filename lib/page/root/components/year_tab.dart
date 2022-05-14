@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study_day7/package/bubble_tab_indicator.dart';
 import 'package:flutter_study_day7/page/root/components/base_tab.dart';
-import 'package:flutter_study_day7/page/root/year_tab_page.dart';
+import 'package:flutter_study_day7/page/root/components/year_tab_page.dart';
 import 'package:flutter_study_day7/theme.dart';
 
 class TabInfo {
