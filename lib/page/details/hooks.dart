@@ -14,6 +14,8 @@ class UseDetailPage with ChangeNotifier {
 
     await TmdbApiService().getTv(tvId).then((value) => tvDetailResultObject = value);
     await TmdbApiService().getAggregateCredits(tvId).then((value) => aggregateCreditObject = value);
+    await Future.delayed(const Duration(seconds: 1));
+
     notifyListeners();
   }
 

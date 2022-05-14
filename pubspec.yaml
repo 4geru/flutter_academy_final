@@ -40,12 +40,12 @@ dependencies:
   shared_preferences: ^2.0.13
   get_it: ^7.2.0
   provider: ^6.0.2
+  loading_animation_widget: ^1.1.0+5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.9.2
-
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
