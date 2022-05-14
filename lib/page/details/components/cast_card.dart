@@ -10,7 +10,7 @@ class CastCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: anyaDefaultPadding),
+      margin: const EdgeInsets.only(right: anyaDefaultPadding),
       width: 80,
       child: Column(
         children: <Widget>[
@@ -34,7 +34,7 @@ class CastCard extends StatelessWidget {
           ),
           const SizedBox(height: anyaDefaultPadding / 4),
           Text(
-            cast.roles?.first?.character ?? '',
+            cast.roles?.first.character ?? '',
             maxLines: 1,
             textAlign: TextAlign.center,
             style: const TextStyle(color: anyaTextColor),

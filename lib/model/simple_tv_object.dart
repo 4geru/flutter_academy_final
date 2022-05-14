@@ -20,6 +20,7 @@ class SimpleTvObject {
     );
   }
 
+  @override
   String toString() {
     return jsonEncode({
       'id': id,

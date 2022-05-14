@@ -9,13 +9,13 @@ class AggregateCreditObject {
     if (json['cast'] != null) {
       casts = <Cast>[];
       json['cast'].forEach((v) {
-        casts!.add(new Cast.fromJson(v));
+        casts!.add(Cast.fromJson(v));
       });
     }
     if (json['crew'] != null) {
       crews = <Crew>[];
       json['crew'].forEach((v) {
-        crews!.add(new Crew.fromJson(v));
+        crews!.add(Crew.fromJson(v));
       });
     }
     id = json['id'];
@@ -60,7 +60,7 @@ class Cast {
     if (json['roles'] != null) {
       roles = <Roles>[];
       json['roles'].forEach((v) {
-        roles!.add(new Roles.fromJson(v));
+        roles!.add(Roles.fromJson(v));
       });
     }
     totalEpisodeCount = json['total_episode_count'];
@@ -120,7 +120,7 @@ class Crew {
     if (json['jobs'] != null) {
       jobs = <Jobs>[];
       json['jobs'].forEach((v) {
-        jobs!.add(new Jobs.fromJson(v));
+        jobs!.add(Jobs.fromJson(v));
       });
     }
     department = json['department'];

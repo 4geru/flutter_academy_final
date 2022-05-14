@@ -47,7 +47,7 @@ class TvDetailResultObject {
   DateTime? lastAirDate;
   LastEpisodeToAir? lastEpisodeToAir;
   String? name;
-  dynamic? nextEpisodeToAir;
+  dynamic nextEpisodeToAir;
   List<Network>? networks;
   int? numberOfEpisodes;
   int? numberOfSeasons;

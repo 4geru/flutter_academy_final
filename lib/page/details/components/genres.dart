@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study_day7/model/tv_detail_result_object.dart';
-import 'package:flutter_study_day7/model/tv_list_result_object.dart';
 import 'package:flutter_study_day7/page/details/components/genre_card.dart';
 import 'package:flutter_study_day7/theme.dart';
 

@@ -27,7 +27,8 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     // ページ情報を取得する
     final store = context.watch<UseDetailPage>();
-    store.fetch(widget.argument.tvListResultObject.id);
+    store.fetch(widget.argument.tvId);
+    // TODO: 親ページに持っていきたい
     // 履歴に追加する
     SimpleTvObject simpleTvObject = SimpleTvObject(
       id: widget.argument.tvListResultObject.id,
@@ -36,8 +37,7 @@ class _DetailPageState extends State<DetailPage> {
     );
     Provider.of<HistoryProvider>(context).insert(simpleTvObject);
     if(store.isLoading()) {
-      print('called');
-      return Text('loading');
+      return const Text('loading');
     }
 
     return Scaffold(

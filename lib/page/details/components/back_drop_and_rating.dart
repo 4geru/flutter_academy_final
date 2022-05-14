@@ -10,7 +10,7 @@ class BackDropAndRating extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final posterPath = 'https://image.tmdb.org/t/p/w300/${tvListResultObject.backdropPath}';
-    return Container(
+    return SizedBox(
         height: size.height * 0.4,
         child: Stack(
           children: <Widget>[
@@ -59,7 +59,7 @@ class BackDropAndRating extends StatelessWidget {
                             ),
                             const SizedBox(height: anyaDefaultPadding / 4),
                             RichText(text: TextSpan(
-                                style: TextStyle(color: Colors.black),
+                                style: const TextStyle(color: Colors.black),
                                 children: [
                                   TextSpan(
                                     text: '${tvListResultObject.voteAverage.toString()}/',
@@ -70,8 +70,8 @@ class BackDropAndRating extends StatelessWidget {
                                   ),
                                   const TextSpan(text: '10\n'),
                                   TextSpan(
-                                    text: '${tvListResultObject.voteCount.toString()}',
-                                    style: TextStyle(color: Colors.black26),
+                                    text: tvListResultObject.voteCount.toString(),
+                                    style: const TextStyle(color: Colors.black26),
                                   )
                                 ]
                             ))
@@ -80,8 +80,8 @@ class BackDropAndRating extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(Icons.star_border_outlined),
-                            SizedBox(height: anyaDefaultPadding / 4),
+                            const Icon(Icons.star_border_outlined),
+                            const SizedBox(height: anyaDefaultPadding / 4),
                             Text(tvListResultObject.popularity.toString(),
                                 style: Theme.of(context).textTheme.bodyText2
                             )
@@ -91,9 +91,9 @@ class BackDropAndRating extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Container(
-                                padding: EdgeInsets.all(6),
+                                padding: const EdgeInsets.all(6),
                                 decoration: BoxDecoration(
-                                    color: Color(0xff51cf66),
+                                    color: const Color(0xff51cf66),
                                     borderRadius: BorderRadius.circular(2)
                                 ),
                                 child: Text(tvListResultObject.originCountry.join(', '),
@@ -104,7 +104,7 @@ class BackDropAndRating extends StatelessWidget {
                                     )
                                 )
                             ),
-                            SizedBox(height: anyaDefaultPadding / 4),
+                            const SizedBox(height: anyaDefaultPadding / 4),
                             Text(tvListResultObject.originCountry.join(', '),
                                 style: Theme.of(context).textTheme.bodyText2
                             )
@@ -117,7 +117,7 @@ class BackDropAndRating extends StatelessWidget {
             // Back Button
             SafeArea(
               child: Container(
-                child: BackButton(),
+                child: const BackButton(),
                 padding: const EdgeInsets.only(
                   left: 10
                 ),
