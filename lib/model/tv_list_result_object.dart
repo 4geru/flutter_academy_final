@@ -29,19 +29,21 @@ class TvListResultObject {
   String name;
   String originalName;
 
-  factory TvListResultObject.fromJson(Map<String, dynamic> json) => TvListResultObject(
-    posterPath: json["poster_path"],
-    popularity: json["popularity"],
-    id: json["id"],
-    backdropPath: json["backdrop_path"],
-    voteAverage: json["vote_average"].toDouble(),
-    overview: json["overview"],
-    firstAirDate: json["first_air_date"],
-    originCountry: List<String>.from(json["origin_country"].map((x) => x)),
-    genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
-    originalLanguage: json["original_language"],
-    voteCount: json["vote_count"],
-    name: json["name"],
-    originalName: json["original_name"],
-  );
+  factory TvListResultObject.fromJson(Map<String, dynamic> json) {
+   return TvListResultObject(
+     posterPath: json["poster_path"],
+     popularity: json["popularity"].toDouble(),
+     id: json["id"],
+     backdropPath: json["backdrop_path"],
+     voteAverage: json["vote_average"].toDouble(),
+     overview: json["overview"],
+     firstAirDate: json["first_air_date"],
+     originCountry: List<String>.from(json["origin_country"].map((x) => x)),
+     genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
+     originalLanguage: json["original_language"],
+     voteCount: json["vote_count"],
+     name: json["name"],
+     originalName: json["original_name"],
+   );
+  }
 }

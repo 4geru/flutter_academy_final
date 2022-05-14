@@ -9,8 +9,8 @@ import 'package:flutter_study_day7/service/tmdb_api_service.dart';
 import 'package:provider/provider.dart';
 
 class YearTabPage extends StatefulWidget {
-  int year;
-  YearTabPage(this.year, {Key? key}) : super(key: key);
+  final int year;
+  const YearTabPage(this.year, {Key? key}) : super(key: key);
 
   @override
   State<YearTabPage> createState() => _YearTabPageState();

@@ -13,6 +13,7 @@ class HistoryTab extends BaseTab {
   int selectedYear;
   HistoryTab({required this.context, required this.selectedYear});
 
+  @override
   PreferredSizeWidget appBar() {
     return AppBar(
       title: const Text(
@@ -24,6 +25,7 @@ class HistoryTab extends BaseTab {
     );
   }
 
+  @override
   Widget body() {
     final store = context.watch<UseDetailPage>();
     List<SimpleTvObject> histories = Provider.of<HistoryProvider>(context).histories.reversed.toList();
