@@ -21,6 +21,7 @@ const Color anyaBlackColor = Color(0xFF0F1021);
 const Color anyaTextColor = anyaBlackColor;
 const Color anyaselectedColor = Color(0xFFFF338F);
 const Color anyaWhiteColor = Colors.white;
+const Color anyaSecondaryWhiteColor = Color(0xffFEF5D8);
 const Color anyaFillStarColor = Color(0xfffcc419);
 
 const anyaDefaultPadding = 20.0;

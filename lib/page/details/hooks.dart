@@ -12,8 +12,11 @@ class UseDetailPage with ChangeNotifier {
     tvDetailResultObject = null;
     aggregateCreditObject = null;
 
-    await TmdbApiService().getTv(tvId).then((value) => tvDetailResultObject = value);
-    await TmdbApiService().getAggregateCredits(tvId).then((value) => aggregateCreditObject = value);
+    TmdbApiService().getTv(tvId).then((value) => tvDetailResultObject = value);
+    TmdbApiService().getAggregateCredits(tvId).then((value) => aggregateCreditObject = value);
+    // loading view を表示するために 1秒待たせる
+    await Future.delayed(const Duration(seconds: 1));
+
     notifyListeners();
   }
 

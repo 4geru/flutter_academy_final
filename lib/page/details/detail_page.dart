@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study_day7/components/loading.dart';
 import 'package:flutter_study_day7/page/details/components/back_drop_and_rating.dart';
 import 'package:flutter_study_day7/page/details/components/cast_and_crew.dart';
 import 'package:flutter_study_day7/page/details/components/genres.dart';
@@ -27,7 +28,7 @@ class _DetailPageState extends State<DetailPage> {
     final store = context.watch<UseDetailPage>();
 
     if(store.isLoading()) {
-      return const Text('loading');
+      return const LoadingComponent();
     }
 
     return Scaffold(
