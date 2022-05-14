@@ -23,6 +23,7 @@ class _YearTabPageState extends State<YearTabPage> {
   final ScrollController _scrollController = ScrollController();
 
   void fetch() async {
+    if(loading)return;
     setState(() => loading = true);
     List<TvListResultObject> list = await TmdbApiService().getDiscoverTv(widget.year, page: page);
     setState(() {
@@ -37,7 +38,7 @@ class _YearTabPageState extends State<YearTabPage> {
     fetch();
     super.initState();
     _scrollController.addListener(() {
-      if(_scrollController.position.pixels >= _scrollController.position.maxScrollExtent && !loading) {
+      if(_scrollController.position.pixels >= _scrollController.position.maxScrollExtent / 2 && !loading) {
         fetch();
       }
     });
