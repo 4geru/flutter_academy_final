@@ -4,6 +4,7 @@ import 'package:flutter_study_day7/page/details/components/back_drop_and_rating.
 import 'package:flutter_study_day7/page/details/components/cast_and_crew.dart';
 import 'package:flutter_study_day7/page/details/components/genres.dart';
 import 'package:flutter_study_day7/page/details/components/overview.dart';
+import 'package:flutter_study_day7/page/details/components/seasons.dart';
 import 'package:flutter_study_day7/page/details/components/title_duration_and_fav_btn.dart';
 import 'package:flutter_study_day7/page/details/hooks.dart';
 import 'package:flutter_study_day7/theme.dart';
@@ -30,7 +31,6 @@ class _DetailPageState extends State<DetailPage> {
     if(store.isLoading()) {
       return const LoadingComponent();
     }
-
     return Scaffold(
       body: SingleChildScrollView(child:
         Column(
@@ -40,6 +40,7 @@ class _DetailPageState extends State<DetailPage> {
             TitleDurationAndFabBtn(tvDetailResultObject: store.tvDetailResultObject!),
             Genres(genres: store.tvDetailResultObject?.genres ?? []),
             if(store.tvDetailResultObject?.overview != '') Overview(overview: store.tvDetailResultObject?.overview ?? ""),
+            if(store.tvDetailResultObject?.seasons != null) Seasons(seasons: store.tvDetailResultObject!.seasons!, year: widget.argument.year),
             CastAndCrew(casts: store.aggregateCreditObject!.casts ?? []),
           ],
         )

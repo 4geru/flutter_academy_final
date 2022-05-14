@@ -25,7 +25,7 @@ class TvDetailResultObject {
     this.posterPath,
     this.productionCompanies,
     this.productionCountries,
-    this.seasons,
+    required this.seasons,
     this.spokenLanguages,
     this.status,
     this.tagline,
@@ -59,7 +59,7 @@ class TvDetailResultObject {
   String? posterPath;
   List<Network>? productionCompanies;
   List<ProductionCountry>? productionCountries;
-  List<Season>? seasons;
+  List<Season> seasons;
   List<SpokenLanguage>? spokenLanguages;
   String? status;
   String? tagline;
@@ -227,7 +227,7 @@ class Season {
     this.airDate,
     this.episodeCount,
     this.id,
-    this.name,
+    required this.name,
     this.overview,
     this.posterPath,
     this.seasonNumber,
@@ -236,7 +236,7 @@ class Season {
   DateTime? airDate;
   int? episodeCount;
   int? id;
-  String? name;
+  String name;
   String? overview;
   String? posterPath;
   int? seasonNumber;

@@ -19,7 +19,7 @@ class SimpleTvObject {
       id: json['id'],
       originalName: json['originalName'],
       posterPath: json['posterPath'],
-      timestamp: json['timestamp']
+      timestamp: DateTime.parse(json['timestamp'])
     );
   }
 
