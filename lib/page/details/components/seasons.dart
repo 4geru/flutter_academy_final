@@ -27,24 +27,32 @@ class _SeasonsState extends State<Seasons> {
         ),
         if(_openSeason)
           ...(widget.seasons ?? []).map((e) {
-            String openDate = "${e.airDate?.year}年${e.airDate?.month}月${e.airDate?.day}日";
+            String openDate = "${e.airDate?.year}年${e.airDate?.month}月${e.airDate?.day}日 | ";
             return Card(
               child: ListTile(
                   leading: Image.network(
                     'https://image.tmdb.org/t/p/w300/${e.posterPath}',
                   ),
                   title: Text(e.name),
-                  subtitle: Row(
-                      children: [
-                        if(widget.year == e.airDate?.year)
-                          const Icon(
-                            Icons.favorite,
-                            color: anyaSecondaryColor,
-                            size: 24.0,
-                            semanticLabel: 'Text to announce in accessibility modes',
-                          ),
-                        Text("${e.airDate != null ? openDate : ''}${e.episodeCount}話"),
-                      ]
+                  subtitle: Column(
+                    children: [
+                      Row(
+                          children: [
+                            if(widget.year == e.airDate?.year)
+                              const Icon(
+                                Icons.favorite,
+                                color: anyaSecondaryColor,
+                                size: 24.0
+                              ),
+                            Text("${e.airDate != null ? openDate : ''}${e.episodeCount}話"),
+                          ]
+                      ),
+                      Text(
+                        e.overview ?? '',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
                   )
               ),
             );
