@@ -18,14 +18,12 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     FlutterNativeSplash.remove();
-    List<SimpleTvObject> histories = Provider.of<HistoryProvider>(context).histories;
-    print(histories);
+    List<SimpleTvObject> histories = Provider.of<HistoryProvider>(context).histories.reversed.toList();
     return Scaffold(
-
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             'ANYA in history',
-            style: const TextStyle(
+            style: TextStyle(
               color: anyaTextColor,
             ),
           ),
