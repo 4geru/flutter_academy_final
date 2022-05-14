@@ -34,7 +34,7 @@ void main() async {
     ),
     routes: <String, WidgetBuilder>{
       '/': (BuildContext context) => const TopHomePage(),
-      '/history':  (BuildContext context) => HistoryPage(),
+      '/history':  (BuildContext context) => const HistoryPage(),
       },
       debugShowCheckedModeBanner: false,
     ))

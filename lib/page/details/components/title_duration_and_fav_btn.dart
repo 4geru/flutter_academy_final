@@ -13,7 +13,7 @@ class TitleDurationAndFabBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(anyaDefaultPadding),
+      padding: const EdgeInsets.all(anyaDefaultPadding),
       child: Row(
         children: <Widget>[
           Expanded(
@@ -24,19 +24,19 @@ class TitleDurationAndFabBtn extends StatelessWidget {
                   tvListResultObject.originalName,
                   style: Theme.of(context).textTheme.headline5,
                 ),
-                SizedBox(height: anyaDefaultPadding / 2),
+                const SizedBox(height: anyaDefaultPadding / 2),
                 Row(
                   children: <Widget>[
                     Text(
-                      '${tvListResultObject.firstAirDate}',
-                      style: TextStyle(color: anyaTextColor),
+                      tvListResultObject.firstAirDate,
+                      style: const TextStyle(color: anyaTextColor),
                     ),
-                    SizedBox(width: anyaDefaultPadding),
+                    const SizedBox(width: anyaDefaultPadding),
                     const Text(
                       "PG-13",
                       style: TextStyle(color: anyaTextColor),
                     ),
-                    SizedBox(width: anyaDefaultPadding),
+                    const SizedBox(width: anyaDefaultPadding),
                     const Text(
                       "2h 32min",
                       style: TextStyle(color: anyaTextColor),

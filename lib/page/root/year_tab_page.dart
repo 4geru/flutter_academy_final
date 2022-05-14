@@ -42,12 +42,12 @@ class _YearTabPageState extends State<YearTabPage> {
                   mainAxisSpacing: 1,
                   crossAxisCount: 3,
                   children: _list.map((TvListResultObject e) {
-                    String tvId = e.id.toString();
+                    int tvId = e.id;
                     return GestureDetector(
                         onTap: () => {
                           Navigator.push(
                             context,
-                            MaterialPageRoute<Null>(
+                            MaterialPageRoute(
                               settings: const RouteSettings(name: "/details/:id"),
                               builder: (BuildContext context) => DetailPage(
                                   argument: DetailPageArgument(
