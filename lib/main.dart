@@ -7,6 +7,7 @@ import 'package:flutter_study_day7/theme.dart';
 import 'package:provider/provider.dart';
 
 import 'di_container.dart' as di;
+import 'page/history/history_page.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +31,8 @@ void main() async {
       ),
     ),
     routes: <String, WidgetBuilder>{
-        '/': (BuildContext context) => TopHomePage(title: 'Flutter Demo Home Page'),
+      '/': (BuildContext context) => TopHomePage(title: 'Flutter Demo Home Page'),
+      '/history':  (BuildContext context) => HistoryPage(),
       },
       debugShowCheckedModeBanner: false,
     ))
