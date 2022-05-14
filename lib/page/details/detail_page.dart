@@ -30,7 +30,6 @@ class _DetailPageState extends State<DetailPage> {
     if(store.isLoading()) {
       return const LoadingComponent();
     }
-
     return Scaffold(
       body: SingleChildScrollView(child:
         Column(
@@ -42,19 +41,24 @@ class _DetailPageState extends State<DetailPage> {
             if(store.tvDetailResultObject?.overview != '') Overview(overview: store.tvDetailResultObject?.overview ?? ""),
             const Card(child: ListTile(title: Text('Season'))),
             ...(store.tvDetailResultObject?.seasons ?? []).map((e) {
+              String openDate = "${e.airDate?.year}年${e.airDate?.month}月${e.airDate?.day}日";
               return Card(
                 child: ListTile(
-                  selected: widget.argument.year == e.airDate.year,
                   leading: Image.network(
                     'https://image.tmdb.org/t/p/w300/${e.posterPath}',
                   ),
-                  title: Row(
+                  title: Text(e.name),
+                  subtitle: Row(
                     children: [
-                      Text(e.name),
-                      Text(" ${e.episodeCount}話", style: Theme.of(context).textTheme.caption)
-                    ],
-                  ),
-                  subtitle: Text("${e.airDate.year}年${e.airDate.month}月${e.airDate.day}日"),
+                      if(widget.argument.year == e.airDate?.year) const Icon(
+                        Icons.favorite,
+                        color: anyaSecondaryColor,
+                        size: 24.0,
+                        semanticLabel: 'Text to announce in accessibility modes',
+                      ),
+                      Text("${e.airDate != null ? openDate : ''}${e.episodeCount}話"),
+                    ]
+                  )
                 ),
               );
             }),
