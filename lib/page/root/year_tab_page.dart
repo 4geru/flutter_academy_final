@@ -63,11 +63,10 @@ class _YearTabPageState extends State<YearTabPage> {
                             MaterialPageRoute(
                               settings: const RouteSettings(name: "/details/:id"),
                               builder: (BuildContext context) => DetailPage(
-                                  argument: DetailPageArgument(
-                                      tvId: tvId,
-                                      year: widget.year,
-                                      tvListResultObject: tvListResultObject
-                                  )
+                                argument: DetailPageArgument(
+                                  tvId: tvId,
+                                  year: widget.year
+                                )
                               ),
                               fullscreenDialog: true,
                             ),
