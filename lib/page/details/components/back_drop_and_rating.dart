@@ -9,7 +9,7 @@ class BackDropAndRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final posterPath = 'https://image.tmdb.org/t/p/w300/${tvDetailResultObject.backdropPath}';
+    final posterPath = 'https://image.tmdb.org/t/p/w500/${tvDetailResultObject.backdropPath}';
     return SizedBox(
         height: size.height * 0.4,
         child: Stack(
