@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study_day7/data/repo/history_provider.dart';
-import 'package:flutter_study_day7/model/simple_tv_object.dart';
 import 'package:flutter_study_day7/page/details/components/back_drop_and_rating.dart';
 import 'package:flutter_study_day7/page/details/components/cast_and_crew.dart';
 import 'package:flutter_study_day7/page/details/components/genres.dart';
@@ -27,15 +25,7 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     // ページ情報を取得する
     final store = context.watch<UseDetailPage>();
-    store.fetch(widget.argument.tvId);
-    // TODO: 親ページに持っていきたい
-    // 履歴に追加する
-    SimpleTvObject simpleTvObject = SimpleTvObject(
-      id: widget.argument.tvListResultObject.id,
-      originalName: widget.argument.tvListResultObject.originalName,
-      posterPath: widget.argument.tvListResultObject.posterPath,
-    );
-    Provider.of<HistoryProvider>(context).insert(simpleTvObject);
+
     if(store.isLoading()) {
       return const Text('loading');
     }

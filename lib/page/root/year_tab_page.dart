@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study_day7/data/repo/history_provider.dart';
+import 'package:flutter_study_day7/model/simple_tv_object.dart';
 import 'package:flutter_study_day7/model/tv_list_result_object.dart';
 import 'package:flutter_study_day7/page/details/detail_page.dart';
 import 'package:flutter_study_day7/page/details/detail_page_argument.dart';
+import 'package:flutter_study_day7/page/details/hooks.dart';
 import 'package:flutter_study_day7/service/tmdb_api_service.dart';
+import 'package:provider/provider.dart';
 
 class YearTabPage extends StatefulWidget {
   int year;
@@ -30,6 +34,7 @@ class _YearTabPageState extends State<YearTabPage> {
 
   @override
   Widget build(BuildContext context) {
+    final store = context.watch<UseDetailPage>();
     return Center(
         child: CustomScrollView(
           primary: false,
@@ -41,10 +46,18 @@ class _YearTabPageState extends State<YearTabPage> {
                   crossAxisSpacing: 1,
                   mainAxisSpacing: 1,
                   crossAxisCount: 3,
-                  children: _list.map((TvListResultObject e) {
-                    int tvId = e.id;
+                  children: _list.map((TvListResultObject tvListResultObject) {
+                    int tvId = tvListResultObject.id;
                     return GestureDetector(
-                        onTap: () => {
+                        onTap: () {
+                          store.fetch(tvId);
+                          // 履歴に追加する
+                          SimpleTvObject simpleTvObject = SimpleTvObject(
+                            id: tvId,
+                            originalName: tvListResultObject.originalName,
+                            posterPath: tvListResultObject.posterPath,
+                          );
+                          Provider.of<HistoryProvider>(context, listen: false).insert(simpleTvObject);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -53,15 +66,15 @@ class _YearTabPageState extends State<YearTabPage> {
                                   argument: DetailPageArgument(
                                       tvId: tvId,
                                       year: widget.year,
-                                      tvListResultObject: e
+                                      tvListResultObject: tvListResultObject
                                   )
                               ),
                               fullscreenDialog: true,
                             ),
-                          )
+                          );
                         },
                         child: Image.network(
-                          'https://image.tmdb.org/t/p/w300/${e.posterPath}',
+                          'https://image.tmdb.org/t/p/w300/${tvListResultObject.posterPath}',
                         )
                     );
                   }).toList()
