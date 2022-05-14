@@ -28,11 +28,9 @@ class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStat
         vsync: this
     );
 
-    _controller.addListener(() {
-      setState(() {
-        _selectedYear = tabsInfo[_controller.index].year;
-      });
-    });
+    _controller.addListener(() =>
+      setState(() => _selectedYear = tabsInfo[_controller.index].year)
+    );
   }
 
   @override
