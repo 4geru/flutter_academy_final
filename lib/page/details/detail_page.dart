@@ -82,7 +82,7 @@ class _DetailPageState extends State<DetailPage> {
             const SizedBox(height: anyaDefaultPadding),
             TitleDurationAndFabBtn(tvListResultObject: widget.argument.tvListResultObject),
             Genres(genres: useDetailPage.tvDetailResultObject?.genres ?? []),
-            Overview(tvListResultObject: widget.argument.tvListResultObject),
+            if(widget.argument.tvListResultObject.overview.isNotEmpty) Overview(overview: widget.argument.tvListResultObject.overview),
             const CastAndCrew(casts: casts),
           ],
         )

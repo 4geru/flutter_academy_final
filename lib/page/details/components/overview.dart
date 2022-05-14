@@ -5,8 +5,8 @@ import 'package:flutter_study_day7/model/tv_list_result_object.dart';
 import 'package:flutter_study_day7/theme.dart';
 
 class Overview extends StatelessWidget {
-  final TvListResultObject tvListResultObject;
-  const Overview({Key? key, required this.tvListResultObject}) : super(key: key);
+  final String overview;
+  const Overview({Key? key, required this.overview}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class Overview extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: anyaDefaultPadding),
             child: Container(
               child: ExpandableText(
-                tvListResultObject.overview,
+                overview,
                 maxLines: 5,
                 style: TextStyle(
                   fontSize: 12
