@@ -27,6 +27,7 @@ class YearTab extends BaseTab {
 
   YearTab({required this.controller, required this.selectedYear});
 
+  @override
   PreferredSizeWidget appBar() {
     return AppBar(
       title: Text(
@@ -54,6 +55,7 @@ class YearTab extends BaseTab {
     );
   }
 
+  @override
   Widget body() {
     return TabBarView(
       children: tabsInfo.map((tab) => tab.widget).toList(),

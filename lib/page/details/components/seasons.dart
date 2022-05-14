@@ -3,9 +3,9 @@ import 'package:flutter_study_day7/model/tv_detail_result_object.dart';
 import 'package:flutter_study_day7/theme.dart';
 
 class Seasons extends StatefulWidget {
-  int year;
-  List<Season> seasons;
-  Seasons({Key? key, required this.seasons, required this.year}) : super(key: key);
+  final int year;
+  final List<Season> seasons;
+  const Seasons({Key? key, required this.seasons, required this.year}) : super(key: key);
 
   @override
   State<Seasons> createState() => _SeasonsState();
@@ -21,7 +21,7 @@ class _SeasonsState extends State<Seasons> {
         Card(
           child: ListTile(
               title: const Text('シーズン'),
-              trailing: _openSeason ? Icon(Icons.arrow_drop_up) : Icon(Icons.arrow_drop_down),
+              trailing: _openSeason ? const Icon(Icons.arrow_drop_up) : const Icon(Icons.arrow_drop_down),
               onTap: () => setState(() =>_openSeason = !_openSeason)
           ),
         ),
