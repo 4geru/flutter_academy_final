@@ -17,7 +17,7 @@ class TvDetailResultObject {
     this.networks,
     this.numberOfEpisodes,
     this.numberOfSeasons,
-    this.originCountry,
+    required this.originCountry,
     this.originalLanguage,
     required this.originalName,
     this.overview,
@@ -51,7 +51,7 @@ class TvDetailResultObject {
   List<Network>? networks;
   int? numberOfEpisodes;
   int? numberOfSeasons;
-  List<String>? originCountry;
+  List<String> originCountry;
   String? originalLanguage;
   String originalName;
   String? overview;

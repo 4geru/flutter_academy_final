@@ -34,12 +34,12 @@ class _DetailPageState extends State<DetailPage> {
       body: SingleChildScrollView(child:
         Column(
           children: <Widget>[
-            BackDropAndRating(tvListResultObject: widget.argument.tvListResultObject),
+            BackDropAndRating(tvDetailResultObject: store.tvDetailResultObject!),
             const SizedBox(height: anyaDefaultPadding),
             TitleDurationAndFabBtn(tvDetailResultObject: store.tvDetailResultObject!),
             Genres(genres: store.tvDetailResultObject?.genres ?? []),
             if(store.tvDetailResultObject?.overview != null) Overview(overview: store.tvDetailResultObject?.overview ?? ""),
-            CastAndCrew(casts: store.aggregateCreditObject?.casts ?? []),
+            CastAndCrew(casts: store.aggregateCreditObject!.casts ?? []),
           ],
         )
       )

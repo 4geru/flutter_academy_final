@@ -41,21 +41,6 @@ class TitleDurationAndFabBtn extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-            height: 64,
-            width: 64,
-            child: FlatButton(
-              onPressed: () {},
-              color: anyaSecondaryColor,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
-              child: const Icon(
-                Icons.add,
-                size: 28,
-                color: Colors.white,
-              ),
-            ),
-          )
         ],
       ),
     );
