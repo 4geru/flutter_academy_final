@@ -40,6 +40,24 @@ class _DetailPageState extends State<DetailPage> {
             TitleDurationAndFabBtn(tvDetailResultObject: store.tvDetailResultObject!),
             Genres(genres: store.tvDetailResultObject?.genres ?? []),
             if(store.tvDetailResultObject?.overview != '') Overview(overview: store.tvDetailResultObject?.overview ?? ""),
+            const Card(child: ListTile(title: Text('Season'))),
+            ...(store.tvDetailResultObject?.seasons ?? []).map((e) {
+              return Card(
+                child: ListTile(
+                  selected: widget.argument.year == e.airDate.year,
+                  leading: Image.network(
+                    'https://image.tmdb.org/t/p/w300/${e.posterPath}',
+                  ),
+                  title: Row(
+                    children: [
+                      Text(e.name),
+                      Text(" ${e.episodeCount}話", style: Theme.of(context).textTheme.caption)
+                    ],
+                  ),
+                  subtitle: Text("${e.airDate.year}年${e.airDate.month}月${e.airDate.day}日"),
+                ),
+              );
+            }),
             CastAndCrew(casts: store.aggregateCreditObject!.casts ?? []),
           ],
         )

@@ -224,25 +224,25 @@ class ProductionCountry {
 
 class Season {
   Season({
-    this.airDate,
+    required this.airDate,
     this.episodeCount,
     this.id,
-    this.name,
+    required this.name,
     this.overview,
-    this.posterPath,
+    required this.posterPath,
     this.seasonNumber,
   });
 
-  DateTime? airDate;
+  DateTime airDate;
   int? episodeCount;
   int? id;
-  String? name;
+  String name;
   String? overview;
-  String? posterPath;
+  String posterPath;
   int? seasonNumber;
 
   factory Season.fromJson(Map<String, dynamic> json) => Season(
-    airDate: json["air_date"] != null ? DateTime.parse(json["air_date"]) : null,
+    airDate: DateTime.parse(json["air_date"]),
     episodeCount: json["episode_count"],
     id: json["id"],
     name: json["name"],
