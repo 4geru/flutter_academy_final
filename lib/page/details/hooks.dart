@@ -9,6 +9,9 @@ class UseDetailPage with ChangeNotifier {
   UseDetailPage();
 
   Future fetch(int tvId) async {
+    tvDetailResultObject = null;
+    aggregateCreditObject = null;
+
     await TmdbApiService().getTv(tvId).then((value) => tvDetailResultObject = value);
     await TmdbApiService().getAggregateCredits(tvId).then((value) => aggregateCreditObject = value);
     notifyListeners();
