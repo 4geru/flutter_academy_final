@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_study_day7/model/aggregate_credit_object.dart';
 import 'package:flutter_study_day7/model/tv_detail_result_object.dart';
 import 'package:flutter_study_day7/model/tv_list_result_object.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -59,6 +60,15 @@ class TmdbApiService {
       }).toList();
 
       return list;
+    } on DioError catch (e) {
+      return null;
+    }
+  }
+
+  Future<AggregateCreditObject?> getAggregateCredits(int tvId) async {
+    try {
+      Response response = await _dio.get('$_base_url/tv/$tvId/aggregate_credits?api_key=$_apiKey&language=ja');
+      return AggregateCreditObject.fromJson(response.data);
     } on DioError catch (e) {
       return null;
     }
