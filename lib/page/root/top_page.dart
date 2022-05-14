@@ -58,30 +58,10 @@ class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStat
     FlutterNativeSplash.remove();
     List<SimpleTvObject> histories = Provider.of<HistoryProvider>(context).histories.reversed.toList();
     late Widget body;
+    late PreferredSizeWidget appBar;
+
     if(_selectedIndex == 0 || _selectedIndex == 2) {
-      body = TabBarView(
-        children: _tabs.map((tab) => tab.widget).toList(),
-        controller: _controller,
-      );
-    } else {
-      body = ListView(
-        children: <Widget>[
-          Card(child: ListTile(title: Text('履歴一覧'))),
-          ...histories.map((e) {
-            return Card(
-              child: ListTile(
-                leading: Image.network(
-                  'https://image.tmdb.org/t/p/w300/${e.posterPath}',
-                ),
-                title: Text(e.originalName),
-              ),
-            );
-          })
-        ],
-      );
-    }
-    return Scaffold(
-      appBar: AppBar(
+      appBar = AppBar(
           title: Text(
             'ANYA in ${_selectedYear.toString()}',
             style: const TextStyle(
@@ -104,7 +84,38 @@ class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStat
               tabBarIndicatorSize: TabBarIndicatorSize.tab,
             ),
           )
-      ),
+      );
+      body = TabBarView(
+        children: _tabs.map((tab) => tab.widget).toList(),
+        controller: _controller,
+      );
+    } else {
+      appBar = AppBar(
+        title: const Text(
+          'ANYA in history',
+          style: TextStyle(
+            color: anyaTextColor,
+          ),
+        ),
+      );
+      body = ListView(
+        children: <Widget>[
+          Card(child: ListTile(title: Text('履歴一覧'))),
+          ...histories.map((e) {
+            return Card(
+              child: ListTile(
+                leading: Image.network(
+                  'https://image.tmdb.org/t/p/w300/${e.posterPath}',
+                ),
+                title: Text(e.originalName),
+              ),
+            );
+          })
+        ],
+      );
+    }
+    return Scaffold(
+      appBar: appBar,
       body: body,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
