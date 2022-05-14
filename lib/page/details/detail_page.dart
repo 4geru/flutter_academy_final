@@ -28,40 +28,6 @@ class _DetailPageState extends State<DetailPage> {
     // ページ情報を取得する
     final store = context.watch<UseDetailPage>();
     store.fetch(widget.argument.tvListResultObject.id);
-
-    const casts = [
-      {
-        'profilePath': '/c79SXutqQ02zaGi07sqWCbO96re.jpg',
-        'originalName': 'Rina Sato',
-        'character': 'Mikoto Misaka',
-      },
-      {
-        'profilePath': '/v95wU1gpSLAOJS5yKFTxyheXAW2.jpg',
-        'originalName': 'Satomi Arai',
-        'character': 'Kuroko Shirai',
-      },
-      {
-        'profilePath': '/c79SXutqQ02zaGi07sqWCbO96re.jpg',
-        'originalName': 'Rina Sato',
-        'character': 'Mikoto Misaka',
-      },
-      {
-        'profilePath': '/v95wU1gpSLAOJS5yKFTxyheXAW2.jpg',
-        'originalName': 'Satomi Arai',
-        'character': 'Kuroko Shirai',
-      },
-      {
-        'profilePath': '/c79SXutqQ02zaGi07sqWCbO96re.jpg',
-        'originalName': 'Rina Sato',
-        'character': 'Mikoto Misaka',
-      },
-      {
-        'profilePath': '/v95wU1gpSLAOJS5yKFTxyheXAW2.jpg',
-        'originalName': 'Satomi Arai',
-        'character': 'Kuroko Shirai',
-      }
-    ];
-
     // 履歴に追加する
     SimpleTvObject simpleTvObject = SimpleTvObject(
       id: widget.argument.tvListResultObject.id,
@@ -70,6 +36,7 @@ class _DetailPageState extends State<DetailPage> {
     );
     Provider.of<HistoryProvider>(context).insert(simpleTvObject);
     if(store.isLoading()) {
+      print('called');
       return Text('loading');
     }
 
@@ -80,9 +47,9 @@ class _DetailPageState extends State<DetailPage> {
             BackDropAndRating(tvListResultObject: widget.argument.tvListResultObject),
             const SizedBox(height: anyaDefaultPadding),
             TitleDurationAndFabBtn(tvListResultObject: widget.argument.tvListResultObject),
-            Genres(genres: store.tvDetailResultObject?.genres ?? []),
+            Genres(genres: store.tvDetailResultObject!.genres ?? []),
             if(widget.argument.tvListResultObject.overview.isNotEmpty) Overview(overview: widget.argument.tvListResultObject.overview),
-            const CastAndCrew(casts: casts),
+            CastAndCrew(casts: store.aggregateCreditObject!.casts ?? []),
           ],
         )
       )

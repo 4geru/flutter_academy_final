@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study_day7/model/aggregate_credit_object.dart';
 
 import 'package:flutter_study_day7/theme.dart';
 import 'cast_card.dart';
 
 class CastAndCrew extends StatelessWidget {
-  final List casts;
+  final List<Cast> casts;
 
   const CastAndCrew({Key? key, required this.casts}) : super(key: key);
 
