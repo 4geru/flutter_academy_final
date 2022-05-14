@@ -28,6 +28,5 @@ class HistoryProvider with ChangeNotifier {
       prefs.setStringList('histories', histories.map((e) => e.toString()).toList());
       notifyListeners();
     }
-    print(histories);
   }
 }
