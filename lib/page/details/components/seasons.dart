@@ -12,7 +12,7 @@ class Seasons extends StatefulWidget {
 }
 
 class _SeasonsState extends State<Seasons> {
-  bool _openSeason = false;
+  bool _openSeason = true;
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +37,15 @@ class _SeasonsState extends State<Seasons> {
                   subtitle: Column(
                     children: [
                       Row(
-                          children: [
-                            if(widget.year == season.airDate?.year)
-                              const Icon(
-                                Icons.favorite,
-                                color: anyaSecondaryColor,
-                                size: 24.0
-                              ),
-                            Text("${season.airDate != null ? openDate : ''}${season.episodeCount}話"),
-                          ]
+                        children: [
+                          if(widget.year == season.airDate?.year)
+                            const Icon(
+                              Icons.favorite,
+                              color: anyaSecondaryColor,
+                              size: 24.0
+                            ),
+                          Text("${season.airDate != null ? openDate : ''}${season.episodeCount}話"),
+                        ]
                       ),
                       Text(
                         season.overview ?? '',
