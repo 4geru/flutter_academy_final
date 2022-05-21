@@ -94,6 +94,7 @@ class _YearTabPageState extends State<YearTabPage> {
                       },
                       child: Image.network(
                         'https://image.tmdb.org/t/p/w300/${tvListResultObject.posterPath}',
+                        fit: BoxFit.cover,
                       )
                   );
                 }).toList()
