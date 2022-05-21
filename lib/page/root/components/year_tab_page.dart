@@ -10,8 +10,7 @@ import 'package:provider/provider.dart';
 
 class YearTabPage extends StatefulWidget {
   final int year;
-  final ScrollController scrollController;
-  const YearTabPage(this.year, this.scrollController, {Key? key}) : super(key: key);
+  const YearTabPage(this.year, {Key? key}) : super(key: key);
 
   @override
   State<YearTabPage> createState() => _YearTabPageState();
@@ -21,6 +20,7 @@ class _YearTabPageState extends State<YearTabPage> {
   List<TvListResultObject> _list = [];
   int page = 1;
   bool loading = false, allLoad = false;
+  final ScrollController _scrollController = ScrollController();
 
   void fetch() async {
     if(loading)return;
@@ -37,57 +37,71 @@ class _YearTabPageState extends State<YearTabPage> {
   void initState() {
     fetch();
     super.initState();
-    widget.scrollController.addListener(() {
-      if(widget.scrollController.position.pixels >= widget.scrollController.position.maxScrollExtent / 2 && !loading) {
+    _scrollController.addListener(() {
+      if(_scrollController.position.pixels >= _scrollController.position.maxScrollExtent / 2 && !loading) {
         fetch();
       }
     });
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final store = context.watch<UseDetailPage>();
-    return SliverGrid(
-      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 160.0,
-        mainAxisSpacing: 1,
-        crossAxisSpacing: 1,
-        childAspectRatio: 2 / 3,
-      ),
-      delegate: SliverChildListDelegate(
-          _list.map((TvListResultObject tvListResultObject) {
-            int tvId = tvListResultObject.id;
-            return GestureDetector(
-                onTap: () {
-                  store.fetch(tvId);
-                  // 履歴に追加する
-                  SimpleTvObject simpleTvObject = SimpleTvObject(
-                      id: tvId,
-                      originalName: tvListResultObject.originalName,
-                      posterPath: tvListResultObject.posterPath,
-                      timestamp: DateTime.now()
+    return Center(
+        child: CustomScrollView(
+          controller: _scrollController,
+          primary: false,
+          slivers: <Widget>[
+            SliverPadding(
+              padding: const EdgeInsets.all(3),
+              sliver: SliverGrid.count(
+                childAspectRatio: 2 / 3,
+                crossAxisSpacing: 1,
+                mainAxisSpacing: 1,
+                crossAxisCount: 3,
+                children: _list.map((TvListResultObject tvListResultObject) {
+                  int tvId = tvListResultObject.id;
+                  return GestureDetector(
+                      onTap: () {
+                        store.fetch(tvId);
+                        // 履歴に追加する
+                        SimpleTvObject simpleTvObject = SimpleTvObject(
+                          id: tvId,
+                          originalName: tvListResultObject.originalName,
+                          posterPath: tvListResultObject.posterPath,
+                          timestamp: DateTime.now()
+                        );
+                        Provider.of<HistoryProvider>(context, listen: false).insert(simpleTvObject);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            settings: const RouteSettings(name: "/details/:id"),
+                            builder: (BuildContext context) => DetailPage(
+                              argument: DetailPageArgument(
+                                tvId: tvId,
+                                year: widget.year
+                              )
+                            ),
+                            fullscreenDialog: true,
+                          ),
+                        );
+                      },
+                      child: Image.network(
+                        'https://image.tmdb.org/t/p/w300/${tvListResultObject.posterPath}',
+                        fit: BoxFit.cover,
+                      )
                   );
-                  Provider.of<HistoryProvider>(context, listen: false).insert(simpleTvObject);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      settings: const RouteSettings(name: "/details/:id"),
-                      builder: (BuildContext context) => DetailPage(
-                          argument: DetailPageArgument(
-                              tvId: tvId,
-                              year: widget.year
-                          )
-                      ),
-                      fullscreenDialog: true,
-                    ),
-                  );
-                },
-                child: Image.network(
-                  'https://image.tmdb.org/t/p/w300/${tvListResultObject.posterPath}',
-                )
-            );
-          }).toList()
-      )
+                }).toList()
+              ),
+            ),
+          ],
+        )
     );
   }
 }

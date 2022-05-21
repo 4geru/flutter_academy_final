@@ -12,10 +12,9 @@ List<int> targetYears () {
 
 class YearTab extends BaseTab {
   TabController tabController;
-  ScrollController scrollController;
   int selectedYear;
 
-  YearTab({required this.tabController, required this.scrollController, required this.selectedYear});
+  YearTab({required this.tabController, required this.selectedYear});
 
   @override
   SliverAppBar appBar() {
@@ -54,7 +53,7 @@ class YearTab extends BaseTab {
     return SliverFillRemaining(
       child: TabBarView(
         children: targetYears().map((year) {
-          return YearTabPage(year, scrollController);
+          return YearTabPage(year);
         }).toList(),
         controller: tabController,
       )

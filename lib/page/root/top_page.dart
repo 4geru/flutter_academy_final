@@ -16,7 +16,6 @@ class TopHomePage extends StatefulWidget {
 
 class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStateMixin{
   late TabController _tabController;
-  final ScrollController _scrollController = ScrollController();
   int _selectedTabIndex = 0;
   int _selectedYear = targetYears().last;
 
@@ -34,34 +33,20 @@ class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStat
   }
 
   @override
-  void dispose() {
-    super.dispose();
-    _scrollController.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     FlutterNativeSplash.remove();
     late BaseTab selectedTab;
     if(_selectedTabIndex == 0 || _selectedTabIndex == 2) {
-      selectedTab = YearTab(tabController: _tabController, scrollController: _scrollController, selectedYear: _selectedYear);
+      selectedTab = YearTab(tabController: _tabController, selectedYear: _selectedYear);
     } else {
       selectedTab = HistoryTab(context: context, selectedYear: _selectedYear);
     }
 
     return Scaffold(
       body: CustomScrollView(
-        controller: _scrollController,
         slivers: <Widget>[
           selectedTab.appBar(),
-          // TabBarView(
-          //   children: targetYears().map((year) {
-          //     return Text(year.toString());
-          //   }).toList(),
-          //   controller: _tabController,
-          // )
           selectedTab.body(),
-          // YearTabPage(_selectedYear, _scrollController)
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
