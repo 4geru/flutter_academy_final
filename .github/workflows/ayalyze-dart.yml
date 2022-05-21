@@ -1,10 +1,10 @@
 on: push
 
-name: Sample Workflow
+name: Dart Analyze
 
 jobs:
   build:
-    name: Example
+    name: analyze
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
