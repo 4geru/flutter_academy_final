@@ -20,14 +20,14 @@ class YearTabPage extends StatefulWidget {
 class _YearTabPageState extends State<YearTabPage> {
   List<TvListResultObject> _list = [];
   int page = 1;
-  bool loading = false, allLoad = false;
+  bool loading = false;
 
   void fetch() async {
     if(loading)return;
     setState(() => loading = true);
-    List<TvListResultObject> list = await TmdbApiService().getDiscoverTv(widget.year, page: page);
+    List<TvListResultObject> list1 = await TmdbApiService().getDiscoverTv(widget.year, page: page);
     setState(() {
-      _list = [..._list, ...list];
+      _list = [..._list, ...list1];
       loading = false;
       page = page + 1;
     });
