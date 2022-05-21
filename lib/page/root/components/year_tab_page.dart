@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import '../../../data/repo/history_provider.dart';
 import '../../../model/simple_tv_object.dart';
 import '../../../model/tv_list_result_object.dart';
+import '../../../service/tmdb_api_service.dart';
 import '../../details/detail_page.dart';
 import '../../details/detail_page_argument.dart';
 import '../../details/hooks.dart';
-import '../../../service/tmdb_api_service.dart';
-import 'package:provider/provider.dart';
 
 class YearTabPage extends StatefulWidget {
   final int year;
@@ -55,7 +56,7 @@ class _YearTabPageState extends State<YearTabPage> {
         crossAxisSpacing: 1,
         mainAxisSpacing: 1,
         crossAxisCount: 3,
-        children: _list.map((TvListResultObject tvListResultObject) {
+        children: _list.map((tvListResultObject) {
           final tvId = tvListResultObject.id;
           return GestureDetector(
               onTap: () {
@@ -72,7 +73,7 @@ class _YearTabPageState extends State<YearTabPage> {
                   context,
                   MaterialPageRoute(
                     settings: const RouteSettings(name: '/details/:id'),
-                    builder: (BuildContext context) => DetailPage(
+                    builder: (context) => DetailPage(
                       argument: DetailPageArgument(
                         tvId: tvId,
                         year: widget.year

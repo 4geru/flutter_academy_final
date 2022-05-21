@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import '../../../data/repo/history_provider.dart';
+import '../../../theme.dart';
 import '../../details/detail_page.dart';
 import '../../details/detail_page_argument.dart';
 import '../../details/hooks.dart';
-import '../../../theme.dart';
-import 'package:provider/provider.dart';
 
 class HistoryTab extends StatelessWidget {
   final BottomNavigationBar bottomNavigationBar;
@@ -45,7 +46,7 @@ class HistoryTab extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               settings: const RouteSettings(name: '/details/:id'),
-                              builder: (BuildContext context) => DetailPage(
+                              builder: (context) => DetailPage(
                                   argument: DetailPageArgument(
                                       tvId: history.id,
                                       year: 1000 // not selected

@@ -1,6 +1,7 @@
+import 'package:get_it/get_it.dart';
+
 import 'data/repo/history_provider.dart';
 import 'page/details/hooks.dart';
-import 'package:get_it/get_it.dart';
 
 final sl = GetIt.instance;
 

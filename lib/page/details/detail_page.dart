@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import '../../components/loading.dart';
+import '../../theme.dart';
 import 'components/back_drop_and_rating.dart';
 import 'components/cast_and_crew.dart';
 import 'components/genres.dart';
 import 'components/overview.dart';
 import 'components/seasons.dart';
 import 'components/title_duration_and_fav_btn.dart';
-import 'hooks.dart';
-import '../../theme.dart';
-import 'package:provider/provider.dart';
-
 import 'detail_page_argument.dart';
+import 'hooks.dart';
 
 class DetailPage extends StatefulWidget {
   final DetailPageArgument argument;

@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import '../model/aggregate_credit_object.dart';
 import '../model/tv_detail_result_object.dart';
 import '../model/tv_list_result_object.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../model/tv_watch_prodvider_result_object.dart';
 
 class TmdbApiService {

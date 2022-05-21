@@ -1,8 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
-import '../../model/simple_tv_object.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../model/simple_tv_object.dart';
 
 class HistoryProvider with ChangeNotifier {
   HistoryProvider() {

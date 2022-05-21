@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:provider/provider.dart';
+
 import 'data/repo/history_provider.dart';
+import 'di_container.dart' as di;
 import 'page/details/hooks.dart';
 import 'page/root/top_page.dart';
 import 'theme.dart';
-import 'package:provider/provider.dart';
-
-import 'di_container.dart' as di;
 
 void main() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +32,7 @@ void main() async {
       ),
     ),
     routes: <String, WidgetBuilder>{
-        '/': (BuildContext context) => const TopHomePage()
+        '/': (context) => const TopHomePage()
       },
       debugShowCheckedModeBanner: false,
     ))

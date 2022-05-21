@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+
 import '../../../model/tv_detail_result_object.dart';
-import 'genre_card.dart';
 import '../../../theme.dart';
+import 'genre_card.dart';
 
 class Genres extends StatelessWidget {
   final List<Genre> genres;
