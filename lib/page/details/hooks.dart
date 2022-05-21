@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study_day7/model/aggregate_credit_object.dart';
-import 'package:flutter_study_day7/model/tv_detail_result_object.dart';
-import 'package:flutter_study_day7/service/tmdb_api_service.dart';
+import '../../model/aggregate_credit_object.dart';
+import '../../model/tv_detail_result_object.dart';
+import '../../service/tmdb_api_service.dart';
 
 class UseDetailPage with ChangeNotifier {
   TvDetailResultObject? tvDetailResultObject;
@@ -12,8 +12,10 @@ class UseDetailPage with ChangeNotifier {
     tvDetailResultObject = null;
     aggregateCreditObject = null;
 
-    TmdbApiService().getTv(tvId).then((value) => tvDetailResultObject = value);
-    TmdbApiService().getAggregateCredits(tvId).then((value) => aggregateCreditObject = value);
+    await TmdbApiService().getTv(tvId).then((value) => tvDetailResultObject = value);
+    await TmdbApiService()
+        .getAggregateCredits(tvId)
+        .then((value) => aggregateCreditObject = value);
     // loading view を表示するために 1秒待たせる
     await Future.delayed(const Duration(seconds: 1));
 
@@ -21,7 +23,6 @@ class UseDetailPage with ChangeNotifier {
   }
 
   bool isLoading() {
-    return tvDetailResultObject == null ||
-      aggregateCreditObject == null;
+    return tvDetailResultObject == null || aggregateCreditObject == null;
   }
 }

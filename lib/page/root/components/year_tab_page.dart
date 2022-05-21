@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study_day7/data/repo/history_provider.dart';
-import 'package:flutter_study_day7/model/simple_tv_object.dart';
-import 'package:flutter_study_day7/model/tv_list_result_object.dart';
-import 'package:flutter_study_day7/page/details/detail_page.dart';
-import 'package:flutter_study_day7/page/details/detail_page_argument.dart';
-import 'package:flutter_study_day7/page/details/hooks.dart';
-import 'package:flutter_study_day7/service/tmdb_api_service.dart';
+import '../../../data/repo/history_provider.dart';
+import '../../../model/simple_tv_object.dart';
+import '../../../model/tv_list_result_object.dart';
+import '../../details/detail_page.dart';
+import '../../details/detail_page_argument.dart';
+import '../../details/hooks.dart';
+import '../../../service/tmdb_api_service.dart';
 import 'package:provider/provider.dart';
 
 class YearTabPage extends StatefulWidget {
@@ -25,7 +25,7 @@ class _YearTabPageState extends State<YearTabPage> {
   void fetch() async {
     if(loading)return;
     setState(() => loading = true);
-    List<TvListResultObject> list1 = await TmdbApiService().getDiscoverTv(widget.year, page: page);
+    final list1 = await TmdbApiService().getDiscoverTv(widget.year, page: page);
     setState(() {
       _list = [..._list, ...list1];
       loading = false;
@@ -56,12 +56,12 @@ class _YearTabPageState extends State<YearTabPage> {
         mainAxisSpacing: 1,
         crossAxisCount: 3,
         children: _list.map((TvListResultObject tvListResultObject) {
-          int tvId = tvListResultObject.id;
+          final tvId = tvListResultObject.id;
           return GestureDetector(
               onTap: () {
                 store.fetch(tvId);
                 // 履歴に追加する
-                SimpleTvObject simpleTvObject = SimpleTvObject(
+                final simpleTvObject = SimpleTvObject(
                   id: tvId,
                   originalName: tvListResultObject.originalName,
                   posterPath: tvListResultObject.posterPath,
@@ -71,7 +71,7 @@ class _YearTabPageState extends State<YearTabPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    settings: const RouteSettings(name: "/details/:id"),
+                    settings: const RouteSettings(name: '/details/:id'),
                     builder: (BuildContext context) => DetailPage(
                       argument: DetailPageArgument(
                         tvId: tvId,

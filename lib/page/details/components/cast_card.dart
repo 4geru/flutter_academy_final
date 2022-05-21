@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study_day7/model/aggregate_credit_object.dart';
-
-import 'package:flutter_study_day7/theme.dart';
+import '../../../model/aggregate_credit_object.dart';
+import '../../../theme.dart';
 
 class CastCard extends StatelessWidget {
   final Cast cast;
@@ -19,10 +18,9 @@ class CastCard extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                image: NetworkImage(
-                  "https://image.tmdb.org/t/p/w300/${cast.profilePath}",
-                )
-              ),
+                  image: NetworkImage(
+                'https://image.tmdb.org/t/p/w300/${cast.profilePath}',
+              )),
             ),
           ),
           const SizedBox(height: anyaDefaultPadding / 2),

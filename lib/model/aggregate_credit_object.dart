@@ -37,16 +37,16 @@ class Cast {
 
   Cast(
       {this.adult,
-        this.gender,
-        this.id,
-        this.knownForDepartment,
-        this.name,
-        this.originalName,
-        this.popularity,
-        this.profilePath,
-        this.roles,
-        this.totalEpisodeCount,
-        this.order});
+      this.gender,
+      this.id,
+      this.knownForDepartment,
+      this.name,
+      this.originalName,
+      this.popularity,
+      this.profilePath,
+      this.roles,
+      this.totalEpisodeCount,
+      this.order});
 
   Cast.fromJson(Map<String, dynamic> json) {
     adult = json['adult'];
@@ -97,16 +97,16 @@ class Crew {
 
   Crew(
       {this.adult,
-        this.gender,
-        this.id,
-        this.knownForDepartment,
-        this.name,
-        this.originalName,
-        this.popularity,
-        this.profilePath,
-        this.jobs,
-        this.department,
-        this.totalEpisodeCount});
+      this.gender,
+      this.id,
+      this.knownForDepartment,
+      this.name,
+      this.originalName,
+      this.popularity,
+      this.profilePath,
+      this.jobs,
+      this.department,
+      this.totalEpisodeCount});
 
   Crew.fromJson(Map<String, dynamic> json) {
     adult = json['adult'];
