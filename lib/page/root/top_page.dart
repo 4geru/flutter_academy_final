@@ -51,7 +51,7 @@ class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStat
     if(_selectedTabIndex == 1) {
       selectedWidget = HistoryTab(bottomNavigationBar: bottomNavigationBar);
     } else {
-      selectedWidget = YearTab(selectedYear: _selectedYear, bottomNavigationBar: bottomNavigationBar);
+      selectedWidget = YearTab(bottomNavigationBar: bottomNavigationBar);
     }
 
     return selectedWidget;
