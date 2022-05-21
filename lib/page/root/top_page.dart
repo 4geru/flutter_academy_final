@@ -23,9 +23,9 @@ class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStat
   void initState() {
     super.initState();
     _controller = TabController(
-        length: tabsInfo.length,
-        initialIndex: tabsInfo.length - 1,
-        vsync: this
+      length: tabsInfo.length,
+      initialIndex: tabsInfo.length - 1,
+      vsync: this
     );
 
     _controller.addListener(() =>
@@ -52,7 +52,6 @@ class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStat
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               _headerSection(_selectedYear),
-              _tabSection(_controller),
             ];
           },
           body: TabBarView(
@@ -84,38 +83,28 @@ class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStat
 SliverAppBar _headerSection(int selectedYear) {
   return SliverAppBar(
     pinned: false,
-    snap: false,
-    floating: false,
-    expandedHeight: 50.0,
+    snap: true,
+    floating: true,
     title: Text(
       'ANYA in ${selectedYear.toString()}',
       style: const TextStyle(
         color: anyaTextColor,
       ),
     ),
-  );
-}
-
-//TabBar部分
-Widget _tabSection(controller) {
-  return SliverPersistentHeader(
-    pinned: true,
-    delegate: _StickyTabBarDelegate(
-      tabBar: TabBar(
-        isScrollable: true,
-        tabs: tabsInfo.map((TabInfo tab) {
-          return Tab(
-            text: tab.year.toString(),
-          );
-        }).toList(),
-        labelColor: const Color(0xFF0F1021),
-        indicatorSize: TabBarIndicatorSize.tab,
-        indicator: const BubbleTabIndicator(
-          indicatorHeight: 30.0,
-          indicatorColor: anyaSecondaryColor,
-          tabBarIndicatorSize: TabBarIndicatorSize.tab,
-        ),
-      )
+    bottom: TabBar(
+      isScrollable: true,
+      tabs: targetYears().map((year) {
+        return Tab(
+          text: year.toString(),
+        );
+      }).toList(),
+      labelColor: const Color(0xFF0F1021),
+      indicatorSize: TabBarIndicatorSize.tab,
+      indicator: const BubbleTabIndicator(
+        indicatorHeight: 30.0,
+        indicatorColor: anyaWhiteColor,
+        tabBarIndicatorSize: TabBarIndicatorSize.tab,
+      ),
     ),
   );
 }
@@ -139,7 +128,7 @@ class _StickyTabBarDelegate extends SliverPersistentHeaderDelegate {
       bool overlapsContent,
       ) {
     return Container(
-      color: Colors.white,
+      color: anyaColor,
       child: tabBar,
     );
   }
