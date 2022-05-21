@@ -4,30 +4,18 @@ import 'package:flutter_study_day7/page/root/components/base_tab.dart';
 import 'package:flutter_study_day7/page/root/components/year_tab_page.dart';
 import 'package:flutter_study_day7/theme.dart';
 
-class TabInfo {
-  int year;
-  Widget widget;
-
-  TabInfo(this.year, this.widget);
-}
-
 List<int> targetYears () {
   const int fromYear = 1996;
   int toYear = DateTime.now().year;
   return List<int>.generate(toYear - fromYear + 1, (i) => i + fromYear);
 }
 
-final List<TabInfo> tabsInfo = targetYears().map((year) =>
-    // TabInfo(year, YearTabPage(year))
-  // FIXME:
-  TabInfo(year, Text('hoge'))
-).toList();
-
 class YearTab extends BaseTab {
-  TabController controller;
+  TabController tabController;
+  ScrollController scrollController;
   int selectedYear;
 
-  YearTab({required this.controller, required this.selectedYear});
+  YearTab({required this.tabController, required this.scrollController, required this.selectedYear});
 
   @override
   SliverAppBar appBar() {
@@ -44,10 +32,10 @@ class YearTab extends BaseTab {
       ),
       bottom: TabBar(
         isScrollable: true,
-        controller: controller,
-        tabs: tabsInfo.map((TabInfo tab) {
+        controller: tabController,
+        tabs: targetYears().map((year) {
           return Tab(
-            text: tab.year.toString(),
+            text: year.toString(),
           );
         }).toList(),
         labelColor: const Color(0xFF0F1021),
@@ -64,8 +52,10 @@ class YearTab extends BaseTab {
   @override
   Widget body() {
     return TabBarView(
-      children: tabsInfo.map((tab) => tab.widget).toList(),
-      controller: controller,
+      children: targetYears().map((year) {
+        return YearTabPage(year, scrollController);
+      }).toList(),
+      controller: tabController,
     );
   }
 }
