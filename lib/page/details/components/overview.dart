@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study_day7/components/show_more.dart';
-import 'package:flutter_study_day7/theme.dart';
+import '../../../components/show_more.dart';
+import '../../../theme.dart';
 
 class Overview extends StatelessWidget {
   final String overview;
@@ -16,7 +16,7 @@ class Overview extends StatelessWidget {
             horizontal: anyaDefaultPadding,
           ),
           child: Text(
-            "概要",
+            '概要',
             style: Theme.of(context).textTheme.headline5,
           ),
         ),
@@ -25,11 +25,8 @@ class Overview extends StatelessWidget {
             child: ExpandableText(
               overview,
               maxLines: 5,
-              style: const TextStyle(
-                fontSize: 12
-              ),
-            )
-        )
+              style: const TextStyle(fontSize: 12),
+            ))
       ],
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_study_day7/page/root/components/history_tab.dart';
-import 'package:flutter_study_day7/page/root/components/year_tab.dart';
+import 'components/history_tab.dart';
+import 'components/year_tab.dart';
 
 class TopHomePage extends StatefulWidget {
   const TopHomePage({Key? key}) : super(key: key);
@@ -33,7 +33,7 @@ class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStat
   Widget build(BuildContext context) {
     FlutterNativeSplash.remove();
 
-    BottomNavigationBar bottomNavigationBar = BottomNavigationBar(
+    final bottomNavigationBar = BottomNavigationBar(
       currentIndex: _selectedTabIndex,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home_sharp, size: 20), activeIcon: Icon(Icons.home_rounded, size: 30), label: 'ホーム'),

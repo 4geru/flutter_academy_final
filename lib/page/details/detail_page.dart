@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study_day7/components/loading.dart';
-import 'package:flutter_study_day7/page/details/components/back_drop_and_rating.dart';
-import 'package:flutter_study_day7/page/details/components/cast_and_crew.dart';
-import 'package:flutter_study_day7/page/details/components/genres.dart';
-import 'package:flutter_study_day7/page/details/components/overview.dart';
-import 'package:flutter_study_day7/page/details/components/seasons.dart';
-import 'package:flutter_study_day7/page/details/components/title_duration_and_fav_btn.dart';
-import 'package:flutter_study_day7/page/details/hooks.dart';
-import 'package:flutter_study_day7/theme.dart';
 import 'package:provider/provider.dart';
 
+import '../../components/loading.dart';
+import '../../theme.dart';
+import 'components/back_drop_and_rating.dart';
+import 'components/cast_and_crew.dart';
+import 'components/genres.dart';
+import 'components/overview.dart';
+import 'components/seasons.dart';
+import 'components/title_duration_and_fav_btn.dart';
 import 'detail_page_argument.dart';
+import 'hooks.dart';
 
 class DetailPage extends StatefulWidget {
   final DetailPageArgument argument;
@@ -28,23 +28,26 @@ class _DetailPageState extends State<DetailPage> {
     // ページ情報を取得する
     final store = context.watch<UseDetailPage>();
 
-    if(store.isLoading()) {
+    if (store.isLoading()) {
       return const LoadingComponent();
     }
     return Scaffold(
-      body: SingleChildScrollView(child:
-        Column(
-          children: <Widget>[
-            BackDropAndRating(tvDetailResultObject: store.tvDetailResultObject!),
-            const SizedBox(height: anyaDefaultPadding),
-            TitleDurationAndFabBtn(tvDetailResultObject: store.tvDetailResultObject!),
-            Genres(genres: store.tvDetailResultObject?.genres ?? []),
-            if(store.tvDetailResultObject?.overview != '') Overview(overview: store.tvDetailResultObject?.overview ?? ""),
-            if(store.tvDetailResultObject?.seasons != null) Seasons(seasons: store.tvDetailResultObject!.seasons, year: widget.argument.year),
-            CastAndCrew(casts: store.aggregateCreditObject!.casts ?? []),
-          ],
-        )
-      )
-    );
+        body: SingleChildScrollView(
+            child: Column(
+      children: <Widget>[
+        BackDropAndRating(tvDetailResultObject: store.tvDetailResultObject!),
+        const SizedBox(height: anyaDefaultPadding),
+        TitleDurationAndFabBtn(
+            tvDetailResultObject: store.tvDetailResultObject!),
+        Genres(genres: store.tvDetailResultObject?.genres ?? []),
+        if (store.tvDetailResultObject?.overview != '')
+          Overview(overview: store.tvDetailResultObject?.overview ?? ''),
+        if (store.tvDetailResultObject?.seasons != null)
+          Seasons(
+              seasons: store.tvDetailResultObject!.seasons,
+              year: widget.argument.year),
+        CastAndCrew(casts: store.aggregateCreditObject!.casts ?? []),
+      ],
+    )));
   }
 }

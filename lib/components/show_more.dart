@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 class ExpandableText extends StatefulWidget {
   const ExpandableText(
     this.data, {
-      Key? key,
-      this.maxLines = 3,
-      this.textOverflow = TextOverflow.fade,
-      this.style,
-    }
-  ): super(key: key);
+    Key? key,
+    this.maxLines = 3,
+    this.textOverflow = TextOverflow.fade,
+    this.style,
+  }) : super(key: key);
 
   final String data;
   final int maxLines;
@@ -20,7 +19,8 @@ class ExpandableText extends StatefulWidget {
   _ExpandableTextState createState() => _ExpandableTextState();
 }
 
-class _ExpandableTextState extends State<ExpandableText> with SingleTickerProviderStateMixin {
+class _ExpandableTextState extends State<ExpandableText>
+    with SingleTickerProviderStateMixin {
   bool _isExpanded = false;
 
   @override
@@ -28,7 +28,10 @@ class _ExpandableTextState extends State<ExpandableText> with SingleTickerProvid
     return LayoutBuilder(builder: (_, constraints) {
       final textStyle = widget.style ?? DefaultTextStyle.of(context).style;
       final textSpan = TextSpan(text: widget.data, style: textStyle);
-      final textPainter = TextPainter(text: textSpan, textDirection: TextDirection.ltr, maxLines: widget.maxLines);
+      final textPainter = TextPainter(
+          text: textSpan,
+          textDirection: TextDirection.ltr,
+          maxLines: widget.maxLines);
 
       textPainter.layout(maxWidth: constraints.maxWidth);
 
@@ -42,16 +45,16 @@ class _ExpandableTextState extends State<ExpandableText> with SingleTickerProvid
               overflow: widget.textOverflow,
               maxLines: _isExpanded ? null : widget.maxLines,
             ),
-            const SizedBox(height: 4.0,),
+            const SizedBox(
+              height: 4.0,
+            ),
             TextButton(
               onPressed: () {
                 setState(() {
                   _isExpanded = !_isExpanded;
                 });
               },
-              child: Text(
-                  _isExpanded ? '閉じる' : '開く'
-              ),
+              child: Text(_isExpanded ? '閉じる' : '開く'),
             )
           ],
         );

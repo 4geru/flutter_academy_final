@@ -7,10 +7,11 @@ class TvWatchProviderResultObject {
   int id;
   Results results;
 
-  factory TvWatchProviderResultObject.fromJson(Map<String, dynamic> json) => TvWatchProviderResultObject(
-    id: json["id"],
-    results: Results.fromJson(json["results"]),
-  );
+  factory TvWatchProviderResultObject.fromJson(Map<String, dynamic> json) =>
+      TvWatchProviderResultObject(
+        id: json['id'],
+        results: Results.fromJson(json['results']),
+      );
 }
 
 class Results {
@@ -20,8 +21,8 @@ class Results {
 
   Ae? jp;
   factory Results.fromJson(Map<String, dynamic> json) => Results(
-    jp: Ae.fromJson(json["JP"]),
-  );
+        jp: Ae.fromJson(json['JP']),
+      );
 }
 
 class Ae {
@@ -40,12 +41,20 @@ class Ae {
   List<Ad>? buy;
 
   factory Ae.fromJson(Map<String, dynamic> json) => Ae(
-    link: json["link"],
-    ads: json["ads"] == null ? null : List<Ad>.from(json["ads"].map((x) => Ad.fromJson(x))),
-    flatrate: json["flatrate"] == null ? null : List<Ad>.from(json["flatrate"].map((x) => Ad.fromJson(x))),
-    rent: json["rent"] == null ? null : List<Ad>.from(json["rent"].map((x) => Ad.fromJson(x))),
-    buy: json["buy"] == null ? null : List<Ad>.from(json["buy"].map((x) => Ad.fromJson(x))),
-  );
+        link: json['link'],
+        ads: json['ads'] == null
+            ? null
+            : List<Ad>.from(json['ads'].map((x) => Ad.fromJson(x))),
+        flatrate: json['flatrate'] == null
+            ? null
+            : List<Ad>.from(json['flatrate'].map((x) => Ad.fromJson(x))),
+        rent: json['rent'] == null
+            ? null
+            : List<Ad>.from(json['rent'].map((x) => Ad.fromJson(x))),
+        buy: json['buy'] == null
+            ? null
+            : List<Ad>.from(json['buy'].map((x) => Ad.fromJson(x))),
+      );
 }
 
 class Ad {
@@ -62,9 +71,9 @@ class Ad {
   String? providerName;
 
   factory Ad.fromJson(Map<String, dynamic> json) => Ad(
-    displayPriority: json["display_priority"],
-    logoPath: json["logo_path"],
-    providerId: json["provider_id"],
-    providerName: json["provider_name"],
-  );
+        displayPriority: json['display_priority'],
+        logoPath: json['logo_path'],
+        providerId: json['provider_id'],
+        providerName: json['provider_name'],
+      );
 }

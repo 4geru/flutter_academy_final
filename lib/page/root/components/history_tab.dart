@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study_day7/data/repo/history_provider.dart';
-import 'package:flutter_study_day7/model/simple_tv_object.dart';
-import 'package:flutter_study_day7/page/details/detail_page.dart';
-import 'package:flutter_study_day7/page/details/detail_page_argument.dart';
-import 'package:flutter_study_day7/page/details/hooks.dart';
-import 'package:flutter_study_day7/theme.dart';
 import 'package:provider/provider.dart';
+
+import '../../../data/repo/history_provider.dart';
+import '../../../theme.dart';
+import '../../details/detail_page.dart';
+import '../../details/detail_page_argument.dart';
+import '../../details/hooks.dart';
 
 class HistoryTab extends StatelessWidget {
   final BottomNavigationBar bottomNavigationBar;
@@ -14,7 +14,7 @@ class HistoryTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final store = context.watch<UseDetailPage>();
-    List<SimpleTvObject> histories = Provider.of<HistoryProvider>(context).histories.reversed.toList();
+    final histories = Provider.of<HistoryProvider>(context).histories.reversed.toList();
     return Scaffold(
         body: CustomScrollView(
           slivers: <Widget>[
@@ -45,8 +45,8 @@ class HistoryTab extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              settings: const RouteSettings(name: "/details/:id"),
-                              builder: (BuildContext context) => DetailPage(
+                              settings: const RouteSettings(name: '/details/:id'),
+                              builder: (context) => DetailPage(
                                   argument: DetailPageArgument(
                                       tvId: history.id,
                                       year: 1000 // not selected

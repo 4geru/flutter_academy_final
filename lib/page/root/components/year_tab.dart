@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study_day7/package/bubble_tab_indicator.dart';
-import 'package:flutter_study_day7/page/root/components/year_tab_page.dart';
-import 'package:flutter_study_day7/theme.dart';
+
+import '../../../package/bubble_tab_indicator.dart';
+import '../../../theme.dart';
+import 'year_tab_page.dart';
 
 List<int> targetYears () {
-  const int fromYear = 1996;
-  int toYear = DateTime.now().year;
+  const fromYear = 1996;
+  final toYear = DateTime.now().year;
   return List<int>.generate(toYear - fromYear + 1, (i) => i + fromYear);
 }
 
@@ -39,12 +40,12 @@ class _YearTabState extends State<YearTab> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    ScrollController _scrollController = ScrollController();
+    final _scrollController = ScrollController();
 
     return Scaffold(
         body: NestedScrollView(
           controller: _scrollController,
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
                 pinned: false,

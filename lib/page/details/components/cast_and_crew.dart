@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study_day7/model/aggregate_credit_object.dart';
+import '../../../model/aggregate_credit_object.dart';
+import '../../../theme.dart';
 
-import 'package:flutter_study_day7/theme.dart';
 import 'cast_card.dart';
 
 class CastAndCrew extends StatelessWidget {
@@ -17,7 +17,7 @@ class CastAndCrew extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            "出演者",
+            '出演者',
             style: Theme.of(context).textTheme.headline5,
           ),
           const SizedBox(height: anyaDefaultPadding),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study_day7/model/tv_detail_result_object.dart';
-import 'package:flutter_study_day7/theme.dart';
+import '../../../model/tv_detail_result_object.dart';
+import '../../../theme.dart';
 
 class TitleDurationAndFabBtn extends StatelessWidget {
   const TitleDurationAndFabBtn({
@@ -28,12 +28,12 @@ class TitleDurationAndFabBtn extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Text(
-                      "${tvDetailResultObject.firstAirDate.year}年${tvDetailResultObject.firstAirDate.month}月${tvDetailResultObject.firstAirDate.day}日",
+                      '${tvDetailResultObject.firstAirDate.year}年${tvDetailResultObject.firstAirDate.month}月${tvDetailResultObject.firstAirDate.day}日',
                       style: const TextStyle(color: anyaTextColor),
                     ),
                     const SizedBox(width: anyaDefaultPadding),
                     Text(
-                      "${tvDetailResultObject.numberOfSeasons}シーズン ${tvDetailResultObject.numberOfEpisodes}話",
+                      '${tvDetailResultObject.numberOfSeasons}シーズン ${tvDetailResultObject.numberOfEpisodes}話',
                       style: const TextStyle(color: anyaTextColor),
                     ),
                   ],
