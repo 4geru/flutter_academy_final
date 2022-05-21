@@ -51,11 +51,13 @@ class YearTab extends BaseTab {
 
   @override
   Widget body() {
-    return TabBarView(
-      children: targetYears().map((year) {
-        return YearTabPage(year, scrollController);
-      }).toList(),
-      controller: tabController,
+    return SliverFillRemaining(
+      child: TabBarView(
+        children: targetYears().map((year) {
+          return YearTabPage(year, scrollController);
+        }).toList(),
+        controller: tabController,
+      )
     );
   }
 }

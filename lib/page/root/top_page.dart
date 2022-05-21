@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_study_day7/model/tv_list_result_object.dart';
 import 'package:flutter_study_day7/page/root/components/base_tab.dart';
+import 'package:flutter_study_day7/page/root/components/history_tab.dart';
 import 'package:flutter_study_day7/page/root/components/year_tab.dart';
 import 'package:flutter_study_day7/page/root/components/year_tab_page.dart';
 import 'package:flutter_study_day7/service/tmdb_api_service.dart';
@@ -42,19 +43,25 @@ class _TopHomePageState extends State<TopHomePage> with SingleTickerProviderStat
   Widget build(BuildContext context) {
     FlutterNativeSplash.remove();
     late BaseTab selectedTab;
-    // if(_selectedTabIndex == 0 || _selectedTabIndex == 2) {
+    if(_selectedTabIndex == 0 || _selectedTabIndex == 2) {
       selectedTab = YearTab(tabController: _tabController, scrollController: _scrollController, selectedYear: _selectedYear);
-    // } else {
-    //   selectedTab = HistoryTab(context: context, selectedYear: _selectedYear);
-    // }
+    } else {
+      selectedTab = HistoryTab(context: context, selectedYear: _selectedYear);
+    }
 
     return Scaffold(
       body: CustomScrollView(
         controller: _scrollController,
         slivers: <Widget>[
           selectedTab.appBar(),
-          // selectedTab.body(),
-          YearTabPage(_selectedYear, _scrollController)
+          // TabBarView(
+          //   children: targetYears().map((year) {
+          //     return Text(year.toString());
+          //   }).toList(),
+          //   controller: _tabController,
+          // )
+          selectedTab.body(),
+          // YearTabPage(_selectedYear, _scrollController)
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
