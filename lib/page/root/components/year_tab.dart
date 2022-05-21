@@ -18,7 +18,9 @@ List<int> targetYears () {
 }
 
 final List<TabInfo> tabsInfo = targetYears().map((year) =>
-    TabInfo(year, YearTabPage(year))
+    // TabInfo(year, YearTabPage(year))
+  // FIXME:
+  TabInfo(year, Text('hoge'))
 ).toList();
 
 class YearTab extends BaseTab {
@@ -28,8 +30,12 @@ class YearTab extends BaseTab {
   YearTab({required this.controller, required this.selectedYear});
 
   @override
-  PreferredSizeWidget appBar() {
-    return AppBar(
+  SliverAppBar appBar() {
+    return SliverAppBar(
+      pinned: false,
+      snap: false,
+      floating: true,
+      expandedHeight: 100.0,
       title: Text(
         'ANYA in ${selectedYear.toString()}',
         style: const TextStyle(

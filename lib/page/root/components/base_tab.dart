@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 abstract class BaseTab {
-  PreferredSizeWidget appBar();
+  SliverAppBar appBar();
   Widget body();
 }

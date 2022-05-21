@@ -14,9 +14,13 @@ class HistoryTab extends BaseTab {
   HistoryTab({required this.context, required this.selectedYear});
 
   @override
-  PreferredSizeWidget appBar() {
-    return AppBar(
-      title: const Text(
+  SliverAppBar appBar() {
+    return const SliverAppBar(
+      pinned: false,
+      snap: false,
+      floating: false,
+      expandedHeight: 50.0,
+      title: Text(
         'ANYA in history',
         style: TextStyle(
           color: anyaTextColor,
@@ -26,11 +30,11 @@ class HistoryTab extends BaseTab {
   }
 
   @override
-  Widget body() {
+  SliverList body() {
     final store = context.watch<UseDetailPage>();
     List<SimpleTvObject> histories = Provider.of<HistoryProvider>(context).histories.reversed.toList();
-    return ListView(
-      children: <Widget>[
+    return SliverList(delegate: SliverChildListDelegate(
+      [
         const Card(child: ListTile(title: Text('履歴一覧'))),
         ...histories.map((history) {
           return Card(
@@ -46,10 +50,10 @@ class HistoryTab extends BaseTab {
                   MaterialPageRoute(
                     settings: const RouteSettings(name: "/details/:id"),
                     builder: (BuildContext context) => DetailPage(
-                      argument: DetailPageArgument(
-                        tvId: history.id,
-                        year: selectedYear
-                      )
+                        argument: DetailPageArgument(
+                            tvId: history.id,
+                            year: selectedYear
+                        )
                     ),
                     fullscreenDialog: true,
                   ),
@@ -58,7 +62,7 @@ class HistoryTab extends BaseTab {
             ),
           );
         })
-      ],
-    );
+      ]
+    ));
   }
 }
