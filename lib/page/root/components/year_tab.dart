@@ -18,7 +18,7 @@ List<int> targetYears () {
 }
 
 final List<TabInfo> tabsInfo = targetYears().map((year) =>
-    TabInfo(year, YearTabPage(year))
+    TabInfo(year, Text('mew'))
 ).toList();
 
 class YearTab extends BaseTab {
