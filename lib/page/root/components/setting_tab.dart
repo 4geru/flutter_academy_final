@@ -13,7 +13,6 @@ class SettingTab extends StatefulWidget {
 }
 
 class _SettingTabState extends State<SettingTab> {
-  bool _isSelected = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,15 +29,10 @@ class _SettingTabState extends State<SettingTab> {
                 delegate: SliverChildListDelegate([
               ListTile(title: Text('設定画面')),
               SwitchListTile(
-                  title: const Text('Lights'),
-                  value: _isSelected,
-                  onChanged: (bool value) {
-                    setState(() {
-                      _isSelected = value;
-                      Provider.of<ThemeProvider>(context, listen: false)
-                          .toggle();
-                    });
-                  })
+                  title: const Text('ダークモード'),
+                  value: Provider.of<ThemeProvider>(context).isDark == true,
+                  onChanged: Provider.of<ThemeProvider>(context, listen: false)
+                      .toggle())
             ]))
           ],
         ),
