@@ -1,6 +1,8 @@
 // referebce: https://github.com/vipulasri/flutter_bubble_tab_indicator
 import 'package:flutter/material.dart';
 
+import '../theme.dart';
+
 /// Used with [TabBar.indicator] to draw a bubble on the
 /// selected tab.
 ///
@@ -12,7 +14,7 @@ import 'package:flutter/material.dart';
 /// The selected tab bubble is applied padding by [padding] when [tabBarIndicatorSize] is label.
 class BubbleTabIndicator extends Decoration {
   final double indicatorHeight;
-  final Color indicatorColor;
+  final Color? indicatorColor;
   final double indicatorRadius;
   @override
   final EdgeInsetsGeometry padding;
@@ -21,7 +23,7 @@ class BubbleTabIndicator extends Decoration {
 
   const BubbleTabIndicator({
     this.indicatorHeight = 20.0,
-    this.indicatorColor = Colors.greenAccent,
+    this.indicatorColor = anyaColor,
     this.indicatorRadius = 100.0,
     this.tabBarIndicatorSize = TabBarIndicatorSize.label,
     this.padding = const EdgeInsets.symmetric(vertical: 2.0, horizontal: 8.0),
@@ -62,7 +64,7 @@ class _BubblePainter extends BoxPainter {
   final BubbleTabIndicator decoration;
 
   double get indicatorHeight => decoration.indicatorHeight;
-  Color get indicatorColor => decoration.indicatorColor;
+  Color get indicatorColor => decoration.indicatorColor ?? anyaColor;
   double get indicatorRadius => decoration.indicatorRadius;
   EdgeInsetsGeometry get padding => decoration.padding;
   EdgeInsetsGeometry get insets => decoration.insets;

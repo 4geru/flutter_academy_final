@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../model/tv_detail_result_object.dart';
 import '../../../theme.dart';
 
