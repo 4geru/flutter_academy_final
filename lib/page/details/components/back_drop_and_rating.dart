@@ -39,11 +39,11 @@ class BackDropAndRating extends StatelessWidget {
                         // TODO: dark <> light
                         color: Colors.grey[800],
                         // color: anyaWhiteColor,
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(50),
                           topLeft: Radius.circular(50),
                         ),
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                               offset: Offset(0, 5),
                               blurRadius: 50,
