@@ -12,6 +12,7 @@ import 'page/details/hooks.dart';
 void main() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
   await dotenv.load(fileName: 'assets/.env');
   await di.init();
   runApp(MultiProvider(providers: [

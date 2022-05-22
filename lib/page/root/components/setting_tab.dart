@@ -31,8 +31,10 @@ class _SettingTabState extends State<SettingTab> {
               SwitchListTile(
                   title: const Text('ダークモード'),
                   value: Provider.of<ThemeProvider>(context).isDark == true,
-                  onChanged: Provider.of<ThemeProvider>(context, listen: false)
-                      .toggle())
+                  onChanged: (v) => {
+                        Provider.of<ThemeProvider>(context, listen: false)
+                            .toggle()
+                      })
             ]))
           ],
         ),

@@ -7,7 +7,7 @@ import 'page/details/hooks.dart';
 final sl = GetIt.instance;
 
 Future<void> init() async {
-  sl.registerFactory(() => HistoryProvider());
   sl.registerFactory(() => ThemeProvider());
   sl.registerFactory(() => UseDetailPage());
+  sl.registerFactory(() => HistoryProvider());
 }
