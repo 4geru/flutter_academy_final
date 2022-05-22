@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../data/repo/theme_provider.dart';
 import '../../../package/bubble_tab_indicator.dart';
 import '../../../theme.dart';
 import 'year_tab_page.dart';
@@ -39,7 +41,6 @@ class _YearTabState extends State<YearTab> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final _scrollController = ScrollController();
-
     return Scaffold(
         body: NestedScrollView(
           controller: _scrollController,
@@ -59,15 +60,17 @@ class _YearTabState extends State<YearTab> with SingleTickerProviderStateMixin {
                       text: year.toString(),
                     );
                   }).toList(),
-                  // dark <> white
-                  unselectedLabelColor: anyaWhiteColor,
+                  unselectedLabelColor:
+                      (Provider.of<ThemeProvider>(context).isDark
+                          ? anyaWhiteColor
+                          : Colors.grey[800]),
                   labelColor: anyaTextColor,
                   indicatorSize: TabBarIndicatorSize.tab,
-                  indicator: const BubbleTabIndicator(
+                  indicator: BubbleTabIndicator(
                     indicatorHeight: 30.0,
-                    // dark <> white
-                    // indicatorColor: anyaWhiteColor,
-                    indicatorColor: anyaColor,
+                    indicatorColor: (Provider.of<ThemeProvider>(context).isDark
+                        ? anyaColor
+                        : anyaWhiteColor),
                     tabBarIndicatorSize: TabBarIndicatorSize.tab,
                   ),
                   controller: yearTabController,

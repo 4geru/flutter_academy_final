@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study_day7/data/repo/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../../model/tv_detail_result_object.dart';
 import '../../../theme.dart';
@@ -36,9 +38,9 @@ class BackDropAndRating extends StatelessWidget {
                     width: size.width * 0.9,
                     height: 100,
                     decoration: BoxDecoration(
-                        // TODO: dark <> light
-                        color: Colors.grey[800],
-                        // color: anyaWhiteColor,
+                        color: (Provider.of<ThemeProvider>(context, listen: false).isDark
+                            ? Colors.grey[800]
+                            : anyaWhiteColor),
                         borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(50),
                           topLeft: Radius.circular(50),

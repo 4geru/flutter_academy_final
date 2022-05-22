@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study_day7/data/repo/theme_provider.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:provider/provider.dart';
 
 import '../theme.dart';
 
@@ -9,9 +11,10 @@ class LoadingComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // TODO: dark <> light
-      // backgroundColor: anyaSecondaryWhiteColor,
-      backgroundColor: Colors.grey[800],
+      backgroundColor:
+          (Provider.of<ThemeProvider>(context, listen: false).isDark
+              ? Colors.grey[800]
+              : anyaSecondaryWhiteColor),
       body: Center(
         child: LoadingAnimationWidget.twistingDots(
           leftDotColor: anyaColor,

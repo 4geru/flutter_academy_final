@@ -7,12 +7,12 @@ import '../../model/simple_tv_object.dart';
 
 class HistoryProvider with ChangeNotifier {
   HistoryProvider() {
-    _loadHistory();
+    loadHistory();
   }
 
   List<SimpleTvObject> histories = [];
 
-  void _loadHistory() async {
+  Future loadHistory() async {
     final prefs = await SharedPreferences.getInstance();
     final object = prefs.getStringList('histories') ?? [];
     histories = object.map((str) => SimpleTvObject.fromString(str)).toList();

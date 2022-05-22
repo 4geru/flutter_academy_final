@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../data/repo/theme_provider.dart';
 import '../../../model/tv_detail_result_object.dart';
 import '../../../theme.dart';
 
@@ -18,8 +20,9 @@ class GenreCard extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black26),
-        // TODO: dark <> light
-        color: const Color(0x1FFFFFFF),
+        color: (Provider.of<ThemeProvider>(context, listen: false).isDark
+            ? const Color(0x1FFFFFFF)
+            : anyaWhiteColor),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
