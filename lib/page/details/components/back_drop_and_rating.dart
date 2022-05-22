@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../model/tv_detail_result_object.dart';
 import '../../../theme.dart';
 
@@ -34,13 +35,15 @@ class BackDropAndRating extends StatelessWidget {
                 child: Container(
                     width: size.width * 0.9,
                     height: 100,
-                    decoration: const BoxDecoration(
-                        color: anyaWhiteColor,
-                        borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                        // TODO: dark <> light
+                        color: Colors.grey[800],
+                        // color: anyaWhiteColor,
+                        borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(50),
                           topLeft: Radius.circular(50),
                         ),
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                               offset: Offset(0, 5),
                               blurRadius: 50,
@@ -58,24 +61,18 @@ class BackDropAndRating extends StatelessWidget {
                             ),
                             const SizedBox(height: anyaDefaultPadding / 4),
                             RichText(
-                                text: TextSpan(
-                                    style: const TextStyle(color: Colors.black),
-                                    children: [
-                                  TextSpan(
-                                    text:
-                                        '${tvDetailResultObject.voteAverage.toString()}/',
-                                    style: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                  const TextSpan(text: '10\n'),
-                                  TextSpan(
-                                    text: tvDetailResultObject.voteCount
-                                        .toString(),
-                                    style:
-                                        const TextStyle(color: Colors.black26),
-                                  )
-                                ]))
+                                text: TextSpan(children: [
+                              TextSpan(
+                                text:
+                                    '${tvDetailResultObject.voteAverage.toString()}/',
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w600),
+                              ),
+                              const TextSpan(text: '10\n'),
+                              TextSpan(
+                                text: tvDetailResultObject.voteCount.toString(),
+                              )
+                            ]))
                           ],
                         ),
                         Column(

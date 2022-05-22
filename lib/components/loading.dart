@@ -9,7 +9,9 @@ class LoadingComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: anyaSecondaryWhiteColor,
+      // TODO: dark <> light
+      // backgroundColor: anyaSecondaryWhiteColor,
+      backgroundColor: Colors.grey[800],
       body: Center(
         child: LoadingAnimationWidget.twistingDots(
           leftDotColor: anyaColor,

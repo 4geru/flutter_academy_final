@@ -15,27 +15,26 @@ void main() async {
   await dotenv.load(fileName: 'assets/.env');
   await di.init();
   runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(create: (context) => di.sl<HistoryProvider>()),
-      ChangeNotifierProvider(create: (context) => di.sl<UseDetailPage>()),
-    ],
-    child: MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        scaffoldBackgroundColor: anyaWhiteColor,
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: anyaColor).copyWith(secondary: anyaSecondaryColor),
-        tabBarTheme: const TabBarTheme(
-          indicator: UnderlineTabIndicator(
-            borderSide: BorderSide(color: anyaselectedColor
-          )
-        ),
-      ),
-    ),
-    routes: <String, WidgetBuilder>{
-        '/': (context) => const TopHomePage()
-      },
-      debugShowCheckedModeBanner: false,
-    ))
-  );
+      providers: [
+        ChangeNotifierProvider(create: (context) => di.sl<HistoryProvider>()),
+        ChangeNotifierProvider(create: (context) => di.sl<UseDetailPage>()),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+            scaffoldBackgroundColor: anyaWhiteColor,
+            colorScheme: ColorScheme.fromSwatch(primarySwatch: anyaColor)
+                .copyWith(secondary: anyaSecondaryColor),
+            tabBarTheme: const TabBarTheme(
+              indicator: UnderlineTabIndicator(
+                  borderSide: BorderSide(color: anyaselectedColor)),
+            ),
+            textTheme: TextTheme()),
+        darkTheme: ThemeData.dark().copyWith(
+            bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+                selectedItemColor: anyaColor)),
+        themeMode: ThemeMode.dark,
+        routes: <String, WidgetBuilder>{'/': (context) => const TopHomePage()},
+        debugShowCheckedModeBanner: false,
+      )));
 }
-

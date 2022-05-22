@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../model/aggregate_credit_object.dart';
 import '../../../theme.dart';
 
@@ -31,12 +32,8 @@ class CastCard extends StatelessWidget {
             maxLines: 2,
           ),
           const SizedBox(height: anyaDefaultPadding / 4),
-          Text(
-            cast.roles?.first.character ?? '',
-            maxLines: 1,
-            textAlign: TextAlign.center,
-            style: const TextStyle(color: anyaTextColor),
-          ),
+          Text(cast.roles?.first.character ?? '',
+              maxLines: 1, textAlign: TextAlign.center),
         ],
       ),
     );

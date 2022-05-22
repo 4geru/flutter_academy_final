@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../model/tv_detail_result_object.dart';
 import '../../../theme.dart';
 
@@ -17,11 +18,13 @@ class GenreCard extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black26),
+        // TODO: dark <> light
+        color: const Color(0x1FFFFFFF),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
         genre.name.toString(),
-        style: TextStyle(color: anyaTextColor.withOpacity(0.8), fontSize: 16),
+        style: const TextStyle(fontSize: 16),
       ),
     );
   }
