@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../data/repo/theme_provider.dart';
 
 class SettingTab extends StatefulWidget {
   final BottomNavigationBar bottomNavigationBar;
@@ -32,6 +35,8 @@ class _SettingTabState extends State<SettingTab> {
                   onChanged: (bool value) {
                     setState(() {
                       _isSelected = value;
+                      Provider.of<ThemeProvider>(context, listen: false)
+                          .toggle();
                     });
                   })
             ]))
