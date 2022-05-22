@@ -4,7 +4,7 @@ import '../../../package/bubble_tab_indicator.dart';
 import '../../../theme.dart';
 import 'year_tab_page.dart';
 
-List<int> targetYears () {
+List<int> targetYears() {
   const fromYear = 1996;
   final toYear = DateTime.now().year;
   return List<int>.generate(toYear - fromYear + 1, (i) => i + fromYear);
@@ -12,7 +12,8 @@ List<int> targetYears () {
 
 class YearTab extends StatefulWidget {
   final BottomNavigationBar bottomNavigationBar;
-  const YearTab({required this.bottomNavigationBar, Key? key}) : super(key: key);
+  const YearTab({required this.bottomNavigationBar, Key? key})
+      : super(key: key);
 
   @override
   State<YearTab> createState() => _YearTabState();
@@ -26,16 +27,13 @@ class _YearTabState extends State<YearTab> with SingleTickerProviderStateMixin {
     super.initState();
     selectedYear = targetYears().last;
     yearTabController = TabController(
-      length: targetYears().length,
-      initialIndex: targetYears().length - 1,
-      vsync: this
-    );
+        length: targetYears().length,
+        initialIndex: targetYears().length - 1,
+        vsync: this);
 
-    yearTabController.addListener(() =>
-      setState(() {
-        selectedYear = targetYears()[yearTabController.index];
-      })
-    );
+    yearTabController.addListener(() => setState(() {
+          selectedYear = targetYears()[yearTabController.index];
+        }));
   }
 
   @override
@@ -53,9 +51,6 @@ class _YearTabState extends State<YearTab> with SingleTickerProviderStateMixin {
                 floating: true,
                 title: Text(
                   'ANYA in ${selectedYear.toString()}',
-                  style: const TextStyle(
-                    color: anyaTextColor,
-                  ),
                 ),
                 bottom: TabBar(
                   isScrollable: true,
@@ -64,11 +59,15 @@ class _YearTabState extends State<YearTab> with SingleTickerProviderStateMixin {
                       text: year.toString(),
                     );
                   }).toList(),
-                  labelColor: const Color(0xFF0F1021),
+                  // dark <> white
+                  unselectedLabelColor: anyaWhiteColor,
+                  labelColor: anyaTextColor,
                   indicatorSize: TabBarIndicatorSize.tab,
                   indicator: const BubbleTabIndicator(
                     indicatorHeight: 30.0,
-                    indicatorColor: anyaWhiteColor,
+                    // dark <> white
+                    // indicatorColor: anyaWhiteColor,
+                    indicatorColor: anyaColor,
                     tabBarIndicatorSize: TabBarIndicatorSize.tab,
                   ),
                   controller: yearTabController,
@@ -77,13 +76,11 @@ class _YearTabState extends State<YearTab> with SingleTickerProviderStateMixin {
             ];
           },
           body: TabBarView(
-            controller: yearTabController,
-            children: targetYears().map((year) {
-              return YearTabPage(year, _scrollController);
-            }).toList()
-          ),
+              controller: yearTabController,
+              children: targetYears().map((year) {
+                return YearTabPage(year, _scrollController);
+              }).toList()),
         ),
-        bottomNavigationBar: widget.bottomNavigationBar
-    );
+        bottomNavigationBar: widget.bottomNavigationBar);
   }
 }
