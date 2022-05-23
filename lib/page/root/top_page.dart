@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_study_day7/page/root/components/setting_tab.dart';
 
@@ -36,19 +37,19 @@ class _TopHomePageState extends State<TopHomePage>
 
     final bottomNavigationBar = BottomNavigationBar(
       currentIndex: _selectedTabIndex,
-      items: const [
+      items: [
         BottomNavigationBarItem(
-            icon: Icon(Icons.home_sharp, size: 20),
-            activeIcon: Icon(Icons.home_rounded, size: 30),
-            label: 'ホーム'),
+            icon: const Icon(Icons.home_sharp, size: 20),
+            activeIcon: const Icon(Icons.home_rounded, size: 30),
+            label: AppLocalizations.of(context).home),
         BottomNavigationBarItem(
-            icon: Icon(Icons.history_sharp, size: 20),
-            activeIcon: Icon(Icons.history_rounded, size: 30),
-            label: '履歴'),
+            icon: const Icon(Icons.history_sharp, size: 20),
+            activeIcon: const Icon(Icons.history_rounded, size: 30),
+            label: AppLocalizations.of(context).history),
         BottomNavigationBarItem(
-            icon: Icon(Icons.person_sharp, size: 20),
-            activeIcon: Icon(Icons.person_rounded, size: 30),
-            label: '設定'),
+            icon: const Icon(Icons.person_sharp, size: 20),
+            activeIcon: const Icon(Icons.person_rounded, size: 30),
+            label: AppLocalizations.of(context).setting),
       ],
       elevation: 5.0,
       onTap: (index) {
