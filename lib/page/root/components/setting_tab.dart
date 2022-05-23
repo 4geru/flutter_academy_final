@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../data/repo/theme_provider.dart';
+import '../../../theme.dart';
 
 class SettingTab extends StatefulWidget {
   final BottomNavigationBar bottomNavigationBar;
@@ -14,7 +15,7 @@ class SettingTab extends StatefulWidget {
 
 class _SettingTabState extends State<SettingTab> {
   String _isSelected = 'true';
-  String dropdownValue = 'One';
+  String dropdownValue = '日本語';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,15 +39,19 @@ class _SettingTabState extends State<SettingTab> {
                             .toggle()
                       }),
               DropDownListTile(
-                label: '言語',
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                value: dropdownValue,
-                onChanged: (newValue) {
-                  setState(() {
-                    dropdownValue = newValue;
-                  });
-                },
-              )
+                  label: '言語',
+                  onChanged: (String newValue) {
+                    setState(() {
+                      dropdownValue = newValue;
+                    });
+                  },
+                  value: dropdownValue,
+                  items: ['日本語', 'English'].map((String item) {
+                    return DropdownMenuItem(
+                      value: item,
+                      child: Text(item),
+                    );
+                  }).toList())
             ]))
           ],
         ),
@@ -55,38 +60,34 @@ class _SettingTabState extends State<SettingTab> {
 }
 
 class DropDownListTile extends StatelessWidget {
-  const DropDownListTile({
+  DropDownListTile({
     Key? key,
     required this.label,
-    required this.padding,
     required this.value,
     required this.onChanged,
+    required this.items,
   }) : super(key: key);
 
   final String label;
-  final EdgeInsets padding;
-  final String value;
+  String value;
+  final List<DropdownMenuItem> items;
   final ValueChanged<String> onChanged;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
         child: Padding(
-      padding: padding,
+      padding: EdgeInsets.symmetric(horizontal: anyaDefaultPadding),
       child: Row(children: <Widget>[
         Expanded(child: Text(label)),
         DropdownButton(
-            value: '日本語',
-            items: ['日本語', 'English'].map((String item) {
-              return DropdownMenuItem(
-                value: item,
-                child: Text(item),
-              );
-            }).toList(),
-            onChanged: (String? newValue) {
-              print(' $newValue');
+            value: value,
+            items: items,
+            onChanged: (dynamic? newValue) {
+              if (newValue == null) return;
+              onChanged(newValue);
             }),
-        const SizedBox(width: 10)
+        const SizedBox(width: anyaDefaultPadding / 2)
       ]),
     ));
   }
