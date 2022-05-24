@@ -13,14 +13,6 @@ import '../theme.dart';
 /// /// The selected tab bubble is inset from the tab's boundary by [insets] when [tabBarIndicatorSize] is tab.
 /// The selected tab bubble is applied padding by [padding] when [tabBarIndicatorSize] is label.
 class BubbleTabIndicator extends Decoration {
-  final double indicatorHeight;
-  final Color? indicatorColor;
-  final double indicatorRadius;
-  @override
-  final EdgeInsetsGeometry padding;
-  final EdgeInsetsGeometry insets;
-  final TabBarIndicatorSize tabBarIndicatorSize;
-
   const BubbleTabIndicator({
     this.indicatorHeight = 20.0,
     this.indicatorColor = anyaColor,
@@ -29,6 +21,13 @@ class BubbleTabIndicator extends Decoration {
     this.padding = const EdgeInsets.symmetric(vertical: 2.0, horizontal: 8.0),
     this.insets = const EdgeInsets.symmetric(horizontal: 5.0),
   });
+  final double indicatorHeight;
+  final Color? indicatorColor;
+  final double indicatorRadius;
+  @override
+  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry insets;
+  final TabBarIndicatorSize tabBarIndicatorSize;
 
   @override
   Decoration? lerpFrom(Decoration? a, double t) {

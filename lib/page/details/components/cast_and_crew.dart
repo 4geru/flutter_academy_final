@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+
 import '../../../model/aggregate_credit_object.dart';
 import '../../../theme.dart';
-
 import 'cast_card.dart';
 
 class CastAndCrew extends StatelessWidget {
-  final List<Cast> casts;
-
   const CastAndCrew({Key? key, required this.casts}) : super(key: key);
+  final List<Cast> casts;
 
   @override
   Widget build(BuildContext context) {

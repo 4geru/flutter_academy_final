@@ -6,9 +6,9 @@ import '../../../data/repo/theme_provider.dart';
 import '../../../theme.dart';
 
 class SettingTab extends StatefulWidget {
-  final BottomNavigationBar bottomNavigationBar;
   const SettingTab({required this.bottomNavigationBar, Key? key})
       : super(key: key);
+  final BottomNavigationBar bottomNavigationBar;
 
   @override
   State<SettingTab> createState() => _SettingTabState();
@@ -60,7 +60,7 @@ class _SettingTabState extends State<SettingTab> {
 }
 
 class DropDownListTile extends StatelessWidget {
-  DropDownListTile({
+  const DropDownListTile({
     Key? key,
     required this.label,
     required this.value,
@@ -69,7 +69,7 @@ class DropDownListTile extends StatelessWidget {
   }) : super(key: key);
 
   final String label;
-  String value;
+  final String value;
   final List<DropdownMenuItem> items;
   final ValueChanged<String> onChanged;
 
@@ -83,7 +83,7 @@ class DropDownListTile extends StatelessWidget {
         DropdownButton(
             value: value,
             items: items,
-            onChanged: (dynamic? newValue) {
+            onChanged: (dynamic newValue) {
               if (newValue == null) return;
               onChanged(newValue);
             }),

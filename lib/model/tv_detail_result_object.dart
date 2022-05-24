@@ -33,40 +33,6 @@ class TvDetailResultObject {
     this.voteAverage,
     this.voteCount,
   });
-
-  bool? adult;
-  String? backdropPath;
-  List<CreatedBy>? createdBy;
-  List<int>? episodeRunTime;
-  DateTime firstAirDate;
-  List<Genre>? genres;
-  String? homepage;
-  int? id;
-  bool? inProduction;
-  List<String>? languages;
-  DateTime? lastAirDate;
-  LastEpisodeToAir? lastEpisodeToAir;
-  String? name;
-  dynamic nextEpisodeToAir;
-  List<Network>? networks;
-  int? numberOfEpisodes;
-  int? numberOfSeasons;
-  List<String> originCountry;
-  String? originalLanguage;
-  String originalName;
-  String? overview;
-  double? popularity;
-  String? posterPath;
-  List<Network>? productionCompanies;
-  List<ProductionCountry>? productionCountries;
-  List<Season> seasons;
-  List<SpokenLanguage>? spokenLanguages;
-  String? status;
-  String? tagline;
-  String? type;
-  double? voteAverage;
-  int? voteCount;
-
   factory TvDetailResultObject.fromJson(Map<String, dynamic> json) =>
       TvDetailResultObject(
         adult: json['adult'],
@@ -110,6 +76,39 @@ class TvDetailResultObject {
         voteAverage: json['vote_average'].toDouble(),
         voteCount: json['vote_count'],
       );
+
+  bool? adult;
+  String? backdropPath;
+  List<CreatedBy>? createdBy;
+  List<int>? episodeRunTime;
+  DateTime firstAirDate;
+  List<Genre>? genres;
+  String? homepage;
+  int? id;
+  bool? inProduction;
+  List<String>? languages;
+  DateTime? lastAirDate;
+  LastEpisodeToAir? lastEpisodeToAir;
+  String? name;
+  dynamic nextEpisodeToAir;
+  List<Network>? networks;
+  int? numberOfEpisodes;
+  int? numberOfSeasons;
+  List<String> originCountry;
+  String? originalLanguage;
+  String originalName;
+  String? overview;
+  double? popularity;
+  String? posterPath;
+  List<Network>? productionCompanies;
+  List<ProductionCountry>? productionCountries;
+  List<Season> seasons;
+  List<SpokenLanguage>? spokenLanguages;
+  String? status;
+  String? tagline;
+  String? type;
+  double? voteAverage;
+  int? voteCount;
 }
 
 class CreatedBy {
@@ -121,12 +120,6 @@ class CreatedBy {
     this.profilePath,
   });
 
-  int? id;
-  String? creditId;
-  String? name;
-  int? gender;
-  String? profilePath;
-
   factory CreatedBy.fromJson(Map<String, dynamic> json) => CreatedBy(
         id: json['id'],
         creditId: json['credit_id'],
@@ -134,6 +127,11 @@ class CreatedBy {
         gender: json['gender'],
         profilePath: json['profile_path'],
       );
+  int? id;
+  String? creditId;
+  String? name;
+  int? gender;
+  String? profilePath;
 }
 
 class Genre {
@@ -142,13 +140,12 @@ class Genre {
     this.name,
   });
 
-  int? id;
-  String? name;
-
   factory Genre.fromJson(Map<String, dynamic> json) => Genre(
         id: json['id'],
         name: json['name'],
       );
+  int? id;
+  String? name;
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -170,17 +167,6 @@ class LastEpisodeToAir {
     this.voteCount,
   });
 
-  DateTime? airDate;
-  int? episodeNumber;
-  int? id;
-  String? name;
-  String? overview;
-  String? productionCode;
-  int? seasonNumber;
-  String? stillPath;
-  double? voteAverage;
-  int? voteCount;
-
   factory LastEpisodeToAir.fromJson(Map<String, dynamic> json) =>
       LastEpisodeToAir(
         airDate: DateTime.parse(json['air_date']),
@@ -194,6 +180,16 @@ class LastEpisodeToAir {
         voteAverage: json['vote_average'].toDouble(),
         voteCount: json['vote_count'],
       );
+  DateTime? airDate;
+  int? episodeNumber;
+  int? id;
+  String? name;
+  String? overview;
+  String? productionCode;
+  int? seasonNumber;
+  String? stillPath;
+  double? voteAverage;
+  int? voteCount;
 }
 
 class Network {
@@ -204,17 +200,16 @@ class Network {
     this.originCountry,
   });
 
-  String? name;
-  int? id;
-  String? logoPath;
-  String? originCountry;
-
   factory Network.fromJson(Map<String, dynamic> json) => Network(
         name: json['name'],
         id: json['id'],
         logoPath: json['logo_path'],
         originCountry: json['origin_country'],
       );
+  String? name;
+  int? id;
+  String? logoPath;
+  String? originCountry;
 }
 
 class ProductionCountry {
@@ -223,14 +218,13 @@ class ProductionCountry {
     this.name,
   });
 
-  String? iso31661;
-  String? name;
-
   factory ProductionCountry.fromJson(Map<String, dynamic> json) =>
       ProductionCountry(
         iso31661: json['iso_3166_1'],
         name: json['name'],
       );
+  String? iso31661;
+  String? name;
 }
 
 class Season {
@@ -244,14 +238,6 @@ class Season {
     this.seasonNumber,
   });
 
-  DateTime? airDate;
-  int? episodeCount;
-  int? id;
-  String name;
-  String? overview;
-  String? posterPath;
-  int? seasonNumber;
-
   factory Season.fromJson(Map<String, dynamic> json) => Season(
         airDate:
             json['air_date'] != null ? DateTime.parse(json['air_date']) : null,
@@ -262,6 +248,13 @@ class Season {
         posterPath: json['poster_path'],
         seasonNumber: json['season_number'],
       );
+  DateTime? airDate;
+  int? episodeCount;
+  int? id;
+  String name;
+  String? overview;
+  String? posterPath;
+  int? seasonNumber;
 }
 
 class SpokenLanguage {
@@ -271,13 +264,12 @@ class SpokenLanguage {
     this.name,
   });
 
-  String? englishName;
-  String? iso6391;
-  String? name;
-
   factory SpokenLanguage.fromJson(Map<String, dynamic> json) => SpokenLanguage(
         englishName: json['english_name'],
         iso6391: json['iso_639_1'],
         name: json['name'],
       );
+  String? englishName;
+  String? iso6391;
+  String? name;
 }

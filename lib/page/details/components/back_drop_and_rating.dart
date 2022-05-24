@@ -6,9 +6,9 @@ import '../../../model/tv_detail_result_object.dart';
 import '../../../theme.dart';
 
 class BackDropAndRating extends StatelessWidget {
-  final TvDetailResultObject tvDetailResultObject;
   const BackDropAndRating({Key? key, required this.tvDetailResultObject})
       : super(key: key);
+  final TvDetailResultObject tvDetailResultObject;
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +38,11 @@ class BackDropAndRating extends StatelessWidget {
                     width: size.width * 0.9,
                     height: 100,
                     decoration: BoxDecoration(
-                        color: (Provider.of<ThemeProvider>(context, listen: false).isDark
-                            ? Colors.grey[800]
-                            : anyaWhiteColor),
+                        color:
+                            (Provider.of<ThemeProvider>(context, listen: false)
+                                    .isDark
+                                ? Colors.grey[800]
+                                : anyaWhiteColor),
                         borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(50),
                           topLeft: Radius.circular(50),

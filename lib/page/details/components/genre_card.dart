@@ -6,9 +6,9 @@ import '../../../model/tv_detail_result_object.dart';
 import '../../../theme.dart';
 
 class GenreCard extends StatelessWidget {
+  const GenreCard({Key? key, required this.genre}) : super(key: key);
   final Genre genre;
 
-  const GenreCard({Key? key, required this.genre}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(

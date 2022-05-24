@@ -10,9 +10,10 @@ import '../../details/detail_page_argument.dart';
 import '../../details/hooks.dart';
 
 class YearTabPage extends StatefulWidget {
+  const YearTabPage(this.year, this.scrollController, {Key? key})
+      : super(key: key);
   final int year;
   final ScrollController scrollController;
-  const YearTabPage(this.year, this.scrollController, {Key? key}) : super(key: key);
 
   @override
   State<YearTabPage> createState() => _YearTabPageState();
@@ -23,8 +24,8 @@ class _YearTabPageState extends State<YearTabPage> {
   int page = 1;
   bool loading = false;
 
-  void fetch() async {
-    if(loading)return;
+  Future<void> fetch() async {
+    if (loading) return;
     setState(() => loading = true);
     final list1 = await TmdbApiService().getDiscoverTv(widget.year, page: page);
     setState(() {
@@ -39,7 +40,9 @@ class _YearTabPageState extends State<YearTabPage> {
     fetch();
     super.initState();
     widget.scrollController.addListener(() {
-      if(widget.scrollController.position.pixels >= widget.scrollController.position.maxScrollExtent / 2 && !loading) {
+      if (widget.scrollController.position.pixels >=
+              widget.scrollController.position.maxScrollExtent / 2 &&
+          !loading) {
         fetch();
       }
     });
@@ -49,47 +52,41 @@ class _YearTabPageState extends State<YearTabPage> {
   Widget build(BuildContext context) {
     final store = context.watch<UseDetailPage>();
     return MediaQuery.removePadding(
-      context: context,
-      removeTop: true,
-      child:GridView.count(
-        childAspectRatio: 2 / 3,
-        crossAxisSpacing: 1,
-        mainAxisSpacing: 1,
-        crossAxisCount: 3,
-        children: _list.map((tvListResultObject) {
-          final tvId = tvListResultObject.id;
-          return GestureDetector(
-              onTap: () {
-                store.fetch(tvId);
-                // 履歴に追加する
-                final simpleTvObject = SimpleTvObject(
-                  id: tvId,
-                  originalName: tvListResultObject.originalName,
-                  posterPath: tvListResultObject.posterPath,
-                  timestamp: DateTime.now()
-                );
-                Provider.of<HistoryProvider>(context, listen: false).insert(simpleTvObject);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    settings: const RouteSettings(name: '/details/:id'),
-                    builder: (context) => DetailPage(
-                      argument: DetailPageArgument(
-                        tvId: tvId,
-                        year: widget.year
-                      )
+        context: context,
+        removeTop: true,
+        child: GridView.count(
+          childAspectRatio: 2 / 3,
+          crossAxisSpacing: 1,
+          mainAxisSpacing: 1,
+          crossAxisCount: 3,
+          children: _list.map((tvListResultObject) {
+            final tvId = tvListResultObject.id;
+            return GestureDetector(
+                onTap: () {
+                  store.fetch(tvId);
+                  // 履歴に追加する
+                  final simpleTvObject = SimpleTvObject(
+                      id: tvId,
+                      originalName: tvListResultObject.originalName,
+                      posterPath: tvListResultObject.posterPath,
+                      timestamp: DateTime.now());
+                  Provider.of<HistoryProvider>(context, listen: false)
+                      .insert(simpleTvObject);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      settings: const RouteSettings(name: '/details/:id'),
+                      builder: (context) => DetailPage(
+                          argument: DetailPageArgument(
+                              tvId: tvId, year: widget.year)),
+                      fullscreenDialog: true,
                     ),
-                    fullscreenDialog: true,
-                  ),
-                );
-              },
-              child: Image.network(
-                'https://image.tmdb.org/t/p/w300/${tvListResultObject.posterPath}',
-                fit: BoxFit.cover
-              )
-          );
-        }).toList(),
-      )
-    );
+                  );
+                },
+                child: Image.network(
+                    'https://image.tmdb.org/t/p/w300/${tvListResultObject.posterPath}',
+                    fit: BoxFit.cover));
+          }).toList(),
+        ));
   }
 }

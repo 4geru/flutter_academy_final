@@ -4,9 +4,9 @@ import '../../../model/aggregate_credit_object.dart';
 import '../../../theme.dart';
 
 class CastCard extends StatelessWidget {
+  const CastCard({Key? key, required this.cast}) : super(key: key);
   final Cast cast;
 
-  const CastCard({Key? key, required this.cast}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(

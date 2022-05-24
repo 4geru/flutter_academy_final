@@ -12,13 +12,13 @@ class HistoryProvider with ChangeNotifier {
 
   List<SimpleTvObject> histories = [];
 
-  Future loadHistory() async {
+  Future<void> loadHistory() async {
     final prefs = await SharedPreferences.getInstance();
     final object = prefs.getStringList('histories') ?? [];
     histories = object.map((str) => SimpleTvObject.fromString(str)).toList();
   }
 
-  void insert(SimpleTvObject simpleTvObject) async {
+  Future<void> insert(SimpleTvObject simpleTvObject) async {
     final prefs = await SharedPreferences.getInstance();
     // 履歴は10件まで登録する
     histories.removeRange(0, max(histories.length - 9, 0));

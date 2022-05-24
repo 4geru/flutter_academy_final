@@ -8,7 +8,6 @@ class TitleDurationAndFabBtn extends StatelessWidget {
     Key? key,
     required this.tvDetailResultObject,
   }) : super(key: key);
-
   final TvDetailResultObject tvDetailResultObject;
 
   @override
