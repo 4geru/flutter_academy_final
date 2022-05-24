@@ -15,20 +15,6 @@ class TvListResultObject {
     required this.originalName,
   });
 
-  String posterPath;
-  double popularity;
-  int id;
-  String? backdropPath;
-  double voteAverage;
-  String overview;
-  String firstAirDate;
-  List<String> originCountry;
-  List<int> genreIds;
-  String originalLanguage;
-  int voteCount;
-  String name;
-  String originalName;
-
   factory TvListResultObject.fromJson(Map<String, dynamic> json) {
     return TvListResultObject(
       posterPath: json['poster_path'],
@@ -46,4 +32,18 @@ class TvListResultObject {
       originalName: json['original_name'],
     );
   }
+
+  String posterPath;
+  double popularity;
+  int id;
+  String? backdropPath;
+  double voteAverage;
+  String overview;
+  String firstAirDate;
+  List<String> originCountry;
+  List<int> genreIds;
+  String originalLanguage;
+  int voteCount;
+  String name;
+  String originalName;
 }

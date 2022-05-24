@@ -6,9 +6,9 @@ import '../../../data/repo/theme_provider.dart';
 import '../../../theme.dart';
 
 class SettingTab extends StatefulWidget {
-  final BottomNavigationBar bottomNavigationBar;
   const SettingTab({required this.bottomNavigationBar, Key? key})
       : super(key: key);
+  final BottomNavigationBar bottomNavigationBar;
 
   @override
   State<SettingTab> createState() => _SettingTabState();

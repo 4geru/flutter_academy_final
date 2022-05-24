@@ -1,10 +1,6 @@
 import 'dart:convert';
 
 class SimpleTvObject {
-  int id;
-  String originalName;
-  String posterPath;
-  DateTime timestamp;
   SimpleTvObject(
       {required this.id,
       required this.originalName,
@@ -19,6 +15,10 @@ class SimpleTvObject {
         posterPath: json['posterPath'],
         timestamp: DateTime.parse(json['timestamp']));
   }
+  int id;
+  String originalName;
+  String posterPath;
+  DateTime timestamp;
 
   @override
   String toString() {

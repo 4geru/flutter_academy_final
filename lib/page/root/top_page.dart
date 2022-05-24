@@ -16,21 +16,7 @@ class TopHomePage extends StatefulWidget {
 
 class _TopHomePageState extends State<TopHomePage>
     with SingleTickerProviderStateMixin {
-  late TabController _controller;
   int _selectedTabIndex = 0;
-  int _selectedYear = targetYears().last;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TabController(
-        length: targetYears().length,
-        initialIndex: targetYears().length - 1,
-        vsync: this);
-
-    _controller.addListener(
-        () => setState(() => _selectedYear = targetYears()[_controller.index]));
-  }
 
   @override
   Widget build(BuildContext context) {

@@ -7,9 +7,9 @@ import '../../details/detail_page_argument.dart';
 import '../../details/hooks.dart';
 
 class HistoryTab extends StatelessWidget {
-  final BottomNavigationBar bottomNavigationBar;
   const HistoryTab({required this.bottomNavigationBar, Key? key})
       : super(key: key);
+  final BottomNavigationBar bottomNavigationBar;
 
   @override
   Widget build(BuildContext context) {
