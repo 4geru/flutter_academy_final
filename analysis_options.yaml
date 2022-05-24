@@ -46,3 +46,7 @@ linter:
     - use_super_parameters
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
+analyzer:
+  exclude:
+    - lib/data/repo/locale_provider.dart
+    - lib/main.dart
