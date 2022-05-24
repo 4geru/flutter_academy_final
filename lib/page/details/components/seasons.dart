@@ -4,10 +4,10 @@ import '../../../model/tv_detail_result_object.dart';
 import '../../../theme.dart';
 
 class Seasons extends StatefulWidget {
-  final int year;
-  final List<Season> seasons;
   const Seasons({Key? key, required this.seasons, required this.year})
       : super(key: key);
+  final int year;
+  final List<Season> seasons;
 
   @override
   State<Seasons> createState() => _SeasonsState();

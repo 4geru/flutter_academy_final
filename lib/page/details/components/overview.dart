@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+
 import '../../../components/show_more.dart';
 import '../../../theme.dart';
 
 class Overview extends StatelessWidget {
-  final String overview;
   const Overview({Key? key, required this.overview}) : super(key: key);
+  final String overview;
 
   @override
   Widget build(BuildContext context) {

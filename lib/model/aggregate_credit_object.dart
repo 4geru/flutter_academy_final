@@ -1,8 +1,4 @@
 class AggregateCreditObject {
-  List<Cast>? casts;
-  List<Crew>? crews;
-  int? id;
-
   AggregateCreditObject({this.casts, this.crews, this.id});
 
   AggregateCreditObject.fromJson(Map<String, dynamic> json) {
@@ -20,21 +16,12 @@ class AggregateCreditObject {
     }
     id = json['id'];
   }
+  List<Cast>? casts;
+  List<Crew>? crews;
+  int? id;
 }
 
 class Cast {
-  bool? adult;
-  int? gender;
-  int? id;
-  String? knownForDepartment;
-  String? name;
-  String? originalName;
-  double? popularity;
-  String? profilePath;
-  List<Roles>? roles;
-  int? totalEpisodeCount;
-  int? order;
-
   Cast(
       {this.adult,
       this.gender,
@@ -66,23 +53,6 @@ class Cast {
     totalEpisodeCount = json['total_episode_count'];
     order = json['order'];
   }
-}
-
-class Roles {
-  String? creditId;
-  String? character;
-  int? episodeCount;
-
-  Roles({this.creditId, this.character, this.episodeCount});
-
-  Roles.fromJson(Map<String, dynamic> json) {
-    creditId = json['credit_id'];
-    character = json['character'];
-    episodeCount = json['episode_count'];
-  }
-}
-
-class Crew {
   bool? adult;
   int? gender;
   int? id;
@@ -91,10 +61,25 @@ class Crew {
   String? originalName;
   double? popularity;
   String? profilePath;
-  List<Jobs>? jobs;
-  String? department;
+  List<Roles>? roles;
   int? totalEpisodeCount;
+  int? order;
+}
 
+class Roles {
+  Roles({this.creditId, this.character, this.episodeCount});
+
+  Roles.fromJson(Map<String, dynamic> json) {
+    creditId = json['credit_id'];
+    character = json['character'];
+    episodeCount = json['episode_count'];
+  }
+  String? creditId;
+  String? character;
+  int? episodeCount;
+}
+
+class Crew {
   Crew(
       {this.adult,
       this.gender,
@@ -126,13 +111,20 @@ class Crew {
     department = json['department'];
     totalEpisodeCount = json['total_episode_count'];
   }
+  bool? adult;
+  int? gender;
+  int? id;
+  String? knownForDepartment;
+  String? name;
+  String? originalName;
+  double? popularity;
+  String? profilePath;
+  List<Jobs>? jobs;
+  String? department;
+  int? totalEpisodeCount;
 }
 
 class Jobs {
-  String? creditId;
-  String? job;
-  int? episodeCount;
-
   Jobs({this.creditId, this.job, this.episodeCount});
 
   Jobs.fromJson(Map<String, dynamic> json) {
@@ -140,4 +132,7 @@ class Jobs {
     job = json['job'];
     episodeCount = json['episode_count'];
   }
+  String? creditId;
+  String? job;
+  int? episodeCount;
 }

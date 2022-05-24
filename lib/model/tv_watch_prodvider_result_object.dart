@@ -4,14 +4,13 @@ class TvWatchProviderResultObject {
     required this.results,
   });
 
-  int id;
-  Results results;
-
   factory TvWatchProviderResultObject.fromJson(Map<String, dynamic> json) =>
       TvWatchProviderResultObject(
         id: json['id'],
         results: Results.fromJson(json['results']),
       );
+  int id;
+  Results results;
 }
 
 class Results {
@@ -19,10 +18,10 @@ class Results {
     this.jp,
   });
 
-  Ae? jp;
   factory Results.fromJson(Map<String, dynamic> json) => Results(
         jp: Ae.fromJson(json['JP']),
       );
+  Ae? jp;
 }
 
 class Ae {
@@ -33,12 +32,6 @@ class Ae {
     this.rent,
     this.buy,
   });
-
-  String? link;
-  List<Ad>? ads;
-  List<Ad>? flatrate;
-  List<Ad>? rent;
-  List<Ad>? buy;
 
   factory Ae.fromJson(Map<String, dynamic> json) => Ae(
         link: json['link'],
@@ -55,6 +48,11 @@ class Ae {
             ? null
             : List<Ad>.from(json['buy'].map((x) => Ad.fromJson(x))),
       );
+  String? link;
+  List<Ad>? ads;
+  List<Ad>? flatrate;
+  List<Ad>? rent;
+  List<Ad>? buy;
 }
 
 class Ad {
@@ -65,15 +63,14 @@ class Ad {
     this.providerName,
   });
 
-  int? displayPriority;
-  String? logoPath;
-  int? providerId;
-  String? providerName;
-
   factory Ad.fromJson(Map<String, dynamic> json) => Ad(
         displayPriority: json['display_priority'],
         logoPath: json['logo_path'],
         providerId: json['provider_id'],
         providerName: json['provider_name'],
       );
+  int? displayPriority;
+  String? logoPath;
+  int? providerId;
+  String? providerName;
 }

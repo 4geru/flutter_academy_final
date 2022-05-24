@@ -47,7 +47,7 @@ class _TopHomePageState extends State<TopHomePage>
         BottomNavigationBarItem(
             icon: const Icon(Icons.history_sharp, size: 20),
             activeIcon: const Icon(Icons.history_rounded, size: 30),
-            label: l10n.history),
+            label: l10n.top_history_tab),
         BottomNavigationBarItem(
             icon: const Icon(Icons.person_sharp, size: 20),
             activeIcon: const Icon(Icons.person_rounded, size: 30),

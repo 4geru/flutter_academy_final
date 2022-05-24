@@ -13,9 +13,9 @@ List<int> targetYears() {
 }
 
 class YearTab extends StatefulWidget {
-  final BottomNavigationBar bottomNavigationBar;
   const YearTab({required this.bottomNavigationBar, Key? key})
       : super(key: key);
+  final BottomNavigationBar bottomNavigationBar;
 
   @override
   State<YearTab> createState() => _YearTabState();

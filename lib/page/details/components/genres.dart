@@ -5,8 +5,8 @@ import '../../../theme.dart';
 import 'genre_card.dart';
 
 class Genres extends StatelessWidget {
-  final List<Genre> genres;
   const Genres({Key? key, required this.genres}) : super(key: key);
+  final List<Genre> genres;
 
   @override
   Widget build(BuildContext context) {

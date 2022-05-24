@@ -13,8 +13,8 @@ import 'detail_page_argument.dart';
 import 'hooks.dart';
 
 class DetailPage extends StatefulWidget {
-  final DetailPageArgument argument;
   const DetailPage({Key? key, required this.argument}) : super(key: key);
+  final DetailPageArgument argument;
 
   @override
   State<DetailPage> createState() => _DetailPageState();
