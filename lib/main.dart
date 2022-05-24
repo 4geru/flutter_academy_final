@@ -21,5 +21,5 @@ void main() async {
     ChangeNotifierProvider(create: (context) => di.sl<HistoryProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<LocaleProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<UseDetailPage>()),
-  ], child: App()));
+  ], child: const App()));
 }

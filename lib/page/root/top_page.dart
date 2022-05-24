@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_study_day7/page/root/components/setting_tab.dart';
 import 'package:provider/provider.dart';
 
 import '../../data/repo/locale_provider.dart';
 import 'components/history_tab.dart';
+import 'components/setting_tab.dart';
 import 'components/year_tab.dart';
 
 class TopHomePage extends StatefulWidget {
@@ -35,7 +34,7 @@ class _TopHomePageState extends State<TopHomePage>
 
   @override
   Widget build(BuildContext context) {
-    AppLocalizations l10n = Provider.of<LocaleProvider>(context).load();
+    final l10n = Provider.of<LocaleProvider>(context).load();
 
     FlutterNativeSplash.remove();
     final bottomNavigationBar = BottomNavigationBar(

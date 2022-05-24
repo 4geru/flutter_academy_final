@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import '../../../data/repo/locale_provider.dart';
@@ -18,8 +17,8 @@ class SettingTab extends StatefulWidget {
 class _SettingTabState extends State<SettingTab> {
   @override
   Widget build(BuildContext context) {
-    AppLocalizations l10n = Provider.of<LocaleProvider>(context).load();
-    List<DropdownMenuItem> items = Locales.values.map((AppLocalizations l10n) {
+    final l10n = Provider.of<LocaleProvider>(context).load();
+    final List<DropdownMenuItem> items = Locales.values.map((l10n) {
       return DropdownMenuItem(
         value: l10n.locale,
         child: Text(l10n.language),
@@ -47,7 +46,7 @@ class _SettingTabState extends State<SettingTab> {
                       }),
               DropDownListTile(
                   label: l10n.setting_language,
-                  onChanged: (String newValue) {
+                  onChanged: (newValue) {
                     Provider.of<LocaleProvider>(context, listen: false)
                         .setLocale(Locale(newValue));
                   },
@@ -78,7 +77,7 @@ class DropDownListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
         child: Padding(
-      padding: EdgeInsets.symmetric(horizontal: anyaDefaultPadding),
+      padding: const EdgeInsets.symmetric(horizontal: anyaDefaultPadding),
       child: Row(children: <Widget>[
         Expanded(child: Text(label)),
         DropdownButton(

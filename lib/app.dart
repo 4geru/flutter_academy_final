@@ -34,7 +34,7 @@ class _AppState extends State<App> {
             indicator: UnderlineTabIndicator(
                 borderSide: BorderSide(color: anyaselectedColor)),
           ),
-          textTheme: TextTheme()),
+          textTheme: const TextTheme()),
       darkTheme: ThemeData.dark().copyWith(
           bottomNavigationBarTheme:
               const BottomNavigationBarThemeData(selectedItemColor: anyaColor)),

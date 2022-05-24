@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study_day7/data/repo/theme_provider.dart';
 import 'package:provider/provider.dart';
 
+import '../../../data/repo/theme_provider.dart';
 import '../../../model/tv_detail_result_object.dart';
 import '../../../theme.dart';
 

@@ -9,7 +9,7 @@ final Map<String, AppLocalizations> Locales = {
 };
 
 class LocaleProvider with ChangeNotifier {
-  Locale _locale = Locale('en', '');
+  Locale _locale = const Locale('en', '');
   Locale? get locale => _locale;
 
   Map<String, AppLocalizations> languages = {
