@@ -12,24 +12,12 @@ class LocaleProvider with ChangeNotifier {
   Locale _locale = const Locale('en', '');
   Locale? get locale => _locale;
 
-  Map<String, AppLocalizations> languages = {
-    'en': AppLocalizationsEn(),
-    'ja': AppLocalizationsJa()
-  };
-
-  List<Locale> all() {
-    return [
-      const Locale('en', ''),
-      const Locale('ja', ''),
-    ];
-  }
-
   void setLocale(Locale locale) {
-    if (!all().contains(locale)) return;
+    if (!Locales.keys.contains(locale.languageCode)) return;
     _locale = locale;
     notifyListeners();
   }
 
   AppLocalizations load() =>
-      languages[_locale.languageCode] ?? AppLocalizationsEn();
+      Locales[_locale.languageCode] ?? AppLocalizationsEn();
 }
