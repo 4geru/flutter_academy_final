@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
+import '../../../data/repo/locale_provider.dart';
 import '../../../data/repo/theme_provider.dart';
 import '../../../theme.dart';
 
@@ -14,44 +16,43 @@ class SettingTab extends StatefulWidget {
 }
 
 class _SettingTabState extends State<SettingTab> {
-  String _isSelected = 'true';
-  String dropdownValue = '日本語';
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l10n = Provider.of<LocaleProvider>(context).load();
+    List<DropdownMenuItem> items = Locales.values.map((AppLocalizations l10n) {
+      return DropdownMenuItem(
+        value: l10n.locale,
+        child: Text(l10n.language),
+      );
+    }).toList();
     return Scaffold(
         body: CustomScrollView(
           slivers: <Widget>[
-            const SliverAppBar(
+            SliverAppBar(
               pinned: false,
               snap: false,
               floating: false,
               expandedHeight: 50.0,
-              title: Text('ANYA in setting'),
+              title: Text(l10n.setting_title),
             ),
             SliverList(
                 delegate: SliverChildListDelegate([
-              ListTile(title: Text('設定画面')),
+              ListTile(title: Text(l10n.top_setting_tab)),
               SwitchListTile(
-                  title: const Text('ダークモード'),
+                  title: Text(l10n.setting_darkmode),
                   value: Provider.of<ThemeProvider>(context).isDark == true,
                   onChanged: (v) => {
                         Provider.of<ThemeProvider>(context, listen: false)
                             .toggle()
                       }),
               DropDownListTile(
-                  label: '言語',
+                  label: l10n.setting_language,
                   onChanged: (String newValue) {
-                    setState(() {
-                      dropdownValue = newValue;
-                    });
+                    Provider.of<LocaleProvider>(context, listen: false)
+                        .setLocale(Locale(newValue));
                   },
-                  value: dropdownValue,
-                  items: ['日本語', 'English'].map((String item) {
-                    return DropdownMenuItem(
-                      value: item,
-                      child: Text(item),
-                    );
-                  }).toList())
+                  value: l10n.locale,
+                  items: items)
             ]))
           ],
         ),
