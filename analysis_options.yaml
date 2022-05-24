@@ -41,9 +41,7 @@ linter:
     - package_prefixed_library_names
     - test_types_in_equals
     - throw_in_finally
-    - unawaited_futures
     - unnecessary_statements
-    - use_super_parameters
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
 analyzer:

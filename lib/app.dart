@@ -19,7 +19,7 @@ class _AppState extends State<App> {
     Provider.of<ThemeProvider>(context).loadTheme();
     return MaterialApp(
       title: 'Flutter Demo',
-      localizationsDelegates: [
+      localizationsDelegates: const [
         AppLocalizations.delegate,
       ],
       supportedLocales: const [
