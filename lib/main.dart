@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_study_day7/data/repo/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'app.dart';
 import 'data/repo/history_provider.dart';
+import 'data/repo/locale_provider.dart';
+import 'data/repo/theme_provider.dart';
 import 'di_container.dart' as di;
 import 'page/details/hooks.dart';
 
@@ -18,6 +19,7 @@ void main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => di.sl<ThemeProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<HistoryProvider>()),
+    ChangeNotifierProvider(create: (context) => di.sl<LocaleProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<UseDetailPage>()),
-  ], child: App()));
+  ], child: const App()));
 }

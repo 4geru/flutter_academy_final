@@ -1,0 +1,11 @@
+{
+  "@@locale": "ja",
+  "locale": "ja",
+  "language": "日本語",
+  "home": "ホーム",
+  "history": "履歴",
+  "top_setting_tab": "設定",
+  "setting_title": "あーにゃの設定",
+  "setting_language": "言語",
+  "setting_darkmode": "ダークモード"
+}

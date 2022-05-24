@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_study_day7/page/root/components/setting_tab.dart';
+import 'package:provider/provider.dart';
 
+import '../../data/repo/locale_provider.dart';
 import 'components/history_tab.dart';
+import 'components/setting_tab.dart';
 import 'components/year_tab.dart';
 
 class TopHomePage extends StatefulWidget {
@@ -32,23 +34,24 @@ class _TopHomePageState extends State<TopHomePage>
 
   @override
   Widget build(BuildContext context) {
-    FlutterNativeSplash.remove();
+    final l10n = Provider.of<LocaleProvider>(context).load();
 
+    FlutterNativeSplash.remove();
     final bottomNavigationBar = BottomNavigationBar(
       currentIndex: _selectedTabIndex,
-      items: const [
+      items: [
         BottomNavigationBarItem(
-            icon: Icon(Icons.home_sharp, size: 20),
-            activeIcon: Icon(Icons.home_rounded, size: 30),
-            label: 'ホーム'),
+            icon: const Icon(Icons.home_sharp, size: 20),
+            activeIcon: const Icon(Icons.home_rounded, size: 30),
+            label: l10n.home),
         BottomNavigationBarItem(
-            icon: Icon(Icons.history_sharp, size: 20),
-            activeIcon: Icon(Icons.history_rounded, size: 30),
-            label: '履歴'),
+            icon: const Icon(Icons.history_sharp, size: 20),
+            activeIcon: const Icon(Icons.history_rounded, size: 30),
+            label: l10n.history),
         BottomNavigationBarItem(
-            icon: Icon(Icons.person_sharp, size: 20),
-            activeIcon: Icon(Icons.person_rounded, size: 30),
-            label: '設定'),
+            icon: const Icon(Icons.person_sharp, size: 20),
+            activeIcon: const Icon(Icons.person_rounded, size: 30),
+            label: l10n.top_setting_tab),
       ],
       elevation: 5.0,
       onTap: (index) {

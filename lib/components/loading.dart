@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study_day7/data/repo/theme_provider.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
 
+import '../data/repo/theme_provider.dart';
 import '../theme.dart';
 
 class LoadingComponent extends StatelessWidget {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import './page/root/top_page.dart';
@@ -18,6 +19,13 @@ class _AppState extends State<App> {
     Provider.of<ThemeProvider>(context).loadTheme();
     return MaterialApp(
       title: 'Flutter Demo',
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', ''),
+        Locale('ja', ''),
+      ],
       theme: ThemeData(
           scaffoldBackgroundColor: anyaWhiteColor,
           colorScheme: ColorScheme.fromSwatch(primarySwatch: anyaColor)
@@ -26,7 +34,7 @@ class _AppState extends State<App> {
             indicator: UnderlineTabIndicator(
                 borderSide: BorderSide(color: anyaselectedColor)),
           ),
-          textTheme: TextTheme()),
+          textTheme: const TextTheme()),
       darkTheme: ThemeData.dark().copyWith(
           bottomNavigationBarTheme:
               const BottomNavigationBarThemeData(selectedItemColor: anyaColor)),
