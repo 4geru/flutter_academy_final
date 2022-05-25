@@ -15,6 +15,10 @@ class BackDropAndRating extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final posterPath =
         'https://image.tmdb.org/t/p/original/${tvDetailResultObject.backdropPath}';
+    final fontColor = Provider.of<ThemeProvider>(context, listen: false).isDark
+        ? anyaWhiteColor
+        : Colors.grey[800];
+
     return SizedBox(
         height: size.height * 0.4,
         child: Stack(
@@ -39,10 +43,10 @@ class BackDropAndRating extends StatelessWidget {
                     height: 100,
                     decoration: BoxDecoration(
                         color:
-                            (Provider.of<ThemeProvider>(context, listen: false)
+                            Provider.of<ThemeProvider>(context, listen: false)
                                     .isDark
                                 ? Colors.grey[800]
-                                : anyaWhiteColor),
+                                : anyaWhiteColor,
                         borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(50),
                           topLeft: Radius.circular(50),
@@ -69,13 +73,22 @@ class BackDropAndRating extends StatelessWidget {
                               TextSpan(
                                 text:
                                     '${tvDetailResultObject.voteAverage.toString()}/',
-                                style: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w600),
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: fontColor),
                               ),
-                              const TextSpan(text: '10\n'),
                               TextSpan(
-                                text: tvDetailResultObject.voteCount.toString(),
-                              )
+                                  text: '10\n',
+                                  style: TextStyle(
+                                    color: fontColor,
+                                  )),
+                              TextSpan(
+                                  text:
+                                      tvDetailResultObject.voteCount.toString(),
+                                  style: TextStyle(
+                                    color: fontColor,
+                                  ))
                             ]))
                           ],
                         ),
@@ -85,7 +98,9 @@ class BackDropAndRating extends StatelessWidget {
                             const Icon(Icons.person_add_alt_1),
                             const SizedBox(height: anyaDefaultPadding / 4),
                             Text(tvDetailResultObject.popularity.toString(),
-                                style: Theme.of(context).textTheme.bodyText2)
+                                style: TextStyle(
+                                  color: fontColor,
+                                ))
                           ],
                         ),
                         Column(
