@@ -7,12 +7,12 @@ import '../model/tv_list_result_object.dart';
 import '../model/tv_watch_prodvider_result_object.dart';
 
 class TmdbApiService {
-  TmdbApiService({this.language});
+  TmdbApiService({required this.language});
   static final String? _apiKey = dotenv.env['TmdbApiKey'];
   static const String _animeGenre = '16';
   final String _baseUrl = 'https://api.themoviedb.org/3';
   final Dio _dio = Dio();
-  String? language = 'en';
+  String language = 'en';
 
   Future<List<TvListResultObject>> getPopularTvShows() async {
     try {
