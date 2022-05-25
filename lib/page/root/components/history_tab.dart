@@ -28,7 +28,7 @@ class HistoryTab extends StatelessWidget {
             ),
             SliverList(
                 delegate: SliverChildListDelegate([
-              const Card(child: ListTile(title: Text('履歴一覧'))),
+              const ListTile(title: Text('履歴一覧')),
               ...histories.map((history) {
                 return Card(
                   child: ListTile(

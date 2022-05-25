@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../data/repo/locale_provider.dart';
 import '../../../data/repo/theme_provider.dart';
 import '../../../package/bubble_tab_indicator.dart';
 import '../../../theme.dart';
@@ -41,6 +42,7 @@ class _YearTabState extends State<YearTab> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final _scrollController = ScrollController();
+    final l10n = Provider.of<LocaleProvider>(context).load();
     return Scaffold(
         body: NestedScrollView(
           controller: _scrollController,
@@ -51,7 +53,7 @@ class _YearTabState extends State<YearTab> with SingleTickerProviderStateMixin {
                 snap: true,
                 floating: true,
                 title: Text(
-                  'ANYA in ${selectedYear.toString()}',
+                  '${selectedYear.toString()}${l10n.home_title}',
                 ),
                 bottom: TabBar(
                   isScrollable: true,
