@@ -10,5 +10,12 @@
   "history_list": "履歴一覧",
   "setting_title": "あーにゃの設定",
   "setting_language": "言語",
-  "setting_darkmode": "ダークモード"
+  "setting_darkmode": "ダークモード",
+  "open": "開く",
+  "close": "閉じる",
+  "story_count": "話",
+  "detail_overview": "概要",
+  "detail_start_date": "放映開始日",
+  "detail_cast": "出演者",
+  "detail_season": "シーズン"
 }

@@ -10,5 +10,12 @@
   "history_list": "History list",
   "setting_title": "ANYA's Setting",
   "setting_language": "Language",
-  "setting_darkmode": "Darkmode"
+  "setting_darkmode": "Darkmode",
+  "open": "open",
+  "close": "close",
+  "story_count": "stories",
+  "detail_overview": "Overview",
+  "detail_start_date": "start date",
+  "detail_cast": "Casts",
+  "detail_season": "Seasons"
 }
