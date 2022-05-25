@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 
 // reference from: https://zenn.dev/hayabusabusa/articles/7bf73f007584aa4e0ee8
 class ExpandableText extends StatefulWidget {
-  const ExpandableText(
-    this.data, {
-    Key? key,
-    this.maxLines = 3,
-    this.textOverflow = TextOverflow.fade,
-    this.style,
-  }) : super(key: key);
+  const ExpandableText(this.data,
+      {Key? key,
+      this.maxLines = 3,
+      this.textOverflow = TextOverflow.fade,
+      this.style,
+      this.openLabel = '開く',
+      this.closeLabel = '閉じる'})
+      : super(key: key);
 
   final String data;
   final int maxLines;
   final TextOverflow textOverflow;
   final TextStyle? style;
+  final String openLabel;
+  final String closeLabel;
 
   @override
   _ExpandableTextState createState() => _ExpandableTextState();
@@ -54,7 +57,7 @@ class _ExpandableTextState extends State<ExpandableText>
                   _isExpanded = !_isExpanded;
                 });
               },
-              child: Text(_isExpanded ? '閉じる' : '開く'),
+              child: Text(_isExpanded ? widget.closeLabel : widget.openLabel),
             )
           ],
         );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../components/show_more.dart';
+import '../../../data/repo/locale_provider.dart';
 import '../../../theme.dart';
 
 class Overview extends StatelessWidget {
@@ -9,6 +11,7 @@ class Overview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = Provider.of<LocaleProvider>(context).load();
     return Column(
       children: [
         Padding(
@@ -17,7 +20,7 @@ class Overview extends StatelessWidget {
             horizontal: anyaDefaultPadding,
           ),
           child: Text(
-            '概要',
+            l10n.detail_overview,
             style: Theme.of(context).textTheme.headline5,
           ),
         ),
@@ -27,6 +30,8 @@ class Overview extends StatelessWidget {
               overview,
               maxLines: 5,
               style: const TextStyle(fontSize: 12),
+              openLabel: l10n.open,
+              closeLabel: l10n.close,
             ))
       ],
     );

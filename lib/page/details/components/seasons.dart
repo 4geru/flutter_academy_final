@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../data/repo/locale_provider.dart';
 import '../../../model/tv_detail_result_object.dart';
 import '../../../theme.dart';
 
@@ -18,11 +20,13 @@ class _SeasonsState extends State<Seasons> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = Provider.of<LocaleProvider>(context).load();
+
     return Column(
       children: [
         Card(
           child: ListTile(
-              title: const Text('シーズン'),
+              title: Text(l10n.detail_season),
               trailing: _openSeason
                   ? const Icon(Icons.arrow_drop_up)
                   : const Icon(Icons.arrow_drop_down),
