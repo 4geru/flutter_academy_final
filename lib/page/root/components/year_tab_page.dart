@@ -67,7 +67,7 @@ class _YearTabPageState extends State<YearTabPage> {
                   // 履歴に追加する
                   final simpleTvObject = SimpleTvObject(
                       id: tvId,
-                      originalName: tvListResultObject.originalName,
+                      originalName: tvListResultObject.name,
                       posterPath: tvListResultObject.posterPath,
                       timestamp: DateTime.now());
                   Provider.of<HistoryProvider>(context, listen: false)

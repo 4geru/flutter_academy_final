@@ -12,7 +12,7 @@ class TvDetailResultObject {
     this.languages,
     this.lastAirDate,
     this.lastEpisodeToAir,
-    this.name,
+    required this.name,
     this.nextEpisodeToAir,
     this.networks,
     this.numberOfEpisodes,
@@ -89,7 +89,7 @@ class TvDetailResultObject {
   List<String>? languages;
   DateTime? lastAirDate;
   LastEpisodeToAir? lastEpisodeToAir;
-  String? name;
+  String name;
   dynamic nextEpisodeToAir;
   List<Network>? networks;
   int? numberOfEpisodes;

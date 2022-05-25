@@ -11,6 +11,7 @@ class TmdbApiService {
   static const String _animeGenre = '16';
   final String _baseUrl = 'https://api.themoviedb.org/3';
   final Dio _dio = Dio();
+  final language = 'en';
 
   Future<List<TvListResultObject>> getPopularTvShows() async {
     try {
@@ -25,10 +26,13 @@ class TmdbApiService {
     }
   }
 
-  Future<List<TvListResultObject>> getDiscoverTv(int year, {int page = 1}) async {
+  Future<List<TvListResultObject>> getDiscoverTv(int year,
+      {int page = 1}) async {
     try {
-      final response = await _dio.get('$_baseUrl/discover/tv?&with_genres=$_animeGenre&air_date.gte=$year-01-01&air_date.lte=$year-12-31&with_original_language=ja&language=ja&api_key=$_apiKey&page=$page');
-      final list = List<TvListResultObject>.from(response.data['results'].map((e) => TvListResultObject.fromJson(e)));
+      final response = await _dio.get(
+          '$_baseUrl/discover/tv?&with_genres=$_animeGenre&air_date.gte=$year-01-01&air_date.lte=$year-12-31&with_original_language=ja&language=$language&api_key=$_apiKey&page=$page');
+      final list = List<TvListResultObject>.from(
+          response.data['results'].map((e) => TvListResultObject.fromJson(e)));
       return list;
     } on DioError catch (_) {
       return [];
@@ -37,7 +41,8 @@ class TmdbApiService {
 
   Future<TvDetailResultObject?> getTv(int tvId) async {
     try {
-      final response = await _dio.get('$_baseUrl/tv/$tvId?api_key=$_apiKey&language=ja');
+      final response = await _dio
+          .get('$_baseUrl/tv/$tvId?api_key=$_apiKey&language=$language');
       return TvDetailResultObject.fromJson(response.data);
     } on DioError catch (_) {
       return null;
@@ -46,7 +51,8 @@ class TmdbApiService {
 
   Future<TvWatchProviderResultObject?> getTvProvider(int tvId) async {
     try {
-      final response = await _dio.get('$_baseUrl/tv/$tvId/watch/providers?api_key=$_apiKey&language=ja');
+      final response = await _dio.get(
+          '$_baseUrl/tv/$tvId/watch/providers?api_key=$_apiKey&language=$language');
       return TvWatchProviderResultObject.fromJson(response.data);
     } on DioError catch (_) {
       return null;
@@ -55,7 +61,8 @@ class TmdbApiService {
 
   Future<List<TvListResultObject>?> getTvRecommendations(int tvId) async {
     try {
-      final response = await _dio.get('$_baseUrl/tv/$tvId/recommendations?api_key=$_apiKey&language=ja');
+      final response = await _dio.get(
+          '$_baseUrl/tv/$tvId/recommendations?api_key=$_apiKey&language=$language');
       final List<TvListResultObject> list = response.data['results'].map((e) {
         return TvListResultObject.fromJson(e);
       }).toList();
@@ -68,7 +75,8 @@ class TmdbApiService {
 
   Future<AggregateCreditObject?> getAggregateCredits(int tvId) async {
     try {
-      final response = await _dio.get('$_baseUrl/tv/$tvId/aggregate_credits?api_key=$_apiKey&language=ja');
+      final response = await _dio.get(
+          '$_baseUrl/tv/$tvId/aggregate_credits?api_key=$_apiKey&language=$language');
       return AggregateCreditObject.fromJson(response.data);
     } on DioError catch (_) {
       return null;
