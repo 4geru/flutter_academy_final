@@ -41,7 +41,7 @@ class HistoryTab extends StatelessWidget {
                     ),
                     title: Text(history.originalName),
                     onTap: () {
-                      store.fetch(history.id);
+                      store.fetch(history.id, l10n.locale);
                       Navigator.push(
                         context,
                         MaterialPageRoute(

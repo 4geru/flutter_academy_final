@@ -5,18 +5,17 @@ import '../../model/tv_detail_result_object.dart';
 import '../../service/tmdb_api_service.dart';
 
 class UseDetailPage with ChangeNotifier {
-  UseDetailPage();
   TvDetailResultObject? tvDetailResultObject;
   AggregateCreditObject? aggregateCreditObject;
 
-  Future fetch(int tvId) async {
+  Future fetch(int tvId, String language) async {
     tvDetailResultObject = null;
     aggregateCreditObject = null;
 
-    await TmdbApiService()
+    await TmdbApiService(language: language)
         .getTv(tvId)
         .then((value) => tvDetailResultObject = value);
-    await TmdbApiService()
+    await TmdbApiService(language: language)
         .getAggregateCredits(tvId)
         .then((value) => aggregateCreditObject = value);
     // loading view を表示するために 1秒待たせる

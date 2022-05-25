@@ -24,7 +24,7 @@ class TitleDurationAndFabBtn extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  tvDetailResultObject.originalName,
+                  tvDetailResultObject.name,
                   style: Theme.of(context).textTheme.headline5,
                 ),
                 const SizedBox(height: anyaDefaultPadding / 2),

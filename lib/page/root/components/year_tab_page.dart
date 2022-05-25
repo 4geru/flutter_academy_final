@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../data/repo/history_provider.dart';
+import '../../../data/repo/locale_provider.dart';
 import '../../../model/simple_tv_object.dart';
 import '../../../model/tv_list_result_object.dart';
 import '../../../service/tmdb_api_service.dart';
@@ -10,10 +11,11 @@ import '../../details/detail_page_argument.dart';
 import '../../details/hooks.dart';
 
 class YearTabPage extends StatefulWidget {
-  const YearTabPage(this.year, this.scrollController, {Key? key})
+  const YearTabPage(this.year, this.scrollController, this.locale, {Key? key})
       : super(key: key);
   final int year;
   final ScrollController scrollController;
+  final String locale;
 
   @override
   State<YearTabPage> createState() => _YearTabPageState();
@@ -27,7 +29,8 @@ class _YearTabPageState extends State<YearTabPage> {
   Future<void> fetch() async {
     if (loading) return;
     setState(() => loading = true);
-    final list1 = await TmdbApiService().getDiscoverTv(widget.year, page: page);
+    final list1 = await TmdbApiService(language: widget.locale)
+        .getDiscoverTv(widget.year, page: page);
     setState(() {
       _list = [..._list, ...list1];
       loading = false;
@@ -51,6 +54,7 @@ class _YearTabPageState extends State<YearTabPage> {
   @override
   Widget build(BuildContext context) {
     final store = context.watch<UseDetailPage>();
+    final l10n = Provider.of<LocaleProvider>(context).load();
     return MediaQuery.removePadding(
         context: context,
         removeTop: true,
@@ -63,11 +67,11 @@ class _YearTabPageState extends State<YearTabPage> {
             final tvId = tvListResultObject.id;
             return GestureDetector(
                 onTap: () {
-                  store.fetch(tvId);
+                  store.fetch(tvId, l10n.locale);
                   // 履歴に追加する
                   final simpleTvObject = SimpleTvObject(
                       id: tvId,
-                      originalName: tvListResultObject.originalName,
+                      originalName: tvListResultObject.name,
                       posterPath: tvListResultObject.posterPath,
                       timestamp: DateTime.now());
                   Provider.of<HistoryProvider>(context, listen: false)

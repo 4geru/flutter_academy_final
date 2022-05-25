@@ -83,7 +83,7 @@ class _YearTabState extends State<YearTab> with SingleTickerProviderStateMixin {
           body: TabBarView(
               controller: yearTabController,
               children: targetYears().map((year) {
-                return YearTabPage(year, _scrollController);
+                return YearTabPage(year, _scrollController, l10n.locale);
               }).toList()),
         ),
         bottomNavigationBar: widget.bottomNavigationBar);
