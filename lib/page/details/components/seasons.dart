@@ -34,8 +34,9 @@ class _SeasonsState extends State<Seasons> {
         ),
         if (_openSeason)
           ...(widget.seasons).map((season) {
+            // FIXME: here
             final openDate =
-                '${season.airDate?.year}年${season.airDate?.month}月${season.airDate?.day}日 | ';
+                '${season.airDate?.year}/${season.airDate?.month.toString().padLeft(2, "0")}/${season.airDate?.day.toString().padLeft(2, "0")} | ';
             return Card(
               child: ListTile(
                   leading: Image.network(
@@ -49,7 +50,8 @@ class _SeasonsState extends State<Seasons> {
                           const Icon(Icons.favorite,
                               color: anyaSecondaryColor, size: 24.0),
                         Text(
-                            "${season.airDate != null ? openDate : ''}${season.episodeCount}話"),
+                            // FIXME: here
+                            "${season.airDate != null ? openDate : ''}${season.episodeCount}${l10n.story_count}"),
                       ]),
                       Text(
                         season.overview ?? '',
