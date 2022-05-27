@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../components/error_image_container.dart';
 import '../../../data/repo/locale_provider.dart';
 import '../../../model/tv_detail_result_object.dart';
 import '../../../theme.dart';
@@ -40,6 +41,13 @@ class _SeasonsState extends State<Seasons> {
               child: ListTile(
                   leading: Image.network(
                     'https://image.tmdb.org/t/p/w300/${season.posterPath}',
+                    errorBuilder: (
+                      context,
+                      error,
+                      stackTrace,
+                    ) {
+                      return const ErrorImageContainer();
+                    },
                   ),
                   title: Text(season.name),
                   subtitle: Column(

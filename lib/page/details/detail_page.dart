@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../components/loading.dart';
-import '../../data/repo/locale_provider.dart';
 import '../../theme.dart';
 import 'components/back_drop_and_rating.dart';
 import 'components/cast_and_crew.dart';
