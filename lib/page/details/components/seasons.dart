@@ -36,7 +36,7 @@ class _SeasonsState extends State<Seasons> {
         if (_openSeason)
           ...(widget.seasons).map((season) {
             final openDate =
-                '${season.airDate?.year}/${season.airDate?.month}/${season.airDate?.day} | ';
+                '${season.airDate?.year}/${season.airDate?.month.toString().padLeft(2, "0")}/${season.airDate?.day.toString().padLeft(2, "0")} | ';
             return Card(
               child: ListTile(
                   leading: Image.network(
