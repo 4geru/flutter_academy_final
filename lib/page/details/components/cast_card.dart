@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../components/error_image_container.dart';
 import '../../../model/aggregate_credit_object.dart';
 import '../../../theme.dart';
 
@@ -16,10 +17,17 @@ class CastCard extends StatelessWidget {
         child: Column(
           children: <Widget>[
             const SizedBox(height: anyaDefaultPadding / 2),
-            Container(
+            SizedBox(
               height: 100,
               child: Image.network(
                 'https://image.tmdb.org/t/p/w300/${cast.profilePath}',
+                errorBuilder: (
+                  context,
+                  error,
+                  stackTrace,
+                ) {
+                  return const ErrorImageContainer();
+                },
               ),
             ),
             const SizedBox(height: anyaDefaultPadding / 2),
