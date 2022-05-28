@@ -35,7 +35,7 @@ class _DetailPageState extends State<DetailPage> {
         body: SingleChildScrollView(
             child: Column(
       children: <Widget>[
-        BackDropAndRating(tvDetailResultObject: store.tvDetailResultObject!),
+        BackDropAndRating(tvDetailResultObject: store.tvDetailResultObject!, tvWatchProviderResultObject: store.tvWatchProviderResultObject!),
         const SizedBox(height: anyaDefaultPadding),
         TitleDurationAndFabBtn(
             tvDetailResultObject: store.tvDetailResultObject!),

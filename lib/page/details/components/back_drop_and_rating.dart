@@ -3,12 +3,17 @@ import 'package:provider/provider.dart';
 
 import '../../../data/repo/theme_provider.dart';
 import '../../../model/tv_detail_result_object.dart';
+import '../../../model/tv_watch_prodvider_result_object.dart';
 import '../../../theme.dart';
 
 class BackDropAndRating extends StatelessWidget {
-  const BackDropAndRating({Key? key, required this.tvDetailResultObject})
+  const BackDropAndRating(
+      {Key? key,
+      required this.tvDetailResultObject,
+      required this.tvWatchProviderResultObject})
       : super(key: key);
   final TvDetailResultObject tvDetailResultObject;
+  final TvWatchProviderResultObject tvWatchProviderResultObject;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +23,14 @@ class BackDropAndRating extends StatelessWidget {
     final fontColor = Provider.of<ThemeProvider>(context, listen: false).isDark
         ? anyaWhiteColor
         : Colors.grey[800];
-
+    final providreList =
+        tvWatchProviderResultObject.results.jp?.flatrate?.map((element) {
+              return {
+                'providerName': element.providerName,
+                'logoPath': element.logoPath
+              };
+            }) ??
+            [];
     return SizedBox(
         height: size.height * 0.4,
         child: Stack(
@@ -108,31 +120,21 @@ class BackDropAndRating extends StatelessWidget {
                           children: <Widget>[
                             Row(
                               children: [
-                                Container(
-                                    padding: const EdgeInsets.all(6),
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xff51cf66),
-                                        borderRadius: BorderRadius.circular(2)),
-                                    child: Text(
-                                        tvDetailResultObject.originCountry
-                                            .join(', '),
-                                        style: const TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w500))),
-                                const SizedBox(width: anyaDefaultPadding / 4),
-                                Container(
-                                    padding: const EdgeInsets.all(6),
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xff51cf66),
-                                        borderRadius: BorderRadius.circular(2)),
-                                    child: Text(
-                                        tvDetailResultObject.originCountry
-                                            .join(', '),
-                                        style: const TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w500))),
+                                ...providreList.map((element) {
+                                  return Row(
+                                    children: [
+                                      SizedBox(
+                                        height: 40,
+                                        width: 40,
+                                        child: Image.network(
+                                          'https://image.tmdb.org/t/p/w300/${element['logoPath']}',
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                          width: anyaDefaultPadding / 4),
+                                    ],
+                                  );
+                                })
                               ],
                             )
                           ],
