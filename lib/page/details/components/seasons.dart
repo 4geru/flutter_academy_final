@@ -39,15 +39,19 @@ class _SeasonsState extends State<Seasons> {
                 '${season.airDate?.year}年${season.airDate?.month}月${season.airDate?.day}日 | ';
             return Card(
               child: ListTile(
-                  leading: Image.network(
-                    'https://image.tmdb.org/t/p/w300/${season.posterPath}',
-                    errorBuilder: (
-                      context,
-                      error,
-                      stackTrace,
-                    ) {
-                      return const ErrorImageContainer();
-                    },
+                  leading: SizedBox(
+                    width: 30,
+                    height: 45,
+                    child: Image.network(
+                      'https://image.tmdb.org/t/p/w300/${season.posterPath}',
+                      errorBuilder: (
+                        context,
+                        error,
+                        stackTrace,
+                      ) {
+                        return const ErrorImageContainer();
+                      },
+                    ),
                   ),
                   title: Text(season.name),
                   subtitle: Column(
