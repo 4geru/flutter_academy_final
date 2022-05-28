@@ -32,7 +32,7 @@ class TitleDurationAndFabBtn extends StatelessWidget {
                   children: <Widget>[
                     Text('${l10n.detail_start_date} '),
                     Text(
-                        '${tvDetailResultObject.firstAirDate.year}/${tvDetailResultObject.firstAirDate.month}/${tvDetailResultObject.firstAirDate.day}'),
+                        '${tvDetailResultObject.firstAirDate.year}/${tvDetailResultObject.firstAirDate.month.toString().padLeft(2, "0")}/${tvDetailResultObject.firstAirDate.day.toString().padLeft(2, "0")}'),
                     const SizedBox(width: anyaDefaultPadding),
                     Text(
                         '${tvDetailResultObject.numberOfSeasons}${l10n.detail_season} ${tvDetailResultObject.numberOfEpisodes}${l10n.story_count}'),
