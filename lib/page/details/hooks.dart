@@ -13,6 +13,7 @@ class UseDetailPage with ChangeNotifier {
   Future fetch(int tvId, String language) async {
     tvDetailResultObject = null;
     aggregateCreditObject = null;
+    tvWatchProviderResultObject = null;
 
     await TmdbApiService(language: language)
         .getTv(tvId)
