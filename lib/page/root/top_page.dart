@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../../data/repo/locale_provider.dart';
 import 'components/history_tab.dart';
+import 'components/home_tab.dart';
 import 'components/setting_tab.dart';
-import 'components/year_tab.dart';
 
 class TopHomePage extends StatefulWidget {
   const TopHomePage({Key? key}) : super(key: key);

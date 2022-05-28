@@ -5,7 +5,7 @@ import '../../../data/repo/locale_provider.dart';
 import '../../../data/repo/theme_provider.dart';
 import '../../../package/bubble_tab_indicator.dart';
 import '../../../theme.dart';
-import 'year_tab_page.dart';
+import 'home_tab_page.dart';
 
 List<int> targetYears() {
   const fromYear = 1996;
